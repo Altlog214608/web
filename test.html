@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="">
     <link rel="" href="">
     <title>Document</title>
-    
+
   </head>
-  <body>
+  <body id = "id1">
     <a href="https://www.gitanimals.org/en_US?utm_medium=image&utm_source=Altlog214608&utm_content=farm">
       <img
         src="https://render.gitanimals.org/farms/Altlog214608"
@@ -20,7 +20,7 @@
       />
       </a>
     <img src="src/test.jpg" width="100px" height="100px" alt="사진">  
-    <h1 style="color: salmon; background-color: beige;">123123</h1>
+    <h1 id="hh" style="color: salmon; background-color: beige;">123123</h1>
     <hr>
     <p style="font-size: 30px; text-align: center;">
       <b>본문 <mark>컨텐츠</mark> 영역</b>
@@ -76,20 +76,28 @@
       </thead>
       <tbody>
         <tr style="text-align: center;">
-          <td><img src="src/test.jpg" width="30"><br>서울</td>
-          <td><img src="src/test.jpg" width="30"><br>베이징</td>
-          <td><img src="src/test.jpg" width="30"><br>워싱턴 D.C</td>
-          <td><img src="src/test.jpg" width="30"><br>파리</td>
-          <td><img src="src/test.jpg" width="30"><br>도쿄</td>
+          <td><img src="src/test.jpg" width="100%"></td>
+          <td><img src="src/test.jpg" width="100%"></td>
+          <td><img src="src/test.jpg" width="100%"></td>
+          <td><img src="src/test.jpg" width="100%"></td>
+          <td><img src="src/test.jpg" width="100%"></td>
         </tr>
       </tbody>
     </table>
 
-    <p id = "123">123123</p>
+    <p title = "홀리몰리">123123</p>
     <div style="background-color: rebeccapurple; padding: 20px;"></div>
     <span style="background-color: yellow; color: blue;">1</span>
     <div>123<span style="color: brown;">456</span>789</div>
-    <a href="https://www.google.com/" target="_blank">google</a>
+    <a href="https://www.google.com/" target="_blank"><img src="src/test.jpg"></a>
+    <img src="src/test.jpg">
+
+
+    <ul>
+      <li><a href="https://www.google.com/" target="_blank"><img src="src/test.jpg"></a></li>
+      <li><a href="https://www.google.com/" target="_blank"><img src="src/test2.jpg"></a></li>
+      <li><a href="https://www.google.com/" target="_blank"><img src="src/test3.jpg"></a></li>
+    </ul>
     <pre>
       <br>
       <br>
@@ -156,6 +164,12 @@
       #th: 데이터의 제목 셀
       #td: 데이터 셀
 
+      #하이퍼링크 태그
+      #a태그 : 하이퍼링크 이동 기능 제공
+      #다른 HTML 페이지를 연결하는 방식을 하이퍼링크라고 함
+      #a태그는 href 가 필수 속성, href=이동 url을 값으로 넣어줌
+
+  
       #태그는 시작태그와 종료태그로 구성되는 태그가 있고
       #시작태그만 쓰는 태그가 있음.
       #태그와 속성은 대소문자 구분이 없음
@@ -175,6 +189,9 @@
 
       #img 태그의 src 속성에는 URL 혹은 로컬디렉터리의 파일명 삽입 가능
 
+      #element 의 id속성 : 지정한 태그의 식별자(고유함)
+
+      #element 의 class 속성 : 지정한 태그의 식별자(여러개 지정 가능)
 
     </pre>
   </body>

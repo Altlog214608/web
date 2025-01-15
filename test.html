@@ -30,21 +30,37 @@
       <div style="width: 50%; height: 50%; background-color: sandybrown; display: inline-block; border-radius: 0 0 100% 0;"></div>
       <div style="width: 50%; height: 50%; background-color: seagreen; display: block; float: left; border-radius: 0 0 0 100%;"></div>
     </div>
-    <ul>
+    <ul type="2">
       <li>1</li>
       <li>2</li>
       <li>3</li>
     </ul>
-    <ol>
+    <ol type="i" start="3">
       <li>1</li>
       <li>2</li>
       <li>3</li>
     </ol>
+    <ul>
+      <li>첫번째 <mark>항목</mark>
+        <ul>
+            <li>1
+            <li>2
+            <li>3
+        </ul>
+      </li>
+      <li>두번째 <mark>항목</mark>
+        <ul>
+            <li>1
+            <li>2
+            <li>3<img src="src/test.jpg", style="height: 100px; width: 100px;">
+        </ul>
+      </li>
+    </ul>
     <p id = "123">123123</p>
     <div style="background-color: rebeccapurple; padding: 20px;"></div>
     <span style="background-color: yellow; color: blue;">1</span>
     <div>123<span style="color: brown;">456</span>789</div>
-    <a href="https://www.google.com/">google</a>
+    <a href="https://www.google.com/" target="_blank">google</a>
     <pre>
       <br>
       <br>
@@ -90,6 +106,15 @@
       
       태그 구분 기준 1.종료태그의 유무 2.인라인과 블럭럭
       
+      #리스트를 만드는 태그
+      #ul: unordered list 순서 없는 리스트
+      #ol: ordered list 순서 있는 리스트
+      #dl: def list 정의 리스트
+
+      #리스트 내 항목 태그
+      #li: 리스트를 구성하는 항목 태그
+
+
       #태그는 시작태그와 종료태그로 구성되는 태그가 있고
       #시작태그만 쓰는 태그가 있음.
       #태그와 속성은 대소문자 구분이 없음

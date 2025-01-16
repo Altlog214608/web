@@ -6,12 +6,27 @@
     <meta name="author" content = "301">
     <meta name="description" content = "HTML입문">
     <meta name="keywords" content = "프론트엔드">
-    <link rel="stylesheet" href="">
-    <link rel="" href="">
+    <style>
+      html, body{margin: 0; padding: 0; height: 100%; background-color: bisque;}
+      header{width: 100%;;height: 15%; background-color: yellow;}
+      nav{width: 15%;height: 70%;float: left;background-color: red;}
+      section{width: 70%;height: 70%;float: left; background-color: green;}
+      aside{width: 15%;height: 70%;float: left; background-color: blue;}
+      footer{width: 100%;height: 15%;clear: both;background-color: plum;}
+    </style>
+
     <title>Document</title>
 
   </head>
   <body id = "id">
+
+    <header>header</header>
+    <nav>nav</nav>
+    <section>section</section>
+    <!-- <article>article</article> -->
+    <aside>aside</aside>
+    <footer>footer</footer>
+
     <a href="https://www.gitanimals.org/en_US?utm_medium=image&utm_source=Altlog214608&utm_content=farm">
       <img
         src="https://render.gitanimals.org/farms/Altlog214608"
@@ -118,6 +133,53 @@
     <video src="src/2025.mp4" width="100%" height="500" controls autoplay muted loop></video>
 
     <video src="src/아무노래.mp3" controls muted loop></video>
+
+    <hr>
+    <form name="fo" method="get" action="">
+      ID: <br><input type="text" size="15" value="">
+      <br>
+      PW:<br><input type="password" size="15" value=""><br>
+      <input type="submit" size="15" value="로그인">
+    </form>
+    
+    <input type="color" value="" >
+    <input type="email" value="" >
+    <input type="month" value="" >
+    <input type="range" value="" >
+    <input type="hidden" value="" >123
+    <input type="datetime-local" value="" >
+    <input type="week" value="" >
+    <input type="image" src="src/위키백과 타이틀.svg" value="" >
+    <input type="number">
+    <input type="reset">
+    <input type="url">
+    <input type="file">
+    <button type="button" style="width: 100px; height: 50px;">button</button>
+    
+    <input type="text" list="clist">
+    <datalist id="clist">
+      <option value="100"></option>
+      <option value="110"></option>
+      <option value="111"></option>
+      <option value="200"></option>
+      <option value="300"></option>
+    </datalist>
+    
+
+    <textarea name="" id="" cols="10">초기 출력</textarea>
+    
+    <input type="image" src="src/rabbit.jpg">
+    <button type="button" style="background-color: #fff;"><img src="src/rabbit.jpg" alt=""></button>
+    
+    <form action="">
+      1번<input type="checkbox" value="1">
+      2번<input type="checkbox" value="2">
+      3번<input type="checkbox" value="3">
+      4번<input type="checkbox" value="4">
+    </form>
+    
+    
+    <hr>
 
     <pre>
       <br>
@@ -243,6 +305,61 @@
       2번 html 파일 문서는 주제1 간단한 설명, 이미지지
       3번 html 파일 문서는 주제2
       4번 html 파일 문서는 주제3
+
+      #HTML 문서의 구조화
+      #시멘틱 구조
+      #왜 사용해야 하는지 => 검색 엔진은 시멘틱 구조(태그)를 기반으로 영역을 탐색
+      #시멘틱 태그 종류
+      #header  : 머리말 (페이지 제목/ 페이지 소개)
+      #section : 문서의 챕터 (본문)
+      #article : 본문과 관련 있는 독립적 컨텐츠 영역
+      #footer  : 바닥글(저작권, 사업자정보, 사이트맵)
+      #aside   : 필수는 아님(광고, 부수적인 것들)
+      #nav     : 카테고리 링크 모음 리스트 (보통 헤더에 포함)
+
+      #시멘틱 태그를 쓴다고 레이아웃이 자동으로 배치되지는 않음
+      #시멘틱 구조 태그들은 블록 형태(div랑 동일)
+      #문서의 모양과 구조는 별개
+
+      #시멘틱 인라인 태그
+      #mark     - 중요한 텍스트
+      #time     - 시간 정보
+      #meter    - 범위나 %의 데이터 양 표기
+      #progress - 작업의 진행 정도 표기
+
+      #웹 폼
+      #웹 폼이란 사용자를 통해 입력을 받는 형태
+      input 태그 / textarea 태그 / select 태그 등을 사용한다.
+      input 태그는 type을 어떻게 지정하냐에 따라 버튼 or 입력창 외
+      다양한 형태로 생성된다.
+
+      form 태그의 name 속성은 JS에서 폼을 지정할 때 식별하는 이름
+      form 태그의 action 속성은 폼데이터를 처리할 웹서버 응용 프로그램 지정하는 속성
+      form 태그의 method 속성은 폼 데이터를 웹 서버로 전송하는 형식
+      지정하는 속성, 대표적으로 GET과 POST가 있음
+
+      input태그의 타입 종류
+      1.text
+      2.password 
+      3.button 
+      4.submit
+      5.reset 
+      6.image
+      7.checkbox
+      8.radio
+      9.month/week/date/time/datetime
+      10.range
+      11.number
+      12.color
+      13.email/url/tel/search
+      14.file
+
+      input태그가 아닌 button 태그로 버튼 만들기 가능
+
+      #datalist 태그
+      datalist 태그는 input과 연동하여 선택지 옵션을 만들 수 있음
+      #option 태그
+      datalist 에 해당하는 개별 항목 태그
 
 
     </pre>

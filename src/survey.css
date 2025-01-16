@@ -1,0 +1,34 @@
+html, body{
+    margin: 0;  
+    padding: 0; 
+    height: 100%;
+    width: 100%;
+}
+header{
+    width: 100%;;height: 10%; background-color: yellow;
+}
+nav{
+    width: 15%;
+    height: 80%;
+    float: left;
+    background-color: rgb(255, 255, 255);
+}
+section{
+    width: 100%;
+    height: 80%;
+
+    background-color: green;
+}
+aside{
+    width: 15%;height: 80%;float: right; background-color: rgb(255, 255, 255);
+}
+footer{
+    width: 100%;height: 10%;clear: both;background-color: rgb(210, 221, 160);
+}
+
+#head {
+    width: 60%;
+    height: 100px;
+    background-color: wheat;
+    margin-left: 20%;
+}

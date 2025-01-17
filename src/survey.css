@@ -5,23 +5,31 @@ html, body{
     width: 100%;
 }
 header{
-    width: 100%;;height: 10%; background-color: yellow;
+    width: 100%;
+    height: 10%;
+    background-color: yellow;
 }
 nav{
     width: 15%;
     height: 80%;
+    position: relative;
     float: left;
     background-color: rgb(255, 255, 255);
 }
 section{
-    width: 100%;
+    width: 70%;
     height: 80%;
+    float: left;
+    position: relative;
+    background-color: rgb(147, 172, 147);
+    /* background: linear-gradient(180deg,transparent,rgb(54, 12, 12) 100%); */
 
-    background-color: green;
 }
+
 aside{
     width: 15%;height: 80%;float: right; background-color: rgb(255, 255, 255);
 }
+
 footer{
     width: 100%;height: 10%;clear: both;background-color: rgb(210, 221, 160);
 }
@@ -31,4 +39,19 @@ footer{
     height: 100px;
     background-color: wheat;
     margin-left: 20%;
+}
+
+#title {
+    border-bottom: 1px solid gray;
+    position: fixed"
+    
+}
+
+.main {
+    margin: 30px 5% 10px;
+    width: 90%;
+    height: 150px;
+    background-color: #d3d3d3;
+    border-radius: 30px;
+    
 }

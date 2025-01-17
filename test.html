@@ -14,7 +14,10 @@
       aside{width: 15%;height: 70%;float: left; background-color: blue;}
       footer{width: 100%;height: 15%;clear: both;background-color: plum;}
     </style>
-
+		<link rel="stylesheet" href="" type="test/css">
+		<style>
+			@import url(python.css);
+		</style>
     <title>Document</title>
 
   </head>
@@ -223,7 +226,56 @@
       </fieldset>
     </form>
     
+    <hr>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1>CSS 스타일 시트 개요</h1>
+    <p>CSS 적용 타겟 <span>샘플</span>문장입니다 </p>
+		<p>
+			Selector는 CSS 스타일 시트의 이름 규칙, 스타일 시트의 블록은 중괄호로 처리한다.
+			css스타일 프로퍼티와 값을 쌍으로 설정한다. CSS는 200개 정도 프로퍼티(속성)이 있음 계속 추가되는 중
+	
+		</p>
+		<h3>CSS의 주석처리</h3>
+		<p>
+			CSS의 주석은 /*~~~*/ 로 주석 가능
+		</p>
+		<h3>CSS속성은 대소문자를 구분하지 않음</h3>
+		<h3>CSS스타일 시트를 적용하는 방법 3가지</h3>
+		<p>
+			스타일 적용 방법 1 : <mark>head 내</mark>에 style 태그로 구성하는 방법
+		</p>
+		<p>
+			스타일 적용 방법 2 : 태그의 style 속성에 <mark> 직접 적용</mark> 하는 방법 
+		</p>
+		<p>
+			스타일 적용 방법 3 : <mark>외부 스타일 시트</mark>를 import 혹은 link로 불러와서 사용하는 방법
+		</p>
 
+		<p>스타일 태그를 통해 스타일 시트 만들때는 head태그 내에 style 태그를 작성한다</p>
+
+		<p>
+			CSS3스타일 시트만 떼어내어 .css 확장자를 가진 파일을 만들어 스타일 시트를 넣어 저장하고 필요할 때
+			불러와서 사용할 수 있음
+		</p>
+
+		<hr>
+		<h3>link태그를 이용한 외부 스타일 시트 적용</h3>
+		<p>link 의 href 속성에 적용하려는 외부 스타일 시트 파일의 경로, 파일 명을 작성한다</p>
+		
+		<h3>CSS의 규칙</h3>
+		<p>CSS스타일 시트에는 규칙이 있다. </p>
+		<p style="color: green;">
+			1.css스타일은 부모태그로부터 상속된다
+			자신을 둘러싸는 태그를 부모태그 혹은 부모 요소 (element)라고 하는데,
+			부모 태그에 적용된 스타일은 <span style="color: blue;">자식 요소에 상속 적용 됨.</span>
+		</p>
+
+		<h3>스타일 합치기와 오버라이딩</h3>
+		<p>브라우저는 각 태그에 대한 디폴트 스타일을 가지고 있음 따라서 개발자가 따로 지정하는 스타일이
+			없다면 브라우저 기본 디폴트 값을 통한 스타일이 적용 됨. 예) padding, margin 은 0으로 초기화 직접 해줌
+		</p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <hr>
 
 
     <hr>
@@ -413,7 +465,7 @@
 
       #CSS : Cascading style sheet
       HTML 문서 색, 모양, 출력 위치 등 외관 꾸미는 스타일 시트 문법
-
+			
     </pre>
   </body>
 </html>

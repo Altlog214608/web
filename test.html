@@ -7,21 +7,64 @@
     <meta name="description" content = "HTML입문">
     <meta name="keywords" content = "프론트엔드">
     <style>
-      html, body{margin: 0;  padding: 0; height: 100%; background-color: bisque;}
+      html{margin: 0;  padding: 0; height: 100%; background-color: bisque;}
       header{width: 100%;;height: 15%; background-color: yellow;}
       nav{width: 15%;height: 70%;float: left;background-color: red;}
       section{width: 70%;height: 70%;float: left; background-color: green;}
       aside{width: 15%;height: 70%;float: left; background-color: blue;}
       footer{width: 100%;height: 15%;clear: both;background-color: plum;}
+
+			body.main{
+				background-color: skyblue;
+			}
+			#list {
+				background: gold;
+			}
+			div>strong{
+				background: yellowgreen;
+			}
+			div>div>strong{
+				background: rgb(63, 82, 24);
+			}
+			ul strong {
+				color: dodgerblue;
+			}
+			*{
+				font-size: 24px;
+			}
+
+			input[type=text]{
+				color: red;
+			}
+			a:visited{
+				color: green;
+				
+			}
+			li:hover{
+				color: yellow;
+			}
+			li:active{
+				color: red;
+			}
+			li:nth-child(even){
+				color: blue;
+			}
+			li:nth-last-child(1){
+				color: greenyellow;
+			}
+			li::marker{
+				color: greenyellow;
+			}
+			li:default{
+				color: salmon;
+			}
     </style>
 		<link rel="stylesheet" href="" type="test/css">
-		<style>
-			@import url(python.css);
-		</style>
+		
     <title>Document</title>
 
   </head>
-  <body id = "id">
+  <body id ="id" class="main">
 
     <header>header</header>
     <nav>nav</nav>
@@ -274,6 +317,64 @@
 		<p>브라우저는 각 태그에 대한 디폴트 스타일을 가지고 있음 따라서 개발자가 따로 지정하는 스타일이
 			없다면 브라우저 기본 디폴트 값을 통한 스타일이 적용 됨. 예) padding, margin 은 0으로 초기화 직접 해줌
 		</p>
+
+		<p>특정 태그에는 4가지 종류의 스타일 시트가 적용될 수 있음</p>
+		<p>1.브라우저 디폴트 2. 외부CSS파일 시트 3.내부 스타일 시트 4.인라인 스타일 시트</p>
+		<p>스타일 합치기란 4가지 스타일 시트가 태그에 동시 적용될 때 스타일이 합쳐져 적용됨을 의미</p>
+		<p>스타일 오버라이딩이란 덮어쓰기의 의미로 4가지 루트 중 같은 속성(예를들어 폰트크기) 가 
+			여러번 적용되면 우선순위가 높은 스타일시트로 덮어씌워 짐
+		</p>
+		<p>우선순위 1번부터 4번으로 갈수록 높아짐</p>
+
+		<hr>
+
+		<h3>셀렉터란</h3>
+		<p>html 태그 모양을 꾸밀 스타일 시트를 선택하는 기능</p>
+		<p>h3{~~~~~} 형태에서는 셀렉터 이름이 h3인 것</p>
+		<p>셀렉터에는 여러 유형이 있다. h3 처럼 태그 이름이 셀렉터가 되기도 하고, id 속성이나 클래스 속성의 값을
+			셀렉터로 사용하기도 함. 또 여러 셀렉터를 조합하여 사용할 수 있음
+		</p>
+		<div>
+			<div>셀렉터 <strong>설명</strong></div>
+			<ul id="list">
+				<li>ID셀렉터</li>
+				<li>class 명</li>
+				<li> <strong>스뜨롱롱</strong> 조합셀렉터</li>
+			</ul>
+			<div>
+				12345
+			</div>
+		</div>
+
+		<a href="https://www.daum.net" target="_blank" >다음 링크</a>
+		<hr>
+
+		<h3>셀렉터 조합</h3>
+		<p>자식 셀렉터: 자식 셀렉터는 부모 자식 관계인 두 셀렉터를 > 기호로 조합 한 형태</p>
+		<p>자손 셀렉터: 자손 관계인 2개 이상의 태그를 나열한 형태</p>
+		<p>전체 셀렉터: * 전체 선택자는 브라우저 기본 값 덮어씌울 때 많이 사용</p>
+		<p>속성 셀렉터: HTML 태그의 특정 속성 attribute 에 대해 일치하는 태그에만 스타일 적용되도록 선택하는 셀렉터</p>
+		<p>가상 셀렉터: 특정 상황일 때를 선택하게 하는 셀렉터</p>
+
+		<ul>
+			<li>hover 마우스 올라갈 때</li>
+			<li>active 마우스로 누르고 있는 상황</li>
+			<li>focus 폼 요소가 키보드나 마우스로 클릭해 포커스 활성화 된 상태</li>
+			<li>link 방문하지 않은 링크 상태</li>
+			<li>visited 방문한 링크 상태</li>
+			<li>first-letter 첫 글자</li>
+			<li>first-line 첫 라인</li>
+			<li>nth-child(1) 첫번째 자식 셀렉타</li>
+			<li>nth-child(even) 짝수 번째 모든 자식들 셀렉터터</li>
+		</ul>
+
+		<h3>색상과 텍스트를 꾸미는 CSS속성</h3>
+		<p>CSS에서 색상을 표현하는 체계는 RGA, RGBA, HSL 등</p>
+		<p>주로 RGB체계를 사용한다</p>
+		
+
+		<hr>
+
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <hr>
 

@@ -15,6 +15,7 @@ header {
     height: 15%;
     word-break: break-all;
     background-color: bisque;
+    text-align: center;
 }
 .main {
     margin: 0px 5%;
@@ -61,26 +62,24 @@ section {
     height: 10%;
     background-color: rgb(255, 255, 255);
 }
-.main_container{
+
+/* .main_container{
     margin-left: 5%;
     width: 90%;
     height: 100%;
     background-color: rgb(255, 255, 255);
-}
+} */
 
 .container {
-    min-width: 760px;
     width: 100%;
-    display: grid;
     background-color: #ffffff;
-    gap: 10px;
-    margin-bottom: 30px;
-    grid-template-columns: repeat(4,1fr);
 }
 
 .item {
     width: 250px;
     height: 100%;
+    float: left;
+    margin-right: 10px;
 }
 .con_top {
     width: 100%;

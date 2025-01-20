@@ -7,7 +7,7 @@
     <meta name="description" content = "HTML입문">
     <meta name="keywords" content = "프론트엔드">
     <style>
-      html{margin: 0;  padding: 0; height: 100%; background-color: bisque;}
+      html, body{margin: 0;  padding: 0; height: 100%; background-color: bisque;}
       header{width: 100%;;height: 15%; background-color: yellow;}
       nav{width: 15%;height: 70%;float: left;background-color: red;}
       section{width: 70%;height: 70%;float: left; background-color: green;}
@@ -84,13 +84,24 @@
 			#inside2 {
 				border: 1px solid rgb(30, 128, 95);
 			}
+
+      div.bbb {
+        width: 150px;
+        height: 50px;
+        margin: 40px;
+        border: 1px solid black;
+        border-width: 30px;
+        padding: 20px;
+        background-color: rebeccapurple;
+      }
+
     </style>
 		<link rel="stylesheet" href="" type="test/css">
 		
     <title>Document</title>
 
   </head>
-  <body id ="id" class="main">
+  <body id ="id" class="main" >
 
     <header>header</header>
     <nav>nav</nav>
@@ -422,9 +433,84 @@
 		<p>text-indent의 값 : 길이값 or 퍼센트 단위</p>
 		<p>text-align: left or right or center</p>
 		<p>text-decoration: none or underline or overline or line-through</p>
+    <br>
+    <hr>
+    <h3>CSS의 단위</h3>
+    <p>CSS 스타일 시트에서 단위를 작성하는 (크기, 두께, 높이 등) 단위에는 px, %, em 등 여러 방법 있음</p>
+    <p style="font-size: 2em;">em:배수 브라우저가 폰트 사이즈 16px => 1em 폰트 사이즈의 1배</p>
+    <p style="font-size: 2rem;">rem:배수 브라우저가 폰트 사이즈 16px => 1em 폰트 사이즈의 1배</p>
+    <p>rem과 em의 차이 :rem과 em 은 모두 상대적 크기 단위, 요소의 크기를 부모 요소의 크기에 비례하여 조정한다. 
+      rem은 루트(html)의 폰트 크기를 기준으로 한다.
+      em은 부모 요소의 폰트 크기를 기준으로 한다.
+      루트요소(html)의 폰트 크기가 16px(기본값)일 때 1rem은 16px만큼을 의미하고 em은 부모로부터 상속받은 폰트 크기에 따라 배율이 설정 되는 것
+    </p>
 
+    <p>px:픽셀 수</p>
+    
+    <p>cm:센티미터</p>
+    <p>mm:밀리미터</p>
+    <p>in:인치</p>
+    <p>pt:포인터 1pt = 1/72in</p>
+
+
+    <p>deg:각도 => 변환효과 등에서 쓰임</p>
+
+    <h3>개발자 도구에서 확인되는 BOX 모델</h3>
+    <p>HTML 태그는 박스 모델로 표현되고 4개의 영역으로 나뉜다</p>
+    <p>컨텐츠 영역: HTML 태그 내부 텍스트나 이미지 등 본문 컨텐츠</p>
+    <p>패딩 영역: 컨텐츠를 둘러싸고 있는 내부의 여백</p>
+    <p>보더 영역: 테두리 영역으로 패딩 외부의 외곽선</p>
+    <p>마진 영역: 박스의 맨 바깥 영역으로 인접 요소와의 거리</p>
 
     <hr>
+
+    <div class="bbb">
+      divdivdiv
+    </div>
+
+    <p>컨텐츠 크기: width, height</p>
+    <p>패딩 크기: padding (top,left,bottom,right)</p>
+    <p>테두리 크기 : border-top-width(4방향)</p>
+    <p>여백 크기: margin-top(4방향)</p>
+    <p>단축프로퍼티(4방향 공통 지정): padding, margin, border-width </p>
+    <p>스타일관련: border-style</p>
+    <p>색상관련 : border-color</p>
+    <p>테두리 단축프로퍼티 : border</p>
+    <marquee behavior="scroll" direction="up">
+      <p style="color: red;">빨</p>
+      <p style="color: orange;">주</p>
+      <p style="color: yellow;">노</p>
+      <p style="color: green;">초</p>
+      <p style="color: blue;">파</p>
+      <p style="color: navy;">남</p>
+      <p style="color: purple;">보</p>
+    </marquee>
+    
+    <h3>박스의 색</h3>
+    <p>패딩의 색은 따로 없으며 태그의 배경색이 패딩에 칠해진다. 패딩은 컨텐츠의 확장</p>
+    <p>여백은 투명하게 처리되어 부모태그의 배경색이 비춰 보인다</p>
+    <p>테두리 색은 개발자들이 임의로 설정하여 줄 수 있음. border-color</p>
+    
+    <div style="background-color: red; height: 200px;">
+      <p style="background-color: yellow; border: 10px solid green; margin-top: 20px; border-radius: 1px 20px 40px 30px;">박스모델</p>
+    </div>
+
+    <h3>테두리 관련 속성</h3>
+    <p>border-radius : 테두리의 모서리 기울기</p>
+
+    <h3>배경 관련 속성</h3>
+    <p>배경 색상 : background-color 값:컬러코디/rgb/16진수컬러</p>
+    <p>배경 이미지 : background-image 값:url이미지주소</p>
+    <p>배경 이미지 위치 : background-position 값:left top이 디폴트이고 left center/ left bottom / right center / right bottom /
+      center top / center center 등 지정 가능
+    </p>
+    <p>배경 이미지 크기 : background-size 값: 100px 100px 가로 세로</p>
+    <p>배경 이미지 반복성 설정 : background-repeat 값: repeat - y/ repeat-x/ no-repeat/ repeat(디폴트값)
+    </p>
+
+    <p>background 단축 프로퍼티의 값 : red url(이미지주소) center center 100px 100px repeat-x</p>
+
+    <div style="background-color: gray; background-size: 100px 100px; background-image: url(src/rabbit.jpg); background-repeat: repeat-x; background-position: center center; height: 1000px;">배경 이미지 속성 관련 박스</div>
 
     <pre>
       <br>

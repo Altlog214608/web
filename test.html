@@ -159,6 +159,10 @@
         left: 300px;
       }
 
+      #zboxcont{position: absolute;}
+      #z1{z-index: 3; left: 10px; top: 20px; background-color: red; position: absolute;}
+      #z2{z-index: -3; left: 40px; top: 30px; background-color: gold; position: absolute;} 
+
     </style>
 		<link rel="stylesheet" href="" type="test/css">
 		
@@ -676,7 +680,13 @@
       </div>  
     </a>
     
-
+    <h3>z-index</h3>
+    <p>z-index는 HTML 요소들의 z축 stacking 쌓기 설정 방법으로 값이 클수록 위에 쌓인다.</p>
+    
+    <div id="zboxcont">
+      <div id="z1">1번</div>
+      <div id="z2">2번</div>
+    </div>
 
     <pre>
       <br>

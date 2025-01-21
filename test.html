@@ -100,6 +100,52 @@
         width: 50px;
         height: 100px;
       }
+
+      .test {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border: 1px solid lightcoral;
+        text-align: center;
+        color: white;
+        background-color: rgb(117, 79, 79);
+      }
+
+      #down:hover {
+        position: relative;
+        left: 20px;
+        top: 20px;
+        background: green;
+      }
+      #up:hover {
+        position: relative;
+        right: 20px;
+        bottom: 20px;
+        background: green;
+      }
+
+      #a:hover{
+        position: relative;
+        left: 30px;
+        right: 100px;
+        height: 100px;
+        width: 200px;
+      }
+
+      #c:hover{
+        position: relative;
+        visibility: hidden;
+      }
+
+      #d:hover{
+        position: relative;
+        transform: translate(30px);
+      }
+
+      #e:hover {
+        position: relative;
+      }
+      
     </style>
 		<link rel="stylesheet" href="" type="test/css">
 		
@@ -579,7 +625,19 @@
     <h3>nomarl flow</h3>
     <p>기본 HTML 선언 순서 구조 대로 출력되는 형태를 노멀 플로우라고 함</p>
     <p>position 속성을 사용하면 normal flow를 무시하고 원하는 위치에 박스를 배치할 수 있음</p>
-    <p>position 속성의 값 : static / relatice / absolute/ fixed</p>
+    <p>position 속성의 값 : static(기본값:normal flow)/ relative / absolute/ fixed</p>
+    <p>static 정적배치상태에서는 left/top/right/bottom 등 값을 설정할 수 없음 </p>
+    <p>relative 상대배치 : static 기본 배치에서 left/top/bottom/right 프로퍼티 값을 준만큼 상대적으로 이동한 위치베 배치하는 방법</p>
+
+
+    <div class="test" id="a">A</div>
+    <div class="test" id="down">B</div>
+    <div class="test" id="c">C</div>
+    <div class="test" id="d">D</div>
+    <div class="test" id="e">E</div>
+    <div class="test" id="up">F</div>
+    <div class="test">G</div>
+
 
     <pre>
       <br>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/card.css">
+</head>
+<body>
+  <header></header>
+  <div id="container">
+    <div class="card" id="card1">
+      <p id="card_info">이상해꽃</p>
+    </div>
+    <div class="card" id="card2">
+      <p id="card_info">리자몽</p>
+    </div>
+    <div class="card" id="card3">
+      <p id="card_info">뮤</p>
+    </div>
+    <div class="card" id="card4">
+      <p id="card_info">피카츄</p>
+    </div>
+    <div class="card" id="card5">
+      <p id="card_info">뮤츠</p>
+    </div>
+  </div>
+  <footer></footer>
+</body>
+</html>
+
+<!--
+뒷면만 보이는 카드 5장 z index 겹치게 표현, 각 카드에 마우스 올렸을 때, 카드 아래쪽에 그림자 효과를 준다.
+마우스 올리면 카드의 뒷면이 아니라 앞면이 나타나고 5장 카드의 앞면 내용은 다 다르다.
+사용자가 선택한(hover) 카드에 해당하는 내용이 카드 그룹 container 아래 내용을 출력한다.
+주제 자유
+카드 설명
+
+1. 뒷면만 보이는 카드 5장 zindex 겹치게 표현한다.
+2. 각 카드에 마우스 올렸을 때, 카드 아래쪽에 그림자 효과를 준다.
+3. 5장 카드의 앞면 내용은 다 다르다.
+4. 사용자가 마우스 올린 카드는 앞면 이미지로 변경되고, 해당 카드는 다른 카드들보다 5px 위로 올라간다.
+5. fixed를 이용해 뷰포트 우하단에 박스를 하나 만들고 해당 박스에 링크가 포함되어 있다. 링크를 누르면 페이지가 현재 탭에서 새로 고침 된다. 그 링크를 누르면 페이지가 새로고침 된다. 
+6. 사용자가 선택(hover)한 카드에 해당하는 내용은 카드 그룹 container에서 아래로 100px 떨어진 p 태그에 내용을 출력한다
+#p가 5개 있고 1번카드를 hover 하면 1번째 p가 visibilty:visible 
+#p는 1개카드에 대한 컨테이너의 자식으로 만든다.
+-->

@@ -7,6 +7,7 @@ header {
     width: 100%;
     height: 15%;
     background-color: #f6f5ef;
+    position: fixed;
 }
 
 #htop {
@@ -113,6 +114,7 @@ nav ul li:hover div{
     text-align: left;
     vertical-align: top;
 }
+
 .box .title:nth-child(1) {
     margin-left: 200px;
 }

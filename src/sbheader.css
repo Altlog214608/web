@@ -4,7 +4,8 @@
     height: 100%;
 }
 header {
-    width: 100%;
+    margin-left: 10%;
+    width: 80%;
     height: 15%;
     background-color: #f6f5ef;
     position: fixed;
@@ -38,10 +39,6 @@ header {
     z-index: 6;
 }
 
-#button:hover {
-    
-}
-
 #img {
     background: url(https://image.istarbucks.co.kr/common/img/common/icon_magnifier_black.png);
     background: no-repeat;
@@ -51,7 +48,7 @@ header {
 #htop ul li a{
     color: gray;
     text-decoration: none;
-    vertical-align: bottom;
+    /* vertical-align: bottom; */
     padding: 0px 20px;
     border-right: 1px solid rgb(219, 218, 218);
 }
@@ -74,7 +71,6 @@ nav {
     position: absolute;
     left: 100px;
     bottom: 20px;
-    background-image: url(https://i.namu.wiki/i/9p8OVxJTce_f2HnuZF1QOU6qMSHqXBHdkcx3q_hlGxvhcyaOXKxBVyoDkeg-Cb4Nx2p60W0AUh6RzjAH59vHwQ.svg);
 }
 
 nav ul {
@@ -124,7 +120,7 @@ nav ul li:hover div{
 
 .box .title li {
     color: #999;
-    height: 1em;
+    height: 1rem;
     display: block;
     padding: 5px 0px;
     font-size: 12px;

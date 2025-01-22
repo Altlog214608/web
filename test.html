@@ -170,6 +170,31 @@
       .visible {width: 10em; height: 2em; overflow: visible; margin-top: 50px; border: 1px solid black;}
       .hidden {width: 10em; height: 2em; overflow: hidden; margin-top: 50px; border: 1px solid black;}
       .scroll {width: 10em; height: 2em; overflow: scroll; margin-top: 50px; border: 1px solid black;}
+
+      #menubar {
+        background-color: olive;
+      }
+      #menubar ul{
+        margin: 100px;
+        padding: 0;
+        width: 500px;
+      }
+
+      #menubar ul li {
+        display: inline-block;
+        list-style-type: none;
+        padding: 15px;
+      }
+      #menubar ul li a{
+        text-decoration: none;
+      }
+      #menubar ul li a:hover{
+        color: red;
+      }
+      a:visited{
+        color: white;
+      }
+
     </style>
 		<link rel="stylesheet" href="" type="test/css">
 		
@@ -715,8 +740,30 @@
     <p class="hidden">hidden : 컨텐츠가 박스 크기 넘어가는 것은 보이지 않게</p>
     <p class="scroll">scroll: 컨텐츠가 박스 크기 넘어가면 스크롤 생성</p>
 
-    
+    <h3>리스트 관련 css속성</h3>
+    <ul>
+      <li>1항목</li>
+      <li>2항목</li>
+      <li>3항목</li>
+    </ul>
 
+    <p>list-style-type: 아이템 마커 타입 지정</p>
+    <p>list-style-image: 아이템 마커 이미지 지정</p>
+    <p>list-style-position: 아이템 마커 출력 위치 지정</p>
+    <p>list-style: 아이템 마커 단축 프로퍼티</p>
+
+    <p>list-style-type의 속성 값은 이미지 마커를 만들 수 있다. background-image 처럼 url로 이미지 지정</p>
+    <p>list-style-position의 값은 inside/outside 로 마커가 컨텐츠 영역 안/밖 에 오도록 설정</p>
+    <p>list-style 단축 프로퍼티는 위 속성들을 한번에 설정한다. 값에는 1.list-style-type 2. list-style-position 3.list-style-image 순으로 한번에 작성하여 값 할당</p>
+
+    <nav id="menubar">
+      <ul>
+        <li><a href="https://www.adidas.co.kr/women">여성용</a></li>
+        <li><a href="https://www.adidas.co.kr/men">남성용</a></li>
+        <li><a href="https://www.adidas.co.kr/kids">아동용</a></li>
+        <li><a href="https://www.adidas.co.kr/women">아울렛</a></li>
+      </ul>
+    </nav>
 
 
     <pre>

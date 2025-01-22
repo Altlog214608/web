@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+header {
+    width: 100%;
+    height: 15%;
+    background-color: #f6f5ef;
+}
+
+#htop {
+    width: 100%;
+    height: 30%;
+    background-color: #f6f5ef;
+}
+
+#htop ul {
+    text-align: center;
+    padding-left: 15%;
+    padding-bottom: 30px;
+    padding-top:10px;
+}
+
+#htop ul li{
+    display: inline-block;   
+}
+
+#button {
+    width: 30px;
+    height: 30px;
+    padding-bottom: 0px;
+    border: 0.5px solid rgb(196, 193, 193);
+    border-radius: 5px;
+    background-image: url(https://image.istarbucks.co.kr/common/img/common/icon_magnifier_black.png);
+    background-size: cover;
+    z-index: 6;
+}
+
+
+#img {
+    background: url(https://image.istarbucks.co.kr/common/img/common/icon_magnifier_black.png);
+    background: no-repeat;
+    z-index: 5;
+}
+
+#htop ul li a{
+    color: gray;
+    text-decoration: none;
+    vertical-align: bottom;
+    padding: 0px 20px;
+    border-right: 1px solid rgb(219, 218, 218);
+}
+
+#htop ul li:nth-child(4) a{
+    border-right: 0px solid rgb(219, 218, 218);
+}
+
+nav {
+    position: relative;
+    /* margin-left: 15%; */
+    width: 100%;
+    height: 70%;
+    background: #f6f5ef;
+    text-align: center;
+}
+
+#logo {
+    display: block;
+    position: absolute;
+    left: 100px;
+    bottom: 20px;
+    background-image: url(https://i.namu.wiki/i/9p8OVxJTce_f2HnuZF1QOU6qMSHqXBHdkcx3q_hlGxvhcyaOXKxBVyoDkeg-Cb4Nx2p60W0AUh6RzjAH59vHwQ.svg);
+}
+
+nav ul {
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 30px;
+}
+
+nav ul li:hover {
+    background-color: rgb(49, 49, 49);
+    color: olivedrab;
+    text-decoration: underline;
+}
+
+nav ul li:hover div{
+    visibility: visible;
+}
+
+.box {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-color: rgb(49, 49, 49);
+    left: 0px;
+    top: 100px;
+    text-align: left;
+    visibility: hidden;
+    color: white;
+}
+
+.box .title {
+    margin-top: 30px;
+    margin-right: 50px;
+    width: 200px;
+    height: 100%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+.box .title:nth-child(1) {
+    margin-left: 200px;
+}
+
+.box .title li {
+    color: #999;
+    height: 1em;
+    display: block;
+    padding: 5px 0px;
+    font-size: 12px;
+}
+
+.box .title li:nth-child(1) {
+    margin-top: 30px;
+}

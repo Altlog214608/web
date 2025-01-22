@@ -4,6 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        header {
+            width: 100%;
+            height: 15%;
+            background-color: #f6f5ef;
+            position: fixed;
+        }
+
+        #htop {
+            width: 100%;
+            height: 30%;
+            background-color: #f6f5ef;
+        }
+
+        #htop ul {
+            text-align: center;
+            padding-left: 15%;
+            padding-bottom: 30px;
+            padding-top:10px;
+        }
+
+        #htop ul li{
+            display: inline-block;   
+        }
+
+        #button {
+            width: 30px;
+            height: 30px;
+            padding-bottom: 0px;
+            border: 0.5px solid rgb(196, 193, 193);
+            border-radius: 5px;
+            background-image: url(https://image.istarbucks.co.kr/common/img/common/icon_magnifier_black.png);
+            background-size: cover;
+            z-index: 6;
+        }
+
+        #img {
+            background: url(https://image.istarbucks.co.kr/common/img/common/icon_magnifier_black.png);
+            background: no-repeat;
+            z-index: 5;
+        }
+
+        #htop ul li a{
+            color: gray;
+            text-decoration: none;
+            vertical-align: bottom;
+            padding: 0px 20px;
+            border-right: 1px solid rgb(219, 218, 218);
+        }
+
+        #htop ul li:nth-child(4) a{
+            border-right: 0px solid rgb(219, 218, 218);
+        }
+
+        nav {
+            position: relative;
+            /* margin-left: 15%; */
+            width: 100%;
+            height: 70%;
+            background: #f6f5ef;
+            text-align: center;
+        }
+
+        #logo {
+            display: block;
+            position: absolute;
+            left: 100px;
+            bottom: 20px;
+            background-image: url(https://i.namu.wiki/i/9p8OVxJTce_f2HnuZF1QOU6qMSHqXBHdkcx3q_hlGxvhcyaOXKxBVyoDkeg-Cb4Nx2p60W0AUh6RzjAH59vHwQ.svg);
+        }
+
+        nav ul {
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            padding: 30px;
+        }
+
+        nav ul li:hover {
+            background-color: rgb(49, 49, 49);
+            color: olivedrab;
+            text-decoration: underline;
+        }
+
+        nav ul li:hover div{
+            visibility: visible;
+        }
+
+        .box {
+            position: absolute;
+            width: 100%;
+            height: 350px;
+            background-color: rgb(49, 49, 49);
+            left: 0px;
+            top: 100px;
+            text-align: left;
+            visibility: hidden;
+            color: white;
+        }
+
+        .box .title {
+            margin-top: 30px;
+            margin-right: 50px;
+            width: 200px;
+            height: 100%;
+            display: inline-block;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .box .title:nth-child(1) {
+            margin-left: 200px;
+        }
+
+        .box .title li {
+            color: #999;
+            height: 1em;
+            display: block;
+            padding: 5px 0px;
+            font-size: 12px;
+        }
+
+        .box .title li:nth-child(1) {
+            margin-top: 30px;
+        }
+    </style>
     <link rel="stylesheet" href="src/sbheader.css">
 </head>
 <body>
@@ -61,43 +194,66 @@
                     <div class="box" id="menu">
                         <ul class="title">
                             음료
-                            <li>스타벅스 원두</li>
-                            <li>스타벅스 비아</li>
-                            <li>스타벅스 오리가미</li>
-                            <li>스타벅스 엣홈</li>
-                            <li>나와 어울리는 커피</li>
+                            <li>콜드 브루</li>
+                            <li>브루드 커피</li>
+                            <li>에스프레소</li>
+                            <li>프라푸치노</li>
+                            <li>블렌디드</li>
+                            <li>스타벅스 리프레셔</li>
+                            <li>스타벅스 피지오</li>
+                            <li>티(티바나)</li>
+                            <li>기타 제조 음료</li>
+                            <li>스타벅스 주스(병음료)</li>
                         </ul>
-                        <ul class="title">커피 이야기
-                            <li>농장에서 우리의 손으로</li>
-                            <li>최상의 아라비카 원두</li>
-                            <li>스타벅스 로스트 스펙트럼</li>
-                            <li>스타벅스 디카페인</li>
+                        <ul class="title">푸드
+                            <li>브레드</li>
+                            <li>케이크</li>
+                            <li>샌드위치 & 샐러드</li>
+                            <li>따뜻한 푸드</li>
+                            <li>과일 & 요거트</li>
+                            <li>스낵 & 미니 디저트</li>
+                            <li>아이스크림</li>
                         </ul>
-                        <ul class="title">스타벅스 리저브
-                            <li>RESERVE MAGAZINE</li>
+                        <ul class="title">상품
+                            <li>머그</li>
+                            <li>글라스</li>
+                            <li>플라스틱 텀블러</li>
+                            <li>스테인리스 텀블러</li>
+                            <li>보온병</li>
+                            <li>액세서리</li>
+                            <li>선물세트</li>
+                            <li>커피 용품</li>
+                            <li>패키지 티(티바나)</li>
+                            <li>시럽</li>
                         </ul>
-                        <ul class="title">에스프레소 음료
-                            <li>도피오</li>
-                            <li>에스프레소 마키아또</li>
-                            <li>아메리카노</li>
-                            <li>마키아또</li>
-                            <li>카푸치노</li>
-                            <li>라떼</li>
-                            <li>모카</li>
+                        <ul class="title">카드
+                            <li>실물카드</li>
+                            <li>스타벅스 모바일 카드</li>
                         </ul>
-                        <ul class="title">최상의 커피를 즐기는 법
-                            <li>커피 프레스</li>
-                            <li>푸어 오버</li>
-                            <li>아이스 푸어 오버</li>
-                            <li>커피 메이커</li>
+                        <ul class="title">메뉴 이야기
+                            <li>스타벅스 티바나</li>
+                            <li>스타벅스 콜드 브루</li>
                         </ul>
                     </div>
                 </li>
                 <li>STORE
-                    <div class="box" id="store"></div>
+                    <div class="box" id="store">
+                        <ul class="title">매장 찾기
+                            <li>퀵 검색</li>
+                            <li>지역 검색</li>
+                        </ul>
+                        <ul class="title">드라이브 스루 매장
+                        </ul>
+                        <ul class="title">스타벅스 리저브 매장
+                        </ul>
+                        <ul class="title">커뮤니티 스토어 매장
+                        </ul>
+                    </div>
                 </li>
                 <li>RESPONSIBILITY
-                    <div class="box" id="respon"></div>
+                    <div class="box" id="respon">
+                        
+                    </div>
                 </li>
                 <li>STARBUCKS REWARDS
                     <div class="box" id="rewards"></div>

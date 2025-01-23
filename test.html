@@ -219,7 +219,8 @@
 		
     <title>Document</title>
 
-    <script>
+  
+    <script type="text/JavaScript" src="test.js">
 
     </script>
   </head>
@@ -852,13 +853,23 @@
 
     <p>onmouseover(마우스 영역에 올라갔을 때) onmouseout(마우스가 영역에서 나왔을 때)</p>
 
+    <div style="width: 500px; height: 500px;">
+      <img src="src/test.jpg" alt="" width="100%" height="100%" onmouseover="this.src='src/test2.jpg'" onmouseout="this.src='src/test.jpg'" onclick="this.src='src/test3.jpg'">
+    </div>
 
+    <div style="width: 500px; height: 500px;">
+      <img src="src/test.jpg" alt="" width="100%" height="100%" onmouseover="over(this)" onmouseout="out(this)">
+    </div>
 
+    <p>script 태그는 head 안에 넣어도 되고, body 안에 넣어도 되고, 여러개 만들어도 됨. body에 가장 아래쪽에 만드는게 권장장</p>
 
+    <a href="javaScript:alert('123')">링크클릭</a>
 
+    <p>JS에서 사용자 입력은 prompt함수를 사용한다. promt함수의 매개변수는 1. 매세지, 2.디폴트입력값값</p>
 
+    <p>alert함수는 경고창 출력</p>
 
-
+    <p>confirm 함수는 사용자의 확인 or 취소 리턴받음</p>
 
 
 
@@ -1053,6 +1064,7 @@
       HTML 문서 색, 모양, 출력 위치 등 외관 꾸미는 스타일 시트 문법
 			
     </pre>
+    <script type="text/javaScript" src="test.js"></script>
   </body>
 </html>
 

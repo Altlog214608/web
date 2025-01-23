@@ -118,11 +118,50 @@ let a = new Array("1","2","3");
 let b = new Array(7); 
 b[0] = "apple";
 let c = new Array(); //빈 배열 생성성
+//배열의 length프로퍼티 : 배열 요소 수 리턴
+//배열에는 여러 타입 데이터가 섞여 저장될 수 있음
+
+//Array 객체의 주요 메서드
+//concat() : 배열을 이어붙이기
+//join([separator]) : 배열 요소를 separator로 구분하여 문자열로 반환. 배열의 모든 원소를 연결하여 하나의 문자열로 리턴
+//reverse() : 배열의 요소를 뒤집는다
+//slice([start[, end]]) : start index(포함)에서 end index(미포함)까지의 요소를 subarray로 리턴
+//sort([compareFunction]) : 배열의 요소를 sort()
+//splice([start, deleteCount[, item1[,...]]]) : start index(포함)에서 deleteCount 개의 요소를 제거하고 item1, item2,...를 추가
+//toString() : 배열을 toString() 문자열로 만들어 리턴
+//pop() : 배열의 마지막 요소를 제거하고 제거한 요소를 리턴
+
+//Date 객체
+//Date객체는 시간정보를 담는 객체
+//new 키워드로 생성
+//실제 Date객체 생성된 시간정보(코드가 실행된 시점)
+let d = new Date(2024,11,1);//24년도 12월 1일
+let now = new Date(); //현재시간 객체 생성
+let date = now.getDate(); //날짜(1~31)
+let month = now.getMonth() + 1; //달(1~12)
+let year = now.getFullYear(); //년
+let hour = now.getHours(); //시간(0~23)
+//getFullYear() : 4자리 년도
+//getMonth() : 0~11
+//getDate() : 1~31
+//getHours() : 0~23
+//getMinutes() : 0~59
+//getSeconds() : 0~59
+//getMilliseconds() : 0~999
+//getUTCFullYear() : 4자리 UTC 년도
+//getDay() : 0(일요일)~6(토요일)
 
 
-//2.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean
-//3.BOM : Window, Document, Location, History
-//4.window 객체 : window.open(), window.close(), window.alert(), window.confirm(), window.prompt(), window.location, window.history, window.navigator, window.screen, window.innerWidth
+//2.DOM객체
+document.getElementById(); 
+document.body.style.backgroundColor = "red"; 
+
+
+
+
+//3.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean
+//4.BOM : Window, Document, Location, History
+//5.window 객체 : window.open(), window.close(), window.alert(), window.confirm(), window.prompt(), window.location, window.history, window.navigator, window.screen, window.innerWidth
 
 
 

@@ -114,6 +114,10 @@ let arr = [1, 2, 3, 4, 5];
 let n = ['apple', 'banana', 'cherry'];
 //인덱스로 접근 가능
 arr[0]="apple"; //인덱스를 통한 접근 후 값 변경
+let a = new Array("1","2","3");
+let b = new Array(7); 
+b[0] = "apple";
+let c = new Array(); //빈 배열 생성성
 
 
 //2.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean

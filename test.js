@@ -95,3 +95,37 @@ if(true){
 
 //비교 연산자 : ==, ===, !=, !==, <, >, <=, >=
 //논리 연산자 : &&, ||, !
+//조건 연산자 : ? :
+//비트wise 연산자 : &, |, ^, ~, <<, >>
+
+//기본 문법은 for if while dowhile function switch 등 기본 문법은 자바와 동일하다
+
+//자바스크립트의 객체
+//1.코어객체 : Array, Date, Math, RegExp, String, Number, Boolean, Function, Error, Symbol
+let today = new Date();
+let msg = new String('Hello, Node.js!');
+//객체에 대한 접근 : .을 찍어서 접근
+//객체 프로퍼티와 메서드가 있음
+//자바스크립트에서는 객체의 소멸 방법 없음
+//가비지컬렉터에 의해 자동 소멸, 자동 관리 됨
+
+//Array 객체
+let arr = [1, 2, 3, 4, 5];
+let n = ['apple', 'banana', 'cherry'];
+//인덱스로 접근 가능
+arr[0]="apple"; //인덱스를 통한 접근 후 값 변경
+
+
+//2.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean
+//3.BOM : Window, Document, Location, History
+//4.window 객체 : window.open(), window.close(), window.alert(), window.confirm(), window.prompt(), window.location, window.history, window.navigator, window.screen, window.innerWidth
+
+
+
+let obj = {
+    name: 'John',
+    age: 30,
+    sayHello: function(){
+        console.log(`Hello, my name is ${this.name}`);
+    }
+};

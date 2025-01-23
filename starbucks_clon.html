@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>스타벅스 클론코딩</title>
+  <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+    #header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #f6f5ef;
+        z-index: 1000;
+        font-size: 100px;
+    }
+    #header .header_wrap {
+        width: 1100px;
+        margin: 0 auto;
+    }
+    #header .logo {
+        float: left;
+        margin-top: 12px;
+    }
+    #header .nav_wrap {
+        text-align: right;
+        margin: 10px 50px 10px 0;
+    }
+    #header .nav_wrap li {
+        display: inline;
+        margin: 0;
+    }
+    #header .nav_wrap a {
+        padding: 0 15px;
+        border-right: 1px solid #e1e1e1;
+        font-size: 10px;
+        font-weight: 300;
+        color: #555;
+        text-decoration: none;
+    }
+    #header .nav_wrap a:hover {
+        text-decoration: underline;
+    }
+    #header .nav_wrap .search {
+        display: inline-block;
+        border: 1px solid #999;
+        border-radius: 5px;
+        background-color: #fff;
+        padding: 5px 0;
+        vertical-align: middle;
+    }
+    
+    #header .nav_wrap .search button {
+        background-color: #fff;
+        border: none;
+        padding: 0 5px;
+        cursor: pointer;
+    }
+    #header .category_wrap {
+        text-align: right;
+        margin-top: 10px;
+    }
+    #header .category_wrap > li {
+        display: inline-block;
+        font-size: 50px;
+        font-weight: 300;
+        padding: 10px 30px 28px;
+        cursor: pointer;
+        color: #000;
+        text-decoration: none;
+        /* position: relative; */
+    }
+    #header .category_wrap > li:hover {
+        background-color: #2c2a29;
+        color: #00754a;
+        text-decoration: underline;
+    }
+
+    .menu-group > li:hover{
+        text-decoration: underline;
+    }
+
+    .dropdown {
+        display: none;
+        position: absolute;
+        margin: 0px;
+        padding: 0px;
+        top: 110px;
+        width: 100%;
+        left: 0px;
+        background-color: #2c2a29;
+        padding: 10px;
+        text-align: center;
+    }
+    .dropdown .menu-group{
+        margin: 50px;
+        vertical-align: top;
+        display: inline-block;
+        text-align: left;
+        list-style: none;
+        padding: 0;
+        /* margin: 0; */
+    }
+    /* .dropdown ul {
+
+    } */
+    .dropdown ul li {
+        padding: 5px 10px;
+        font-size: 40px;
+        color: #999;
+    }
+
+    .dropdown ul li strong {
+        font-size: 14px;
+        color: #fff;
+    }
+    #header .category_wrap li:hover .dropdown {
+        display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div class="header_wrap">
+      <div class="logo">
+        <a href="#">
+          <img src="https://www.starbucks.co.kr/common/img/common/logo.png" alt="스타벅스 로고" />
+        </a>
+      </div>
+      <nav>
+        <ul class="nav_wrap">
+          <li><a href="#">Sign In</a></li>
+          <li><a href="#">My Starbucks</a></li>
+          <li><a href="#">Customer Service & Ideas</a></li>
+          <li><a href="#">Find a Store</a></li>
+          <li class="search">
+            <button id="search_icon">
+              <img src="https://image.istarbucks.co.kr/common/img/common/icon_magnifier_black.png" alt="Search" />
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <nav>
+        <ul class="category_wrap">
+          <li id="coffee">
+            COFFEE
+            <div class="dropdown">
+                <ul class="menu-group">
+                    <li><strong>커피</strong></li>
+                    <li>스타벅스 원두</li>
+                    <li>스타벅스 비아</li>
+                    <li>스타벅스 오리가미</li>
+                    <li>스타벅스앳홈 by 캡슐</li>
+                    <li>나와 어울리는 커피</li>
+                </ul>
+    
+                <ul class="menu-group">
+                    <li><strong>커피 이야기</strong></li>
+                    <li>농장에서 우리의 손으로</li>
+                    <li>최상의 아라비카 원두</li>
+                    <li>스타벅스 로스트 스펙트럼</li>
+                    <li>스타벅스 디카페인</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>스타벅스 리저브</strong></li>
+                    <li>RESERVE MAGAZINE</li>
+                </ul>
+        
+                <ul class="menu-group">
+                    <li><strong>에스프레소 음료</strong></li>
+                    <li>도피오</li>
+                    <li>에스프레소 마키아또</li>
+                    <li>아메리카노</li>
+                    <li>마키아또</li>
+                    <li>카푸치노</li>
+                    <li>라떼</li>
+                    <li>모카</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>최상의 커피를 즐기는 법</strong></li>
+                    <li>커피 프레스</li>
+                    <li>푸어 오버</li>
+                    <li>아이스 푸어 오버</li>
+                    <li>커피 메이커</li>
+                </ul>
+            </div>
+          </li>
+          <li id="menu">
+            MENU
+            <div class="dropdown">
+                <ul class="menu-group">
+                    <li><strong>음료</strong></li>
+                    <li>콜드 브루</li>
+                    <li>브루드 커피</li>
+                    <li>에스프레소</li>
+                    <li>프라푸치노</li>
+                    <li>블렌디드</li>
+                    <li>스타벅스 리프레셔셔</li>
+                    <li>스타벅스 피지오오</li>
+                    <li>티(티바나)</li>
+                    <li>기타 제조 음료료</li>
+                    <li>스타벅스 주스(병음료)</li>
+                </ul>
+    
+                <ul class="menu-group">
+                    <li><strong>푸드</strong></li>
+                    <li>브레드드</li>
+                    <li>케이크크</li>
+                    <li>샌드위치 & 샐러드</li>
+                    <li>따뜻한 푸드</li>
+                    <li>과일 & 요거트</li>
+                    <li>스택 & 미니 디저트</li>
+                    <li>아이스크림</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>상품품</strong></li>
+                    <li>머그</li>
+                    <li>글라스</li>
+                    <li>플라스틱 텀블러</li>
+                    <li>스테인리스 텀블러</li>
+                    <li>보온병</li>
+                    <li>액세서리</li>
+                    <li>선물세트</li>
+                    <li>커피 용품</li>
+                    <li>패키지 티(티바나)</li>
+                    <li>시럽</li>
+                </ul>
+        
+                <ul class="menu-group">
+                    <li><strong>카드</strong></li>
+                    <li>실물카드</li>
+                    <li>스타벅스 모바일 카드</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>메뉴 이야기</strong></li>
+                    <li>스타벅스 티바나</li>
+                    <li>스타벅스 콜드 브루</li>
+                </ul>
+            </div>
+          </li>
+          <li id="store">
+            STORE
+            <div class="dropdown">
+                <ul class="menu-group">
+                    <li><strong>커피</strong></li>
+                    <li>스타벅스 원두</li>
+                    <li>스타벅스 비아</li>
+                    <li>스타벅스 오리가미</li>
+                    <li>스타벅스앳홈 by 캡슐</li>
+                    <li>나와 어울리는 커피</li>
+                </ul>
+    
+                <ul class="menu-group">
+                    <li><strong>커피 이야기</strong></li>
+                    <li>농장에서 우리의 손으로</li>
+                    <li>최상의 아라비카 원두</li>
+                    <li>스타벅스 로스트 스펙트럼</li>
+                    <li>스타벅스 디카페인</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>스타벅스 리저브</strong></li>
+                    <li>RESERVE MAGAZINE</li>
+                </ul>
+        
+                <ul class="menu-group">
+                    <li><strong>에스프레소 음료</strong></li>
+                    <li>도피오</li>
+                    <li>에스프레소 마키아또</li>
+                    <li>아메리카노</li>
+                    <li>마키아또</li>
+                    <li>카푸치노</li>
+                    <li>라떼</li>
+                    <li>모카</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>최상의 커피를 즐기는 법</strong></li>
+                    <li>커피 프레스</li>
+                    <li>푸어 오버</li>
+                    <li>아이스 푸어 오버</li>
+                    <li>커피 메이커</li>
+                </ul>
+            </div>
+          </li>
+          <li id="responsibility">
+            RESPONSIBILITY
+            <div class="dropdown">
+                <ul class="menu-group">
+                    <li><strong>커피</strong></li>
+                    <li>스타벅스 원두</li>
+                    <li>스타벅스 비아</li>
+                    <li>스타벅스 오리가미</li>
+                    <li>스타벅스앳홈 by 캡슐</li>
+                    <li>나와 어울리는 커피</li>
+                </ul>
+    
+                <ul class="menu-group">
+                    <li><strong>커피 이야기</strong></li>
+                    <li>농장에서 우리의 손으로</li>
+                    <li>최상의 아라비카 원두</li>
+                    <li>스타벅스 로스트 스펙트럼</li>
+                    <li>스타벅스 디카페인</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>스타벅스 리저브</strong></li>
+                    <li>RESERVE MAGAZINE</li>
+                </ul>
+        
+                <ul class="menu-group">
+                    <li><strong>에스프레소 음료</strong></li>
+                    <li>도피오</li>
+                    <li>에스프레소 마키아또</li>
+                    <li>아메리카노</li>
+                    <li>마키아또</li>
+                    <li>카푸치노</li>
+                    <li>라떼</li>
+                    <li>모카</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>최상의 커피를 즐기는 법</strong></li>
+                    <li>커피 프레스</li>
+                    <li>푸어 오버</li>
+                    <li>아이스 푸어 오버</li>
+                    <li>커피 메이커</li>
+                </ul>
+            </div>
+        </li>
+          <li id="rewards">
+            STARBUCKS REWARDS
+            <div class="dropdown">
+                <ul class="menu-group">
+                    <li><strong>커피</strong></li>
+                    <li>스타벅스 원두</li>
+                    <li>스타벅스 비아</li>
+                    <li>스타벅스 오리가미</li>
+                    <li>스타벅스앳홈 by 캡슐</li>
+                    <li>나와 어울리는 커피</li>
+                </ul>
+    
+                <ul class="menu-group">
+                    <li><strong>커피 이야기</strong></li>
+                    <li>농장에서 우리의 손으로</li>
+                    <li>최상의 아라비카 원두</li>
+                    <li>스타벅스 로스트 스펙트럼</li>
+                    <li>스타벅스 디카페인</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>스타벅스 리저브</strong></li>
+                    <li>RESERVE MAGAZINE</li>
+                </ul>
+        
+                <ul class="menu-group">
+                    <li><strong>에스프레소 음료</strong></li>
+                    <li>도피오</li>
+                    <li>에스프레소 마키아또</li>
+                    <li>아메리카노</li>
+                    <li>마키아또</li>
+                    <li>카푸치노</li>
+                    <li>라떼</li>
+                    <li>모카</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>최상의 커피를 즐기는 법</strong></li>
+                    <li>커피 프레스</li>
+                    <li>푸어 오버</li>
+                    <li>아이스 푸어 오버</li>
+                    <li>커피 메이커</li>
+                </ul>
+            </div>
+        </li>
+          <li id="wnew">
+            WHAT'S NEW
+            <div class="dropdown">
+                <ul class="menu-group">
+                    <li><strong>커피</strong></li>
+                    <li>스타벅스 원두</li>
+                    <li>스타벅스 비아</li>
+                    <li>스타벅스 오리가미</li>
+                    <li>스타벅스앳홈 by 캡슐</li>
+                    <li>나와 어울리는 커피</li>
+                </ul>
+    
+                <ul class="menu-group">
+                    <li><strong>커피 이야기</strong></li>
+                    <li>농장에서 우리의 손으로</li>
+                    <li>최상의 아라비카 원두</li>
+                    <li>스타벅스 로스트 스펙트럼</li>
+                    <li>스타벅스 디카페인</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>스타벅스 리저브</strong></li>
+                    <li>RESERVE MAGAZINE</li>
+                </ul>
+        
+                <ul class="menu-group">
+                    <li><strong>에스프레소 음료</strong></li>
+                    <li>도피오</li>
+                    <li>에스프레소 마키아또</li>
+                    <li>아메리카노</li>
+                    <li>마키아또</li>
+                    <li>카푸치노</li>
+                    <li>라떼</li>
+                    <li>모카</li>
+                </ul>
+            
+                <ul class="menu-group">
+                    <li><strong>최상의 커피를 즐기는 법</strong></li>
+                    <li>커피 프레스</li>
+                    <li>푸어 오버</li>
+                    <li>아이스 푸어 오버</li>
+                    <li>커피 메이커</li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

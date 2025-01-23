@@ -151,7 +151,25 @@ let hour = now.getHours(); //시간(0~23)
 //getUTCFullYear() : 4자리 UTC 년도
 //getDay() : 0(일요일)~6(토요일)
 
+//Math 객체
+//Math 객체는 수학 관련 함수를 제공
+//Math.abs() : 절대값
+//Math.floor() : x보다 작거나 같은 수 중 가장 큰 정수 리턴
+//Math.ceil() : Math.abs()의 ceil()
+//Math.round() : x반올림 한 수
+//Math.sin(0)
+//Math.cos(0)
+//Math.tan(0)
+//Math.random() : 0~1 사이의 랜덤수
+//sqrt() : x의 제곱근
 
+//eval() 함수 : 문자열로 구성된 수식의 연산 결과 리턴
+//eval("7 * 7") // 49
+
+
+
+
+//DOM(Document Object Model)
 //2.DOM객체
 document.getElementById(); 
 document.body.style.backgroundColor = "red"; 

@@ -1,22 +1,97 @@
-function over(obj){
-    obj.src="src/test2.jpg"
-  }
+//js 변수 데이터 타입
+//a_1 a1 aa A a
+//문장의 구분;
+//주석문 //
+//자바스크립트의 데이터 타입
+//숫자타입/논리타입/문자타입/문자열타입/객체타입/null타입/undefined타입
 
-function out(obj){
-    obj.src="src/test.jpg"
+//변수 선언
+//let / var / const
+//var는 자바스킯트 언어 도입 시점부터 존재하던 변수 선언 타입
+//let, const는 ES6부터 도입된 block-scoped variable declaration
+//ECMAscript es6 시점 이후에 let과 const가 생겨남
+
+//변수 범위
+//전역변수 : 함수밖에서 선언하거나 var/let 키워드 없이 아무곳에서 선언된 변수
+//전역변수는 프로그램 실행 시점부터 종료 시점까지 살아 있는 변수이다.
+//프로그램 전역적으로 접근하여 사용할 수 있음.
+
+//지역변수 : 함수안에서 선언하거나 let/const 키워드를 사용한 변수
+//함수가 시작되면 생성되고 함수가 종료되면 소멸
+//함수 내에서만 사용 가능
+
+//블록변수
+//let 키워드로 if/while/for/switch/try/catch/finally 등 블록 안에서 선언한 변수
+//블록 내에서만 사용. 블록이 끝나면 사라짐.
+//블록이 끝나면 사라지므로 블록 밖에서는 접근 불가.
+//let으로 선언된 변수는 암시적으로 전역객체에 속하지 않음.
+
+
+
+let x; //전역변수 x 선언, var 로 선언해도 동일
+let z; //전역변수 z 선언
+
+function f(){ //함수 f() 선언
+    let y; //지역변수 y 선언
+    x = 10; //전역변수 x에 10 저장
+    y = 20; //지역변수 y에 20 저장
+    z = 30; //전역변수 z 선언 및 30 초기화
+    if(y==20){ //if block 지역변수 y
+        let b = 40; //블록변수 b 선언
+        b++ //b = 41
     }
+    //1.b빼고 다 접근 가능
+}
+//2. x와 z 접근 가능
 
-document.write("<h3>AAAAAAAAA</h3>");
-console.log("Hello, World!");
-let ret=prompt("이름", "박")
-if(ret==null){
-    console.log("null case")
+
+console.log(x); //undefined
+// console.log(b); //ReferenceError: b is not defined
+console.log(z); //is not defined
+console.log('Hello, Node.js!');
+
+// var x = 10; // 전역변수 x선언
+function xx(){ //함수 xx() 선언    
+    var x; // 지역변수 x 선언
+    x=1; // 지역변수 x에 1 저장
+    this.x=100; // 전역변수 x에 100 할당당
 }
-else if(ret==""){
-    alert("문자열 입력 없이 확인")
+console.log(x);
+
+//let으로 선언된 변수는 this로 접근할 수 없음
+//var로 선언된 전역변수: var로 선언된 전역변수는 전역 객체의 속성으로 저장된다.
+//브라우저 환경에서 전역객체란? -> window객체이고 this로 접근: window.과 this. 같다
+
+var globalVar = 100;
+console.log(this.globalVar); // 100)
+
+//var와 let의 작동상 차이점
+//var는 동일한 변수를 재선언 할 수 있음
+//let은 동일한 변수는 재선언 할 수 없음  
+//let은 변수의 사용범위를 블록으로 제한
+//var는 제한 없음.
+
+var a = 1;
+if(true){
+    var a = 2;
+    console.log(a); // 2
 }
-else{
-    confirm("확실합니까")
-}
-alert("문자열 입력 없이 확인")
-confirm("확실합니까")
+//const는 상수로 변하지 않는 값을 가지는 키워드
+//const 상수는 대문자 식별자이름
+//상수는 값 변경X
+//상수는 재선언x
+//상수는 선언된 블록 내에서만 사용
+
+//리터럴: 값
+//자바스크립트에서 리터럴 타입 종류
+//정수 8진수 10진수 16진수
+//실수
+//논리
+//문자열
+//null : 값이 없음을 뜻
+//NaN : 수가 아님을 뜻
+
+//연산자 : 자바와 동일
+
+//비교 연산자 : ==, ===, !=, !==, <, >, <=, >=
+//논리 연산자 : &&, ||, !

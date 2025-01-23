@@ -195,6 +195,24 @@
         color: white;
       }
 
+      @keyframes fadein{
+        0%{opacity: 0; color: red;}
+        100%{opacity: 1; color: blue;}
+      }
+
+      .element {
+        font-size: 3em;
+        font-weight: bold;
+        animation: infinite fadein 3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      }
+
+      #sss:hover {
+        font-size: 500%
+      }
+
+      #imgdiv{
+        transform: rotate(infinite, 45deg);
+      }
     </style>
 		<link rel="stylesheet" href="" type="test/css">
 		
@@ -764,6 +782,63 @@
         <li><a href="https://www.adidas.co.kr/women">아울렛</a></li>
       </ul>
     </nav>
+
+    <h3>CSS를 통한 동적 변화</h3>
+    <p>JS없이 CSS만으로 애니메이션/ 전환/ 변환 정도는 가능</p>
+    <p>애니메이션:HTML 태그의 모양 변화를 시간 단위로 설정해서 애니메이션 효과를 만들 수 있음.</p>
+    <p>1. 시간별 애니메이션 장면 작성</p>
+    <p>@keyframes키워드를 이용해서 시간 별로 HTML가 변화하는 장면 설정</p>
+    <p>@keyframes name{ 시간비율 {스타일} 시간비율 {스타일}} </p>
+    <p>0%{color red} 50%{color yellow} 100%{color blue}</p>
+    <p>0%{left:0} 30%{left:210}100%{left:210}</p>
+    <p>0~100 설정시 from{} to{}로 작성 가능</p>
+    
+    <div class="element">애니메이션 효과</div>
+
+    <p>animation-name: 애니메이션의 정의된 이름 @keyframes 이름</p>
+    <p>animation-duration : 애니메이션의 시간 10s</p>
+    <p>animation-iteration-count : 애니메이션의 반복 횟수 infinite or 숫자자</p>
+    <p>animation-timing-function : 애니메이션의 타이밍 함수 설정 linear / ease(디폴트) 시작과 끝은 천천히 중앙은 빠르게 ease-in 시작은 천천히 끝은 빠르게 ease-out 시작은 빠르고 끝은 천천히 / ease-in-out 시작과 끝은 천천히 중간은 빠르게
+    </p>
+    
+    <p>전환: HTML태그에 적용된 css값이 변할 때, 값의 변화를 서서히 진행시켜 애니메이션 효과를 내는 것이며 1회만 이루어짐</p>
+    <p>이 전환을 유발하는 프로퍼티를 전환프로퍼티라고 함</p>
+    
+    <p>transition: 전환프로퍼티 전환시간</p>
+    <p>전환프로퍼티 : 해당 프로퍼티의 값이 변경되면 현재 값에서 새 값으로 저환효과 시작</p>
+    <p>전환시간: 현재 값에서 새 값으로 전환되는데 걸리는 시간간</p>
+
+    <div>transition <span id="sss">전환</span>효과는 프로퍼티 값 변화를 서서히 나타냄</div>
+
+    <p>변환: CSS의 변환 기능을 이용하면 텍스트나 이미지를 회전/확대 등 효과를 주는 것, 변환 효과에서 사용되는 단위 deg 각도에 따라 시계방향으로 움직인다.</p>
+
+    <p>변환 표과의 프로퍼티 명은 transform이고 transform 프로퍼티의 값으로는 여러 함수가 올 수 있다.</p>
+    <p>transform 프로퍼티의 값으로 올 수 있는 함수의 목록</p>
+    <p>translate(x,y): 태그를 x,y 만큼 이동</p>
+    <p>translateX(n): x축방향으로 n만큼 이동</p>
+    <p>translateY(n):Y축 방향으로 n만큼 이동</p>
+    <p>scale(w,h): 높이와 너비를 몇 배율로 확대</p>
+    <p>scaleX(n): X축 방향 n배 확대</p>
+    <p>scaleY(n): Y축 방향 n배 확대</p>
+    <p>rotate(angle): deg만큼 회전(시계방향</p>
+    <p>skew(xangle,yangle): x각도 y각도 만큼 기울임</p>
+    
+    <div id="imgdiv"><img src="src/rabbit.jpg" alt=""></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <pre>

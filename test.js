@@ -332,27 +332,47 @@ function change1(obj, size, color) {
 
 var ul = document.getElementById("todolist");
 var input = document.getElementById("newtodo");
-// var value = document.getPropertyValue("newtodo");
+var btn = document.getElementById("addtodo");
 
-// console.log(input.value);
-function addli() {
-  var newli = document.createElement("li");
-  newli.innerHTML = input.value;
-  ul.appendChild(newli);
-}
-//강사님 답
+btn.addEventListener("click", () => {
+  if (input.value != "") {
+    var newli = document.createElement("li");
+    newli.innerHTML = input.value;
+    ul.appendChild(newli);
+    ul.value = "";
+  }
+});
+
+ul.addEventListener("click", (event) => {
+  //매개변수로 마우스이벤트(포인터 이벤트 객체를 전달받음)
+  console.log(event); //이벤트 객체에는 해당 이벤트가 발동된 target 외 여러 속성을 가지고 있다.
+  if (event.target.tagName === "LI") {
+    //tagName 속성은 대문자 태그명을 리턴한다.
+    ul.removeChild(event.target); //해당 이벤트가 발생한 타겟을 ul에서 리무브 한다.
+  }
+});
+
+// function addli() {
+//   var newli = document.createElement("li");
+//   newli.innerHTML = input.value;
+//   ul.appendChild(newli);
+//   ul.value = "";
+// }
+
+// 강사님 답
 
 // var newtodolist = document.getElementById("newtodo");
 // var todolist = document.getElementById("todolist");
 
-function f1() {
-  if (newtodoinput.value !== "") {
-    var newli = document.createElement("li");
-    newli.innerHTML = newtodolist.value;
-    todolist.appendChild(newli);
-    newtodolist.value = "";
-  }
-}
+// function f1() {
+//   if (newtodoinput.value !== "") {
+//     var newli = document.createElement("li");
+//     newli.innerHTML = newtodolist.value;
+//     todolist.appendChild(newli);
+//     newtodolist.value = "";
+//   }
+// }
+
 // !=와 !==의 차이
 // !==는 엄격한 비교로 값과 자료형까지 비교한다.
 // !=는 느슨한 비교로 자료형은 따지지 않고 값만 비교한다.

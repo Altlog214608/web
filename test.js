@@ -207,8 +207,8 @@
 //HTML태그의 ID명을 통한 DOM객체화 방법
 
 //document.getElementById() : id 속성값으로 DOM 객체 가져오기
-var mybox = document.getElementById("zboxcont");
-console.log(mybox);
+// var mybox = document.getElementById("zboxcont");
+// console.log(mybox);
 //w3c 표준 DOM객체의 주요 공통 프로퍼티
 //id: 태그 id값
 //tagName: HTML 태그 이름
@@ -386,3 +386,12 @@ ul.addEventListener("click", (event) => {
 //주사위가 바로 이전 주사위와 다음 주사위의 숫자가 같은 숫자가 나오면 끝나는 게임
 //몇개를 추가했는지를 p 에다가 추가 주사위 뽑은 수 출력
 //같은 숫자 주사위가 연속으로 나오면 alert를 통해 게임 종료라는 멘트를 출력한다.
+//주사위 추가는 5번만 가능
+
+var cont = document.getElementById("cont");
+var btn = document.getElementById("adddice");
+var count = document.getElementById("count");
+
+btn.addEventListener("click", () => {
+  let ct = 0;
+});

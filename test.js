@@ -377,6 +377,12 @@ ul.addEventListener("click", (event) => {
 // !==는 엄격한 비교로 값과 자료형까지 비교한다.
 // !=는 느슨한 비교로 자료형은 따지지 않고 값만 비교한다.
 
-//3.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean
-//4.BOM : Window, Document, Location, History
-//5.window 객체 : window.open(), window.close(), window.alert(), window.confirm(), window.prompt(), window.location, window.history, window.navigator, window.screen, window.innerWidth
+//주사위 뽑기 예제
+
+//주사위는 처음에 1개가 주어진다.
+//주사위 숫자는 랜덤이다. 코어 객체 math -> random 범위 1~6
+//주사위 그림은 이미지를 사용한다.
+//주사위 추가 버튼이 있다.
+//주사위가 바로 이전 주사위와 다음 주사위의 숫자가 같은 숫자가 나오면 끝나는 게임
+//몇개를 추가했는지를 p 에다가 추가 주사위 뽑은 수 출력
+//같은 숫자 주사위가 연속으로 나오면 alert를 통해 게임 종료라는 멘트를 출력한다.

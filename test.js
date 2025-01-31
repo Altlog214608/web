@@ -391,7 +391,66 @@ ul.addEventListener("click", (event) => {
 var cont = document.getElementById("cont");
 var btn = document.getElementById("adddice");
 var count = document.getElementById("count");
+var ct = 0;
+var temp = 0;
+var state = true;
 
 btn.addEventListener("click", () => {
-  let ct = 0;
+  if (ct <= 5) {
+    var rnd = Math.floor(Math.random() * 6) + 1;
+    roll(rnd);
+    if (temp != rnd) {
+      temp = rnd;
+      console.log(rnd);
+      ct++;
+      count.innerHTML = ct;
+    } else {
+      setTimeout(() => {
+        alert("end");
+      }, 0);
+    }
+  }
 });
+
+function roll(rnd) {
+  switch (rnd) {
+    case 1:
+      var dice = document.createElement("img");
+      dice.src =
+        "http://cod3.kr/xe/files/attach/images/68/965/0791b7358f33c16c6fbed52bdf9dc0c1.png";
+      cont.appendChild(dice);
+      break;
+    case 2:
+      var dice = document.createElement("img");
+      dice.src =
+        "http://cod3.kr/xe/files/attach/images/68/965/d7f4295e98e554a4e700ecfded5c3641.png";
+      cont.appendChild(dice);
+      break;
+    case 3:
+      var dice = document.createElement("img");
+      dice.src =
+        "http://cod3.kr/xe/files/attach/images/68/965/c542e8ca6d892a74eb6249749577d581.png";
+      cont.appendChild(dice);
+      break;
+    case 4:
+      var dice = document.createElement("img");
+      dice.src =
+        "http://cod3.kr/xe/files/attach/images/68/965/f74570ea82fc8b951b27ba7f4f7ae595.png";
+      cont.appendChild(dice);
+      break;
+    case 5:
+      var dice = document.createElement("img");
+      dice.src =
+        "http://cod3.kr/xe/files/attach/images/68/965/4ee6cd9621104a36d37fa00a352f0f71.png";
+      cont.appendChild(dice);
+      break;
+    case 6:
+      var dice = document.createElement("img");
+      dice.src =
+        "http://cod3.kr/xe/files/attach/images/68/965/841ffcd3bd59fbee034fd8c20cf51dbe.png";
+      cont.appendChild(dice);
+      break;
+  }
+}
+
+function end() {}

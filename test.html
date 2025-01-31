@@ -285,7 +285,13 @@
     <title>Document</title>
   </head>
   <body id="id" class="main">
-    <p id="firstP">JS테스트용 p태그</p>
+    <p id="firstP">
+      JS테스트용
+      <span id="myspan" style="color: red">p</span>태그
+    </p>
+    <input type="button" value="변경" onclick="change()" />
+
+    <p id="secondP" onclick="changeinner()">JS테스트용 두번째</p>
 
     <header>header</header>
     <nav>nav</nav>

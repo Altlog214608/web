@@ -26,44 +26,44 @@
 //블록이 끝나면 사라지므로 블록 밖에서는 접근 불가.
 //let으로 선언된 변수는 암시적으로 전역객체에 속하지 않음.
 
-let x; //전역변수 x 선언, var 로 선언해도 동일
-let z; //전역변수 z 선언
+// let x; //전역변수 x 선언, var 로 선언해도 동일
+// let z; //전역변수 z 선언
 
-function f() {
-  //함수 f() 선언
-  let y; //지역변수 y 선언
-  x = 10; //전역변수 x에 10 저장
-  y = 20; //지역변수 y에 20 저장
-  z = 30; //전역변수 z 선언 및 30 초기화
-  if (y == 20) {
-    //if block 지역변수 y
-    let b = 40; //블록변수 b 선언
-    b++; //b = 41
-  }
-  //1.b빼고 다 접근 가능
-}
+// function f() {
+//   //함수 f() 선언
+//   let y; //지역변수 y 선언
+//   x = 10; //전역변수 x에 10 저장
+//   y = 20; //지역변수 y에 20 저장
+//   z = 30; //전역변수 z 선언 및 30 초기화
+//   if (y == 20) {
+//     //if block 지역변수 y
+//     let b = 40; //블록변수 b 선언
+//     b++; //b = 41
+//   }
+//1.b빼고 다 접근 가능
+// }
 //2. x와 z 접근 가능
 
-console.log(x); //undefined
+// console.log(x); //undefined
 // console.log(b); //ReferenceError: b is not defined
-console.log(z); //is not defined
-console.log("Hello, Node.js!");
+// console.log(z); //is not defined
+// console.log("Hello, Node.js!");
 
 // var x = 10; // 전역변수 x선언
-function xx() {
-  //함수 xx() 선언
-  var x; // 지역변수 x 선언
-  x = 1; // 지역변수 x에 1 저장
-  this.x = 100; // 전역변수 x에 100 할당당
-}
-console.log(x);
+// function xx() {
+//   //함수 xx() 선언
+//   var x; // 지역변수 x 선언
+//   x = 1; // 지역변수 x에 1 저장
+//   this.x = 100; // 전역변수 x에 100 할당당
+// }
+// console.log(x);
 
 //let으로 선언된 변수는 this로 접근할 수 없음
 //var로 선언된 전역변수: var로 선언된 전역변수는 전역 객체의 속성으로 저장된다.
 //브라우저 환경에서 전역객체란? -> window객체이고 this로 접근: window.과 this. 같다
 
-var globalVar = 100;
-console.log(this.globalVar); // 100)
+// var globalVar = 100;
+// console.log(this.globalVar); // 100)
 
 //var와 let의 작동상 차이점
 //var는 동일한 변수를 재선언 할 수 있음
@@ -71,11 +71,11 @@ console.log(this.globalVar); // 100)
 //let은 변수의 사용범위를 블록으로 제한
 //var는 제한 없음.
 
-var a = 1;
-if (true) {
-  var a = 2;
-  console.log(a); // 2
-}
+// var a = 1;
+// if (true) {
+//   var a = 2;
+//   console.log(a); // 2
+// }
 //const는 상수로 변하지 않는 값을 가지는 키워드
 //const 상수는 대문자 식별자이름
 //상수는 값 변경X
@@ -102,22 +102,22 @@ if (true) {
 
 //자바스크립트의 객체
 //1.코어객체 : Array, Date, Math, RegExp, String, Number, Boolean, Function, Error, Symbol
-let today = new Date();
-let msg = new String("Hello, Node.js!");
+// let today = new Date();
+// let msg = new String("Hello, Node.js!");
 //객체에 대한 접근 : .을 찍어서 접근
 //객체 프로퍼티와 메서드가 있음
 //자바스크립트에서는 객체의 소멸 방법 없음
 //가비지컬렉터에 의해 자동 소멸, 자동 관리 됨
 
-//Array 객체
-let arr = [1, 2, 3, 4, 5];
-let n = ["apple", "banana", "cherry"];
-//인덱스로 접근 가능
-arr[0] = "apple"; //인덱스를 통한 접근 후 값 변경
-let a = new Array("1", "2", "3");
-let b = new Array(7);
-b[0] = "apple";
-let c = new Array(); //빈 배열 생성성
+// //Array 객체
+// let arr = [1, 2, 3, 4, 5];
+// let n = ["apple", "banana", "cherry"];
+// //인덱스로 접근 가능
+// arr[0] = "apple"; //인덱스를 통한 접근 후 값 변경
+// let a = new Array("1", "2", "3");
+// let b = new Array(7);
+// b[0] = "apple";
+// let c = new Array(); //빈 배열 생성성
 //배열의 length프로퍼티 : 배열 요소 수 리턴
 //배열에는 여러 타입 데이터가 섞여 저장될 수 있음
 
@@ -135,12 +135,12 @@ let c = new Array(); //빈 배열 생성성
 //Date객체는 시간정보를 담는 객체
 //new 키워드로 생성
 //실제 Date객체 생성된 시간정보(코드가 실행된 시점)
-let d = new Date(2024, 11, 1); //24년도 12월 1일
-let now = new Date(); //현재시간 객체 생성
-let date = now.getDate(); //날짜(1~31)
-let month = now.getMonth() + 1; //달(1~12)
-let year = now.getFullYear(); //년
-let hour = now.getHours(); //시간(0~23)
+// let d = new Date(2024, 11, 1); //24년도 12월 1일
+// let now = new Date(); //현재시간 객체 생성
+// let date = now.getDate(); //날짜(1~31)
+// let month = now.getMonth() + 1; //달(1~12)
+// let year = now.getFullYear(); //년
+// let hour = now.getHours(); //시간(0~23)
 //getFullYear() : 4자리 년도
 //getMonth() : 0~11
 //getDate() : 1~31
@@ -168,8 +168,8 @@ let hour = now.getHours(); //시간(0~23)
 
 //DOM(Document Object Model)
 //2.DOM객체
-document.getElementById();
-document.body.style.backgroundColor = "red";
+// document.getElementById();
+// document.body.style.backgroundColor = "red";
 //DOM 객체화의 목적:JS코드 내에서 HTML과 CSS를 건들기 위해
 //element 라고 표현하는  HTML 개별 태그를 JS에서 객체화 하여
 //제어할 수 있도록 한다.
@@ -246,15 +246,47 @@ console.log(p); //DOM 객체
 p.style.color = "red"; //CSS 스타일
 
 document.getElementById("firstP").style.color = "blue"; //DOM 객체
+p.style.backgroundColor = "yellow"; //DOM 객체
+//background-color라는 css속성은 js에서 쓸 때 하이픈 제거 후 backgroundColor
+p.style.cssText = "background-color: yellow; color: blue;"; //cssText로 css속성 설정
+var s = document.getElementById("myspan");
+s.style.color = "magenta"; //DOM 객체
+s.style.fontSize = "50px"; //DOM 객체
+s.style.display = "block"; //DOM 객체
+s.style.width = "200px"; //DOM 객체
+s.style.border = "1px solid black"; //DOM 객체
+s.style.margin = "10px"; //DOM 객체
+
+var whatcolor = s.style.color;
+console.log(whatcolor);
+
+if (whatcolor === "green") {
+  console.log("1");
+}
+
+var pp = document.getElementById("secondP");
+console.log(pp.style.color); //x
+
+var style = window.getComputedStyle(pp);
+var value = style.getPropertyValue("color");
+console.log(value); //o
+
+//secondP처럼 셀렉터를 통한 스타일이 부여된 DOM 객체의
+//경우에는 ComputedStyle을 통해 속성 값을 조회 가능
+//직접 접근하면 공백출력
+
+function change() {
+  let span = document.getElementById("myspan");
+  span.style.color = "green";
+  span.style.fontSize = "100px";
+  span.style.width = "20em";
+}
+
+console.log(p.innerHTML);
+function changeinner() {
+  p.innerHTML("<img src='src/test2.jpg'>");
+}
 
 //3.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean
 //4.BOM : Window, Document, Location, History
 //5.window 객체 : window.open(), window.close(), window.alert(), window.confirm(), window.prompt(), window.location, window.history, window.navigator, window.screen, window.innerWidth
-
-let obj = {
-  name: "John",
-  age: 30,
-  sayHello: function () {
-    console.log(`Hello, my name is ${this.name}`);
-  },
-};

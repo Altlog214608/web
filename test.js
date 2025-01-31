@@ -287,6 +287,76 @@ function changeinner() {
   p.innerHTML("<img src='src/test2.jpg'>");
 }
 
+function change1(obj, size, color) {
+  obj.style.color = color;
+  obj.style.fontSize = size;
+}
+
+//브라우저는 HTML문서를 로드하기 전에 document 객체를 먼저 만든다.
+//그리고 document객체를 뿌리로 하여 DOM 트리를 만든다.
+//document 객체는 HTML문서 전체를 대변하는 객체이다.
+//document 객체는 많은 프로퍼티를 통해 HTML 문서의 전반적인 속성을 나타내고
+//여러 메서드를 통해 DOM객체의 검색, DOM 객체의 생성 등 HTML 문서의 전반적 제어 역할
+//document객체는 HTML 문서에 만들어진 동일 HTML 태그들을 배열처럼 접근할 수 있는 컬렉션을 두고 있음
+//여러 메서드를 통해 DOM객체의 검색, DOM객체의 생성 등 HTML문서의 전반적 제어 역할
+//document 객체는 HTML문서에 만들어진 동일 HTMl태그들을 배열처럼 접근할 수 있는 컬렉션을 두고 있음
+//예로 images 컬렉션은 document객체를 통해 접근 가능한데, 문서 내 모든 img 태그들을 가져올 수 있다,
+
+//document 객체의 주요 프로퍼티
+//location : 현재 문서의 URL 정보를 가진 location 객체
+//domain : 서버 도메인 이름
+//readyState : 이 문서의 로딩 상태
+//body : 이 문서의 바디
+//head : 이 문서의 헤드
+//activeElement : 이 문서에서 포커스 된 요소
+//URL : 이 문서의 URL
+//documentElement : HTML 객체에 대한 레퍼런스
+
+//document객체의 주요 컬렉션
+//images : 문서 내 모든 img 객체들 컬렉션
+//links : 문서 내 모든 a 객체들 컬렉션
+//forms : 문서 내 모든 form 객체들 컬렉션
+
+//document객체의 주요 메서드
+//getElementById() id를 통한 DOM객체 리턴
+//getElementByClassName() class 명을 통한 DOM 객체 리턴
+//getElementByTagName() 태그명을 통한 DOM객체 리턴
+//getElementByName () name 속성을 통한 DOm객체 리턴
+//close() document 객체에 있는 HTML 컨텐츠를 브라우저에 출력하고 더 이상 쓰기를 받지 않게 됨
+//createElement() HTML 태그의 동적 생성
+//open() document에 담긴 모든 컨텐츠를 지우고 새로운 HTML 컨텐츠를 쓸 수 있도록 열기
+//write() document에 HTML 컨텐츠 삽입, DOM트리에 연결되고 브라우저에 출력됨.
+
+//버튼에 onclick 추가 , 추가 누르면 텍스트가 항목에 추가
+//작업순서 1. createElement li 2.input텍스트를 얻으려면 .value로 얻는다. 3.value를 li의 innerHTML로 설정정 4.appendChild()
+
+var ul = document.getElementById("todolist");
+var input = document.getElementById("newtodo");
+// var value = document.getPropertyValue("newtodo");
+
+// console.log(input.value);
+function addli() {
+  var newli = document.createElement("li");
+  newli.innerHTML = input.value;
+  ul.appendChild(newli);
+}
+//강사님 답
+
+// var newtodolist = document.getElementById("newtodo");
+// var todolist = document.getElementById("todolist");
+
+function f1() {
+  if (newtodoinput.value !== "") {
+    var newli = document.createElement("li");
+    newli.innerHTML = newtodolist.value;
+    todolist.appendChild(newli);
+    newtodolist.value = "";
+  }
+}
+// !=와 !==의 차이
+// !==는 엄격한 비교로 값과 자료형까지 비교한다.
+// !=는 느슨한 비교로 자료형은 따지지 않고 값만 비교한다.
+
 //3.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean
 //4.BOM : Window, Document, Location, History
 //5.window 객체 : window.open(), window.close(), window.alert(), window.confirm(), window.prompt(), window.location, window.history, window.navigator, window.screen, window.innerWidth

@@ -285,6 +285,18 @@
     <title>Document</title>
   </head>
   <body id="id" class="main">
+    <ul id="todolist" onclick="delli()">
+      <li>할일1</li>
+      <li>할일2</li>
+      <li>할일3</li>
+    </ul>
+    <input type="text" id="newtodo" placeholder="새로운 할 일 추가" />
+    <button id="addtodo" onclick="addli()">추가</button>
+
+    <br />
+
+    <button onclick="change1(this,'30px','red')">버튼</button>
+    <div onclick="change1(this,'30px','red')">div 버튼</div>
     <p id="firstP">
       JS테스트용
       <span id="myspan" style="color: red">p</span>태그

@@ -209,6 +209,43 @@ document.body.style.backgroundColor = "red";
 //document.getElementById() : id 속성값으로 DOM 객체 가져오기
 var mybox = document.getElementById("zboxcont");
 console.log(mybox);
+//w3c 표준 DOM객체의 주요 공통 프로퍼티
+//id: 태그 id값
+//tagName: HTML 태그 이름
+//attributes: HTML 태그의 attribute(속성)들
+//childNodes: HTML 태그의 child node(태그, text, comment)들
+//parentNode: HTML 태그의 parent node
+//style: HTML 태그의 style에 대한 레퍼런스
+//title: HTML 태그의 title attribute 속성 값
+//innerHTML: HTML 태그의 innerHTML 태그의 컨텐츠
+//childElements: HTML 태태그의 child elements(태그) 자식 요소 수 count
+//firsyElementChild 첫 자식
+//lastElementChild 마지막 자식
+//previousElementSibling 왼쪽 형체
+//nextElementSibling 다음 형제
+//offsetTop, offsetLeft, offsetWidth, offsetHeight 높이 너비 위치
+//children 자식 컬렉션
+
+//DOM 객체의 주요 공통 메서드
+//addEventListener() : 이벤트 리스너 등록
+//appendChild() : 마지막 자식 뒤에 새로운 자식 추가
+//removeEventListener() : 이벤트 리스너 제거
+//click() : click 이벤트 리스너 액션
+//focus() : focus 이벤트 리스너 포커스 지정
+//setAttribute() : HTML 태그의 attribute(속성)값 설정 속성 추가
+//removeChild() : 자식 삭제제
+//innerText : HTML 태그의 innerText
+//textContent : HTML 태그의 textContent
+//querySelector() : Css 셀렉터와 일치하는 첫번째 자식 리턴
+//insertBefore() : 지정된 자식 앞에 새 자식 추가
+//replaceChild() : 자식 대체
+//getattribute() : 속성 값 조회
+
+var p = document.getElementById("firstP"); //DOM 객체화
+console.log(p); //DOM 객체
+p.style.color = "red"; //CSS 스타일
+
+document.getElementById("firstP").style.color = "blue"; //DOM 객체
 
 //3.프로토타입 객체 : Object, Function, Array, Date, RegExp, String, Number, Boolean
 //4.BOM : Window, Document, Location, History

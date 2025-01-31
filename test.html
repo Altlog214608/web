@@ -1,89 +1,117 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content = "301">
-    <meta name="description" content = "HTML입문">
-    <meta name="keywords" content = "프론트엔드">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="301" />
+    <meta name="description" content="HTML입문" />
+    <meta name="keywords" content="프론트엔드" />
     <style>
-      html, body{margin: 0;  padding: 0; height: 100%; background-color: bisque;}
-      header{width: 100%;;height: 15%; background-color: yellow;}
-      nav{width: 15%;height: 70%;float: left;background-color: red;}
-      section{width: 70%;height: 70%;float: left; background-color: green;}
-      aside{width: 15%;height: 70%;float: left; background-color: blue;}
-      footer{width: 100%;height: 15%;clear: both;background-color: plum;}
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: bisque;
+      }
+      header {
+        width: 100%;
+        height: 15%;
+        background-color: yellow;
+      }
+      nav {
+        width: 15%;
+        height: 70%;
+        float: left;
+        background-color: red;
+      }
+      section {
+        width: 70%;
+        height: 70%;
+        float: left;
+        background-color: green;
+      }
+      aside {
+        width: 15%;
+        height: 70%;
+        float: left;
+        background-color: blue;
+      }
+      footer {
+        width: 100%;
+        height: 15%;
+        clear: both;
+        background-color: plum;
+      }
 
-			body.main{
-				background-color: skyblue;
-			}
-			#list {
-				background: gold;
-			}
-			div>strong{
-				background: yellowgreen;
-			}
-			div>div>strong{
-				background: rgb(63, 82, 24);
-			}
-			ul strong {
-				color: dodgerblue;
-			}
-			*{
-				font-size: 20px;
-			}
+      body.main {
+        background-color: skyblue;
+      }
+      #list {
+        background: gold;
+      }
+      div > strong {
+        background: yellowgreen;
+      }
+      div > div > strong {
+        background: rgb(63, 82, 24);
+      }
+      ul strong {
+        color: dodgerblue;
+      }
+      * {
+        font-size: 20px;
+      }
 
-			input[type=text]{
-				color: red;
-			}
-			a:visited{
-				color: green;
-				
-			}
-			li:hover{
-				color: yellow;
-			}
-			li:active{
-				color: red;
-			}
-			li:nth-child(even){
-				color: blue;
-			}
-			li:nth-last-child(1){
-				color: greenyellow;
-			}
-			li::marker{
-				color: greenyellow;
-			}
-			li:default{
-				color: salmon;
-			}
+      input[type="text"] {
+        color: red;
+      }
+      a:visited {
+        color: green;
+      }
+      li:hover {
+        color: yellow;
+      }
+      li:active {
+        color: red;
+      }
+      li:nth-child(even) {
+        color: blue;
+      }
+      li:nth-last-child(1) {
+        color: greenyellow;
+      }
+      li::marker {
+        color: greenyellow;
+      }
+      li:default {
+        color: salmon;
+      }
 
-			.boxs{
-				border: 1px solid black;
-				margin-bottom: 10px;
-				background-color: gray;
-				padding-left: 30px;
-			
-			}
-			.boxs:hover{
-				background-color: gainsboro;
-				font-size: 50px;
-			}
+      .boxs {
+        border: 1px solid black;
+        margin-bottom: 10px;
+        background-color: gray;
+        padding-left: 30px;
+      }
+      .boxs:hover {
+        background-color: gainsboro;
+        font-size: 50px;
+      }
 
-			#container {
-				border: 1px solid black;
-				padding-left: 10px;
-			}
-			
-			#inside {
-				border: 1px solid gold;
-				padding: 50px;
-			}
+      #container {
+        border: 1px solid black;
+        padding-left: 10px;
+      }
 
-			#inside2 {
-				border: 1px solid rgb(30, 128, 95);
-			}
+      #inside {
+        border: 1px solid gold;
+        padding: 50px;
+      }
+
+      #inside2 {
+        border: 1px solid rgb(30, 128, 95);
+      }
 
       div.bbb {
         width: 150px;
@@ -124,7 +152,7 @@
         background: green;
       }
 
-      #a:hover{
+      #a:hover {
         position: relative;
         left: 30px;
         right: 100px;
@@ -132,12 +160,12 @@
         width: 200px;
       }
 
-      #c:hover{
+      #c:hover {
         position: relative;
         visibility: hidden;
       }
 
-      #d:hover{
+      #d:hover {
         position: relative;
         transform: translate(30px);
       }
@@ -159,22 +187,54 @@
         left: 300px;
       }
 
-      #zboxcont{position: absolute;}
-      #z1{z-index: 3; left: 10px; top: 20px; background-color: red; position: absolute;}
-      #z2{z-index: -3; left: 40px; top: 30px; background-color: gold; position: absolute;} 
+      #zboxcont {
+        position: absolute;
+      }
+      #z1 {
+        z-index: 3;
+        left: 10px;
+        top: 20px;
+        background-color: red;
+        position: absolute;
+      }
+      #z2 {
+        z-index: -3;
+        left: 40px;
+        top: 30px;
+        background-color: gold;
+        position: absolute;
+      }
 
       ul > li > span {
         visibility: hidden;
       }
 
-      .visible {width: 10em; height: 2em; overflow: visible; margin-top: 50px; border: 1px solid black;}
-      .hidden {width: 10em; height: 2em; overflow: hidden; margin-top: 50px; border: 1px solid black;}
-      .scroll {width: 10em; height: 2em; overflow: scroll; margin-top: 50px; border: 1px solid black;}
+      .visible {
+        width: 10em;
+        height: 2em;
+        overflow: visible;
+        margin-top: 50px;
+        border: 1px solid black;
+      }
+      .hidden {
+        width: 10em;
+        height: 2em;
+        overflow: hidden;
+        margin-top: 50px;
+        border: 1px solid black;
+      }
+      .scroll {
+        width: 10em;
+        height: 2em;
+        overflow: scroll;
+        margin-top: 50px;
+        border: 1px solid black;
+      }
 
       #menubar {
         background-color: olive;
       }
-      #menubar ul{
+      #menubar ul {
         margin: 100px;
         padding: 0;
         width: 500px;
@@ -185,19 +245,25 @@
         list-style-type: none;
         padding: 15px;
       }
-      #menubar ul li a{
+      #menubar ul li a {
         text-decoration: none;
       }
-      #menubar ul li a:hover{
+      #menubar ul li a:hover {
         color: red;
       }
-      a:visited{
+      a:visited {
         color: white;
       }
 
-      @keyframes fadein{
-        0%{opacity: 0; color: red;}
-        100%{opacity: 1; color: blue;}
+      @keyframes fadein {
+        0% {
+          opacity: 0;
+          color: red;
+        }
+        100% {
+          opacity: 1;
+          color: blue;
+        }
       }
 
       .element {
@@ -207,24 +273,19 @@
       }
 
       #sss:hover {
-        font-size: 500%
+        font-size: 500%;
       }
 
-      #imgdiv{
+      #imgdiv {
         transform: rotate(45deg);
       }
-
     </style>
-		<link rel="stylesheet" href="" type="test/css">
-		
+    <link rel="stylesheet" href="" type="test/css" />
+
     <title>Document</title>
-
-  
-    <script type="text/JavaScript" src="test.js">
-
-    </script>
   </head>
-  <body id ="id" class="main" >
+  <body id="id" class="main">
+    <p id="firstP">JS테스트용 p태그</p>
 
     <header>header</header>
     <nav>nav</nav>
@@ -233,25 +294,62 @@
     <aside>aside</aside>
     <footer>footer</footer>
 
-    <a href="https://www.gitanimals.org/en_US?utm_medium=image&utm_source=Altlog214608&utm_content=farm">
+    <a
+      href="https://www.gitanimals.org/en_US?utm_medium=image&utm_source=Altlog214608&utm_content=farm"
+    >
       <img
         src="https://render.gitanimals.org/farms/Altlog214608"
         width="100%"
         height="500"
       />
-      </a>
-    <img src="src/test.jpg" width="100px" height="100px" alt="사진">  
-    <h1 id="hh" style="color: salmon; background-color: beige;">123123</h1>
-    <hr>
-    <p style="font-size: 30px; text-align: center;">
+    </a>
+    <img src="src/test.jpg" width="100px" height="100px" alt="사진" />
+    <h1 id="hh" style="color: salmon; background-color: beige">123123</h1>
+    <hr />
+    <p style="font-size: 30px; text-align: center">
       <b>본문 <mark>컨텐츠</mark> 영역</b>
     </p>
-    <hr>
-    <div style="width: 300px; height: 300px; display: block;">
-      <div style="width: 50%; height: 50%; background-color: saddlebrown; display: block; float: left; border-radius: 100% 0 0 0;"></div>
-      <div style="width: 50%; height: 50%; background-color: blanchedalmond; display: block; float: left; border-radius: 0 100% 0 0;"></div>
-      <div style="width: 50%; height: 50%; background-color: sandybrown; display: inline-block; border-radius: 0 0 100% 0;"></div>
-      <div style="width: 50%; height: 50%; background-color: seagreen; display: block; float: left; border-radius: 0 0 0 100%;"></div>
+    <hr />
+    <div style="width: 300px; height: 300px; display: block">
+      <div
+        style="
+          width: 50%;
+          height: 50%;
+          background-color: saddlebrown;
+          display: block;
+          float: left;
+          border-radius: 100% 0 0 0;
+        "
+      ></div>
+      <div
+        style="
+          width: 50%;
+          height: 50%;
+          background-color: blanchedalmond;
+          display: block;
+          float: left;
+          border-radius: 0 100% 0 0;
+        "
+      ></div>
+      <div
+        style="
+          width: 50%;
+          height: 50%;
+          background-color: sandybrown;
+          display: inline-block;
+          border-radius: 0 0 100% 0;
+        "
+      ></div>
+      <div
+        style="
+          width: 50%;
+          height: 50%;
+          background-color: seagreen;
+          display: block;
+          float: left;
+          border-radius: 0 0 0 100%;
+        "
+      ></div>
     </div>
     <ul type="2">
       <li>1</li>
@@ -264,18 +362,20 @@
       <li>3</li>
     </ol>
     <ul>
-      <li>첫번째 <mark>항목</mark>
+      <li>
+        첫번째 <mark>항목</mark>
         <ul>
-            <li>1
-            <li>2
-            <li>3
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
         </ul>
       </li>
-      <li>두번째 <mark>항목</mark>
+      <li>
+        두번째 <mark>항목</mark>
         <ul>
-            <li>1
-            <li>2
-            <li>3
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
         </ul>
       </li>
     </ul>
@@ -285,7 +385,9 @@
     </dl>
 
     <table border="1">
-      <caption>수도</caption>
+      <caption>
+        수도
+      </caption>
       <thead>
         <tr>
           <th>한국</th>
@@ -296,73 +398,77 @@
         </tr>
       </thead>
       <tbody>
-        <tr style="text-align: center;">
-          <td><img src="src/test.jpg" width="100%"></td>
-          <td><img src="src/test.jpg" width="100%"></td>
-          <td><img src="src/test.jpg" width="100%"></td>
-          <td><img src="src/test.jpg" width="100%"></td>
-          <td><img src="src/test.jpg" width="100%"></td>
+        <tr style="text-align: center">
+          <td><img src="src/test.jpg" width="100%" /></td>
+          <td><img src="src/test.jpg" width="100%" /></td>
+          <td><img src="src/test.jpg" width="100%" /></td>
+          <td><img src="src/test.jpg" width="100%" /></td>
+          <td><img src="src/test.jpg" width="100%" /></td>
         </tr>
       </tbody>
     </table>
 
-    <p title = "홀리몰리">123123</p>
-    <div style="background-color: rebeccapurple; padding: 20px;"></div>
-    <span style="background-color: yellow; color: blue;">1</span>
-    <div>123<span style="color: brown;">456</span>789</div>
-    <a href="https://www.google.com/" target="_blank"><img src="src/test.jpg"></a>
-    <img src="src/test.jpg">
+    <p title="홀리몰리">123123</p>
+    <div style="background-color: rebeccapurple; padding: 20px"></div>
+    <span style="background-color: yellow; color: blue">1</span>
+    <div>123<span style="color: brown">456</span>789</div>
+    <a href="https://www.google.com/" target="_blank"
+      ><img src="src/test.jpg"
+    /></a>
+    <img src="src/test.jpg" />
 
-  
-    <ul id = "id1"> <b>GitHub Animal</b>
+    <ul id="id1">
+      <b>GitHub Animal</b>
       <li>
-        <a href="test2.html#id2">
-          1번 동물
-        </a>
-          </li>
-      <li>
-        <a href="test3.html#id3">
-          2번 동물
-        </a>
+        <a href="test2.html#id2"> 1번 동물 </a>
       </li>
       <li>
-        <a href="test4.html#id4">
-          3번 동물
-        </a>
-          </li>
+        <a href="test3.html#id3"> 2번 동물 </a>
+      </li>
+      <li>
+        <a href="test4.html#id4"> 3번 동물 </a>
+      </li>
     </ul>
-    
+
     <!-- <iframe src="https://jr.naver.com/" frameborder="0" width="500" height="500" >123123</iframe> -->
     <iframe src="test3.html" frameborder="0">123123</iframe>
     <iframe src="test4.html" frameborder="0">123123</iframe>
-    
-    <video src="src/2025.mp4" width="100%" height="500" controls autoplay muted loop></video>
+
+    <video
+      src="src/2025.mp4"
+      width="100%"
+      height="500"
+      controls
+      autoplay
+      muted
+      loop
+    ></video>
 
     <video src="src/아무노래.mp3" controls muted loop></video>
 
-    <hr>
+    <hr />
     <form name="fo" method="get" action="">
-      ID: <br><input type="text" size="15" value="">
-      <br>
-      PW:<br><input type="password" size="15" value=""><br>
-      <input type="submit" size="15" value="로그인">
+      ID: <br /><input type="text" size="15" value="" />
+      <br />
+      PW:<br /><input type="password" size="15" value="" /><br />
+      <input type="submit" size="15" value="로그인" />
     </form>
-    
-    <input type="color" value="" >
-    <input type="email" value="" >
-    <input type="month" value="" >
-    <input type="range" value="" >
-    <input type="hidden" value="" >123
-    <input type="datetime-local" value="" >
-    <input type="week" value="" >
-    <input type="image" src="src/위키백과 타이틀.svg" value="" >
-    <input type="number">
-    <input type="reset">
-    <input type="url">
-    <input type="file">
-    <button type="button" style="width: 100px; height: 50px;">button</button>
-    
-    <input type="text" list="clist">
+
+    <input type="color" value="" />
+    <input type="email" value="" />
+    <input type="month" value="" />
+    <input type="range" value="" />
+    <input type="hidden" value="" />123
+    <input type="datetime-local" value="" />
+    <input type="week" value="" />
+    <input type="image" src="src/위키백과 타이틀.svg" value="" />
+    <input type="number" />
+    <input type="reset" />
+    <input type="url" />
+    <input type="file" />
+    <button type="button" style="width: 100px; height: 50px">button</button>
+
+    <input type="text" list="clist" />
     <datalist id="clist">
       <option value="100"></option>
       <option value="110"></option>
@@ -370,27 +476,32 @@
       <option value="200"></option>
       <option value="300"></option>
     </datalist>
-    
 
     <textarea name="" id="" cols="10">초기 출력</textarea>
-    
-    <input type="image" src="src/rabbit.jpg">
-    <button type="button" style="background-color: #fff;"><img src="src/rabbit.jpg" alt=""></button>
-    
+
+    <input type="image" src="src/rabbit.jpg" />
+    <button type="button" style="background-color: #fff">
+      <img src="src/rabbit.jpg" alt="" />
+    </button>
+
     <form action="">
-      1번<input type="checkbox" value="1">
-      2번<input type="checkbox" value="2">
-      3번<input type="checkbox" value="3">
-      4번<input type="checkbox" value="4">
+      1번<input type="checkbox" value="1" /> 2번<input
+        type="checkbox"
+        value="2"
+      />
+      3번<input type="checkbox" value="3" /> 4번<input
+        type="checkbox"
+        value="4"
+      />
     </form>
-    
+
     <form action="">
-      <input type="radio" name="a" value="1">
-      <input type="radio" name="a" value="2">
-      <input type="radio" name="a" value="3">
-      <input type="radio" name="a" value="4">
+      <input type="radio" name="a" value="1" />
+      <input type="radio" name="a" value="2" />
+      <input type="radio" name="a" value="3" />
+      <input type="radio" name="a" value="4" />
     </form>
-    
+
     <form action="">
       <select name="" id="">
         <option value="1">1</option>
@@ -399,182 +510,214 @@
       </select>
     </form>
 
-    <label for="login">
-      ID:
-    </label>
-    <input type="text" id="login">
-    <hr>
-    ID: <input type="text">
-    
-    <input type="color" value="#00FF00">
-    <input type="week" value="2025-W01">
-    <input type="datetime-local" value="2024-01-01T">
-    <input type="time" value="21:30">
+    <label for="login"> ID: </label>
+    <input type="text" id="login" />
+    <hr />
+    ID: <input type="text" />
 
-    <input type="range" min="10" max="30">
-    <input type="number" min="0.0" max="10.0">
+    <input type="color" value="#00FF00" />
+    <input type="week" value="2025-W01" />
+    <input type="datetime-local" value="2024-01-01T" />
+    <input type="time" value="21:30" />
+
+    <input type="range" min="10" max="30" />
+    <input type="number" min="0.0" max="10.0" />
 
     <form action="">
-      <input type="email" placeholder="id@host">
-      <input type="text">
-      <input type="search">
+      <input type="email" placeholder="id@host" />
+      <input type="text" />
+      <input type="search" />
     </form>
 
     <form action="">
       <fieldset>
         <legend>정보</legend>
-          메일:<input type="email"><br>
-          홈페이지:<input type="url"><br>
-          번호:<input type="tel"><br>
+        메일:<input type="email" /><br />
+        홈페이지:<input type="url" /><br />
+        번호:<input type="tel" /><br />
       </fieldset>
     </form>
-    
-    <hr>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <hr />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <h1>CSS 스타일 시트 개요</h1>
-    <p>CSS 적용 타겟 <span>샘플</span>문장입니다 </p>
-		<p>
-			Selector는 CSS 스타일 시트의 이름 규칙, 스타일 시트의 블록은 중괄호로 처리한다.
-			css스타일 프로퍼티와 값을 쌍으로 설정한다. CSS는 200개 정도 프로퍼티(속성)이 있음 계속 추가되는 중
-	
-		</p>
-		<h3>CSS의 주석처리</h3>
-		<p>
-			CSS의 주석은 /*~~~*/ 로 주석 가능
-		</p>
-		<h3>CSS속성은 대소문자를 구분하지 않음</h3>
-		<h3>CSS스타일 시트를 적용하는 방법 3가지</h3>
-		<p>
-			스타일 적용 방법 1 : <mark>head 내</mark>에 style 태그로 구성하는 방법
-		</p>
-		<p>
-			스타일 적용 방법 2 : 태그의 style 속성에 <mark> 직접 적용</mark> 하는 방법 
-		</p>
-		<p>
-			스타일 적용 방법 3 : <mark>외부 스타일 시트</mark>를 import 혹은 link로 불러와서 사용하는 방법
-		</p>
+    <p>CSS 적용 타겟 <span>샘플</span>문장입니다</p>
+    <p>
+      Selector는 CSS 스타일 시트의 이름 규칙, 스타일 시트의 블록은 중괄호로
+      처리한다. css스타일 프로퍼티와 값을 쌍으로 설정한다. CSS는 200개 정도
+      프로퍼티(속성)이 있음 계속 추가되는 중
+    </p>
+    <h3>CSS의 주석처리</h3>
+    <p>CSS의 주석은 /*~~~*/ 로 주석 가능</p>
+    <h3>CSS속성은 대소문자를 구분하지 않음</h3>
+    <h3>CSS스타일 시트를 적용하는 방법 3가지</h3>
+    <p>
+      스타일 적용 방법 1 : <mark>head 내</mark>에 style 태그로 구성하는 방법
+    </p>
+    <p>
+      스타일 적용 방법 2 : 태그의 style 속성에 <mark> 직접 적용</mark> 하는 방법
+    </p>
+    <p>
+      스타일 적용 방법 3 : <mark>외부 스타일 시트</mark>를 import 혹은 link로
+      불러와서 사용하는 방법
+    </p>
 
-		<p>스타일 태그를 통해 스타일 시트 만들때는 head태그 내에 style 태그를 작성한다</p>
+    <p>
+      스타일 태그를 통해 스타일 시트 만들때는 head태그 내에 style 태그를
+      작성한다
+    </p>
 
-		<p>
-			CSS3스타일 시트만 떼어내어 .css 확장자를 가진 파일을 만들어 스타일 시트를 넣어 저장하고 필요할 때
-			불러와서 사용할 수 있음
-		</p>
+    <p>
+      CSS3스타일 시트만 떼어내어 .css 확장자를 가진 파일을 만들어 스타일 시트를
+      넣어 저장하고 필요할 때 불러와서 사용할 수 있음
+    </p>
 
-		<hr>
-		<h3>link태그를 이용한 외부 스타일 시트 적용</h3>
-		<p>link 의 href 속성에 적용하려는 외부 스타일 시트 파일의 경로, 파일 명을 작성한다</p>
-		
-		<h3>CSS의 규칙</h3>
-		<p>CSS스타일 시트에는 규칙이 있다. </p>
-		<p style="color: green;">
-			1.css스타일은 부모태그로부터 상속된다
-			자신을 둘러싸는 태그를 부모태그 혹은 부모 요소 (element)라고 하는데,
-			부모 태그에 적용된 스타일은 <span style="color: blue;">자식 요소에 상속 적용 됨.</span>
-		</p>
+    <hr />
+    <h3>link태그를 이용한 외부 스타일 시트 적용</h3>
+    <p>
+      link 의 href 속성에 적용하려는 외부 스타일 시트 파일의 경로, 파일 명을
+      작성한다
+    </p>
 
-		<h3>스타일 합치기와 오버라이딩</h3>
-		<p>브라우저는 각 태그에 대한 디폴트 스타일을 가지고 있음 따라서 개발자가 따로 지정하는 스타일이
-			없다면 브라우저 기본 디폴트 값을 통한 스타일이 적용 됨. 예) padding, margin 은 0으로 초기화 직접 해줌
-		</p>
+    <h3>CSS의 규칙</h3>
+    <p>CSS스타일 시트에는 규칙이 있다.</p>
+    <p style="color: green">
+      1.css스타일은 부모태그로부터 상속된다 자신을 둘러싸는 태그를 부모태그 혹은
+      부모 요소 (element)라고 하는데, 부모 태그에 적용된 스타일은
+      <span style="color: blue">자식 요소에 상속 적용 됨.</span>
+    </p>
 
-		<p>특정 태그에는 4가지 종류의 스타일 시트가 적용될 수 있음</p>
-		<p>1.브라우저 디폴트 2. 외부CSS파일 시트 3.내부 스타일 시트 4.인라인 스타일 시트</p>
-		<p>스타일 합치기란 4가지 스타일 시트가 태그에 동시 적용될 때 스타일이 합쳐져 적용됨을 의미</p>
-		<p>스타일 오버라이딩이란 덮어쓰기의 의미로 4가지 루트 중 같은 속성(예를들어 폰트크기) 가 
-			여러번 적용되면 우선순위가 높은 스타일시트로 덮어씌워 짐
-		</p>
-		<p>우선순위 1번부터 4번으로 갈수록 높아짐</p>
+    <h3>스타일 합치기와 오버라이딩</h3>
+    <p>
+      브라우저는 각 태그에 대한 디폴트 스타일을 가지고 있음 따라서 개발자가 따로
+      지정하는 스타일이 없다면 브라우저 기본 디폴트 값을 통한 스타일이 적용 됨.
+      예) padding, margin 은 0으로 초기화 직접 해줌
+    </p>
 
-		<hr>
+    <p>특정 태그에는 4가지 종류의 스타일 시트가 적용될 수 있음</p>
+    <p>
+      1.브라우저 디폴트 2. 외부CSS파일 시트 3.내부 스타일 시트 4.인라인 스타일
+      시트
+    </p>
+    <p>
+      스타일 합치기란 4가지 스타일 시트가 태그에 동시 적용될 때 스타일이 합쳐져
+      적용됨을 의미
+    </p>
+    <p>
+      스타일 오버라이딩이란 덮어쓰기의 의미로 4가지 루트 중 같은 속성(예를들어
+      폰트크기) 가 여러번 적용되면 우선순위가 높은 스타일시트로 덮어씌워 짐
+    </p>
+    <p>우선순위 1번부터 4번으로 갈수록 높아짐</p>
 
-		<h3>셀렉터란</h3>
-		<p>html 태그 모양을 꾸밀 스타일 시트를 선택하는 기능</p>
-		<p>h3{~~~~~} 형태에서는 셀렉터 이름이 h3인 것</p>
-		<p>셀렉터에는 여러 유형이 있다. h3 처럼 태그 이름이 셀렉터가 되기도 하고, id 속성이나 클래스 속성의 값을
-			셀렉터로 사용하기도 함. 또 여러 셀렉터를 조합하여 사용할 수 있음
-		</p>
-		<div>
-			<div>셀렉터 <strong>설명</strong></div>
-			<ul id="list">
-				<li>ID셀렉터</li>
-				<li>class 명</li>
-				<li> <strong>스뜨롱롱</strong> 조합셀렉터</li>
-			</ul>
-			<div>
-				12345
-			</div>
-		</div>
+    <hr />
 
-		<a href="https://www.daum.net" target="_blank" >다음 링크</a>
-		<hr>
+    <h3>셀렉터란</h3>
+    <p>html 태그 모양을 꾸밀 스타일 시트를 선택하는 기능</p>
+    <p>h3{~~~~~} 형태에서는 셀렉터 이름이 h3인 것</p>
+    <p>
+      셀렉터에는 여러 유형이 있다. h3 처럼 태그 이름이 셀렉터가 되기도 하고, id
+      속성이나 클래스 속성의 값을 셀렉터로 사용하기도 함. 또 여러 셀렉터를
+      조합하여 사용할 수 있음
+    </p>
+    <div>
+      <div>셀렉터 <strong>설명</strong></div>
+      <ul id="list">
+        <li>ID셀렉터</li>
+        <li>class 명</li>
+        <li><strong>스뜨롱롱</strong> 조합셀렉터</li>
+      </ul>
+      <div>12345</div>
+    </div>
 
-		<h3>셀렉터 조합</h3>
-		<p>자식 셀렉터: 자식 셀렉터는 부모 자식 관계인 두 셀렉터를 > 기호로 조합 한 형태</p>
-		<p>자손 셀렉터: 자손 관계인 2개 이상의 태그를 나열한 형태</p>
-		<p>전체 셀렉터: * 전체 선택자는 브라우저 기본 값 덮어씌울 때 많이 사용</p>
-		<p>속성 셀렉터: HTML 태그의 특정 속성 attribute 에 대해 일치하는 태그에만 스타일 적용되도록 선택하는 셀렉터</p>
-		<p>가상 셀렉터: 특정 상황일 때를 선택하게 하는 셀렉터</p>
+    <a href="https://www.daum.net" target="_blank">다음 링크</a>
+    <hr />
 
-		<ul>
-			<li>hover 마우스 올라갈 때</li>
-			<li>active 마우스로 누르고 있는 상황</li>
-			<li>focus 폼 요소가 키보드나 마우스로 클릭해 포커스 활성화 된 상태</li>
-			<li>link 방문하지 않은 링크 상태</li>
-			<li>visited 방문한 링크 상태</li>
-			<li>first-letter 첫 글자</li>
-			<li>first-line 첫 라인</li>
-			<li>nth-child(1) 첫번째 자식 셀렉타</li>
-			<li>nth-child(even) 짝수 번째 모든 자식들 셀렉터터</li>
-		</ul>
+    <h3>셀렉터 조합</h3>
+    <p>
+      자식 셀렉터: 자식 셀렉터는 부모 자식 관계인 두 셀렉터를 > 기호로 조합 한
+      형태
+    </p>
+    <p>자손 셀렉터: 자손 관계인 2개 이상의 태그를 나열한 형태</p>
+    <p>전체 셀렉터: * 전체 선택자는 브라우저 기본 값 덮어씌울 때 많이 사용</p>
+    <p>
+      속성 셀렉터: HTML 태그의 특정 속성 attribute 에 대해 일치하는 태그에만
+      스타일 적용되도록 선택하는 셀렉터
+    </p>
+    <p>가상 셀렉터: 특정 상황일 때를 선택하게 하는 셀렉터</p>
 
-		<h3>색상과 텍스트를 꾸미는 CSS속성</h3>
-		<p>CSS에서 색상을 표현하는 체계는 RGA, RGBA, HSL 등</p>
-		<p>주로 RGB체계를 사용한다</p>
-		
-		<div id="hhh">색상관련 프로퍼티(속성)
-		</div>
-		<p>color : 텍스트 색상 background-color : 배경 색상 border-color : 테두리 색상</p>
+    <ul>
+      <li>hover 마우스 올라갈 때</li>
+      <li>active 마우스로 누르고 있는 상황</li>
+      <li>focus 폼 요소가 키보드나 마우스로 클릭해 포커스 활성화 된 상태</li>
+      <li>link 방문하지 않은 링크 상태</li>
+      <li>visited 방문한 링크 상태</li>
+      <li>first-letter 첫 글자</li>
+      <li>first-line 첫 라인</li>
+      <li>nth-child(1) 첫번째 자식 셀렉타</li>
+      <li>nth-child(even) 짝수 번째 모든 자식들 셀렉터터</li>
+    </ul>
 
-		<hr>
+    <h3>색상과 텍스트를 꾸미는 CSS속성</h3>
+    <p>CSS에서 색상을 표현하는 체계는 RGA, RGBA, HSL 등</p>
+    <p>주로 RGB체계를 사용한다</p>
 
-		<div class="boxs">1</div>
-		<div class="boxs">2</div>
-		<div class="boxs">3</div>
-		<div class="boxs">4</div>
-		<div class="boxs">5</div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <hr>
+    <div id="hhh">색상관련 프로퍼티(속성)</div>
+    <p>
+      color : 텍스트 색상 background-color : 배경 색상 border-color : 테두리
+      색상
+    </p>
 
-		<div id="container"><div id="inside">내부<div id="inside2">123</div></div></div>
+    <hr />
 
-		<div><div></div></div>
+    <div class="boxs">1</div>
+    <div class="boxs">2</div>
+    <div class="boxs">3</div>
+    <div class="boxs">4</div>
+    <div class="boxs">5</div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <hr />
 
+    <div id="container">
+      <div id="inside">
+        내부
+        <div id="inside2">123</div>
+      </div>
+    </div>
 
-		<h3>텍스트 관련 속성</h3>
-		<p>텍스트 관련 속성 대표적 예 text-indent / text-align / text-decoration </p>
-		<p>text-indent의 값 : 길이값 or 퍼센트 단위</p>
-		<p>text-align: left or right or center</p>
-		<p>text-decoration: none or underline or overline or line-through</p>
-    <br>
-    <hr>
+    <div><div></div></div>
+
+    <h3>텍스트 관련 속성</h3>
+    <p>텍스트 관련 속성 대표적 예 text-indent / text-align / text-decoration</p>
+    <p>text-indent의 값 : 길이값 or 퍼센트 단위</p>
+    <p>text-align: left or right or center</p>
+    <p>text-decoration: none or underline or overline or line-through</p>
+    <br />
+    <hr />
     <h3>CSS의 단위</h3>
-    <p>CSS 스타일 시트에서 단위를 작성하는 (크기, 두께, 높이 등) 단위에는 px, %, em 등 여러 방법 있음</p>
-    <p style="font-size: 2em;">em:배수 브라우저가 폰트 사이즈 16px => 1em 폰트 사이즈의 1배</p>
-    <p style="font-size: 2rem;">rem:배수 브라우저가 폰트 사이즈 16px => 1em 폰트 사이즈의 1배</p>
-    <p>rem과 em의 차이 :rem과 em 은 모두 상대적 크기 단위, 요소의 크기를 부모 요소의 크기에 비례하여 조정한다. 
-      rem은 루트(html)의 폰트 크기를 기준으로 한다.
-      em은 부모 요소의 폰트 크기를 기준으로 한다.
-      루트요소(html)의 폰트 크기가 16px(기본값)일 때 1rem은 16px만큼을 의미하고 em은 부모로부터 상속받은 폰트 크기에 따라 배율이 설정 되는 것
+    <p>
+      CSS 스타일 시트에서 단위를 작성하는 (크기, 두께, 높이 등) 단위에는 px, %,
+      em 등 여러 방법 있음
+    </p>
+    <p style="font-size: 2em">
+      em:배수 브라우저가 폰트 사이즈 16px => 1em 폰트 사이즈의 1배
+    </p>
+    <p style="font-size: 2rem">
+      rem:배수 브라우저가 폰트 사이즈 16px => 1em 폰트 사이즈의 1배
+    </p>
+    <p>
+      rem과 em의 차이 :rem과 em 은 모두 상대적 크기 단위, 요소의 크기를 부모
+      요소의 크기에 비례하여 조정한다. rem은 루트(html)의 폰트 크기를 기준으로
+      한다. em은 부모 요소의 폰트 크기를 기준으로 한다. 루트요소(html)의 폰트
+      크기가 16px(기본값)일 때 1rem은 16px만큼을 의미하고 em은 부모로부터
+      상속받은 폰트 크기에 따라 배율이 설정 되는 것
     </p>
 
     <p>px:픽셀 수</p>
-    
+
     <p>cm:센티미터</p>
     <p>mm:밀리미터</p>
     <p>in:인치</p>
     <p>pt:포인터 1pt = 1/72in</p>
-
 
     <p>deg:각도 => 변환효과 등에서 쓰임</p>
 
@@ -585,37 +728,47 @@
     <p>보더 영역: 테두리 영역으로 패딩 외부의 외곽선</p>
     <p>마진 영역: 박스의 맨 바깥 영역으로 인접 요소와의 거리</p>
 
-    <hr>
+    <hr />
 
-    <div class="bbb">
-      divdivdiv
-    </div>
+    <div class="bbb">divdivdiv</div>
 
     <p>컨텐츠 크기: width, height</p>
     <p>패딩 크기: padding (top,left,bottom,right)</p>
     <p>테두리 크기 : border-top-width(4방향)</p>
     <p>여백 크기: margin-top(4방향)</p>
-    <p>단축프로퍼티(4방향 공통 지정): padding, margin, border-width </p>
+    <p>단축프로퍼티(4방향 공통 지정): padding, margin, border-width</p>
     <p>스타일관련: border-style</p>
     <p>색상관련 : border-color</p>
     <p>테두리 단축프로퍼티 : border</p>
     <marquee behavior="scroll" direction="up">
-      <p style="color: red;">빨</p>
-      <p style="color: orange;">주</p>
-      <p style="color: yellow;">노</p>
-      <p style="color: green;">초</p>
-      <p style="color: blue;">파</p>
-      <p style="color: navy;">남</p>
-      <p style="color: purple;">보</p>
+      <p style="color: red">빨</p>
+      <p style="color: orange">주</p>
+      <p style="color: yellow">노</p>
+      <p style="color: green">초</p>
+      <p style="color: blue">파</p>
+      <p style="color: navy">남</p>
+      <p style="color: purple">보</p>
     </marquee>
-    
+
     <h3>박스의 색</h3>
-    <p>패딩의 색은 따로 없으며 태그의 배경색이 패딩에 칠해진다. 패딩은 컨텐츠의 확장</p>
+    <p>
+      패딩의 색은 따로 없으며 태그의 배경색이 패딩에 칠해진다. 패딩은 컨텐츠의
+      확장
+    </p>
     <p>여백은 투명하게 처리되어 부모태그의 배경색이 비춰 보인다</p>
     <p>테두리 색은 개발자들이 임의로 설정하여 줄 수 있음. border-color</p>
-    
-    <div style="background-color: red; height: 200px;">
-      <p style="background-color: yellow; border: 10px solid green; margin-top: 20px; border-radius: 1px 20px 40px 30px;">박스모델</p>
+
+    <div style="background-color: red; height: 200px">
+      <p
+        style="
+          background-color: yellow;
+          border: 10px solid green;
+          margin-top: 20px;
+          border-radius: 1px 20px 40px 30px;
+        "
+      >
+        박스모델
+      </p>
     </div>
 
     <h3>테두리 관련 속성</h3>
@@ -624,71 +777,120 @@
     <h3>배경 관련 속성</h3>
     <p>배경 색상 : background-color 값:컬러코디/rgb/16진수컬러</p>
     <p>배경 이미지 : background-image 값:url이미지주소</p>
-    <p>배경 이미지 위치 : background-position 값:left top이 디폴트이고 left center/ left bottom / right center / right bottom /
-      center top / center center 등 지정 가능
+    <p>
+      배경 이미지 위치 : background-position 값:left top이 디폴트이고 left
+      center/ left bottom / right center / right bottom / center top / center
+      center 등 지정 가능
     </p>
     <p>배경 이미지 크기 : background-size 값: 100px 100px 가로 세로</p>
-    <p>배경 이미지 반복성 설정 : background-repeat 값: repeat - y/ repeat-x/ no-repeat/ repeat(디폴트값)
+    <p>
+      배경 이미지 반복성 설정 : background-repeat 값: repeat - y/ repeat-x/
+      no-repeat/ repeat(디폴트값)
     </p>
 
-    <p>background 단축 프로퍼티의 값 : red url(이미지주소) center center 100px 100px repeat-x</p>
+    <p>
+      background 단축 프로퍼티의 값 : red url(이미지주소) center center 100px
+      100px repeat-x
+    </p>
 
-    <div style="background-color: gray; background-size: 500px 500px; background-image: url(src/rabbit.jpg); background-repeat: no-repeat; background-position: center center; height: 1000px;">배경 이미지 속성 관련 박스</div>
+    <div
+      style="
+        background-color: gray;
+        background-size: 500px 500px;
+        background-image: url(src/rabbit.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 1000px;
+      "
+    >
+      배경 이미지 속성 관련 박스
+    </div>
 
     <h3>시각적 효과</h3>
     <p>텍스트에 그림자 효과</p>
     <p>text-shadow</p>
-    <p>텍스트쉐도우 프로퍼티는 h-shadow / v-shadow / blur-radius / color 등 속성 값을 줄 수 있음</p>
+    <p>
+      텍스트쉐도우 프로퍼티는 h-shadow / v-shadow / blur-radius / color 등 속성
+      값을 줄 수 있음
+    </p>
 
-    <div style="text-shadow: 3px 3px 10px red;">
-      shadow box
-    </div>
+    <div style="text-shadow: 3px 3px 10px red">shadow box</div>
 
     <p>박스 쉐도우 box-shadow</p>
-    <p>box-shadw: h-shadow, v-shadow, bluer-radius spread-radius, color </p>
+    <p>box-shadw: h-shadow, v-shadow, bluer-radius spread-radius, color</p>
 
-    <div style="box-shadow: 5px 3px 10px 10px rebeccapurple;">
-      box shadow
-    </div>
+    <div style="box-shadow: 5px 3px 10px 10px rebeccapurple">box shadow</div>
 
     <h3>CSS를 이용한 태그의 배치</h3>
     <p>HTML 요소들은 웹 페이지에 작성한 순서대로 출력되는 것이 기본값</p>
     <p>기본 구조에 css를 적용하여 배치를 변경할 수 있음</p>
-    <p>배치관련 속성 display / left/ top/ bottom/ right / float/ z-index/ visibility/ overflow 등이 있음</p>
-    <p>예를 들어 div태그의 기본 속성이 블럭형태인것을 display 속성을 활용해서 span 태그처럼
-      인라인 형태로 변경할 수 있음
+    <p>
+      배치관련 속성 display / left/ top/ bottom/ right / float/ z-index/
+      visibility/ overflow 등이 있음
+    </p>
+    <p>
+      예를 들어 div태그의 기본 속성이 블럭형태인것을 display 속성을 활용해서
+      span 태그처럼 인라인 형태로 변경할 수 있음
     </p>
 
     <p>대표적인 블록 태그 : p / div / ul</p>
     <p>대표적인 인라인 태그 : span / a/ img</p>
 
-    <p>앞에서 개발자 도구를 통해 봤던 박스 모델에 따라 브라우저는 각 HTML태그를 하나의 박스로 다룬다.</p>
+    <p>
+      앞에서 개발자 도구를 통해 봤던 박스 모델에 따라 브라우저는 각 HTML태그를
+      하나의 박스로 다룬다.
+    </p>
 
-    <p>기본적으로 브라우저는 블록 태그는 블록박스로, 인라인 태그는 인라인 박스로 구성한다.</p>
+    <p>
+      기본적으로 브라우저는 블록 태그는 블록박스로, 인라인 태그는 인라인 박스로
+      구성한다.
+    </p>
 
-    <p>블록은 새로운 라인에서 브라우저의 좌측 끝부터 우측 끝까지 영역을 차지하려는 속성</p>
-    <p>인라인은 해당 인라인 태그가 포함하는 컨텐츠 만큼의 영역을 차지하는 속성</p>
+    <p>
+      블록은 새로운 라인에서 브라우저의 좌측 끝부터 우측 끝까지 영역을
+      차지하려는 속성
+    </p>
+    <p>
+      인라인은 해당 인라인 태그가 포함하는 컨텐츠 만큼의 영역을 차지하는 속성
+    </p>
 
     <div>div내부 <span>태그</span></div>
     <div>div내부 <span>태그</span></div>
     <div>div내부 <span>태그</span></div>
 
-    <p>기존 블럭 속성과 인라인 속성을 혼용한 형태인 inline-block이라는 형태도 display속성을 통해 설정 가능</p>
+    <p>
+      기존 블럭 속성과 인라인 속성을 혼용한 형태인 inline-block이라는 형태도
+      display속성을 통해 설정 가능
+    </p>
 
     <p>display에 적용할 수 있는 속성값 3가지 비교</p>
-    <p>1.display:block 속성 설정 => 항상 새라인에서 시작한다. 블록 박스 내에만 배치.
-      옆에 다른 요소 배치 불가능, width와 height로 크기 조절 가능. padding/margin/border 조절 가능
+    <p>
+      1.display:block 속성 설정 => 항상 새라인에서 시작한다. 블록 박스 내에만
+      배치. 옆에 다른 요소 배치 불가능, width와 height로 크기 조절 가능.
+      padding/margin/border 조절 가능
     </p>
-    <p>2.display:inline 속성 설정 => 새 라인에서 시작하지 않음, 모든 박스 내 배치 가능, 옆에 다른 요소 배치 가능, width 와 height로 크기 조절 불가능, margin-top margin-bottom 조절 불가능</p>
-    <p>3.display:inline-block 속성 설정 => 새 라인에서 시작하지 않음, 모든 박스 내 배치 가능, 옆에 다른 요소 배치 가능, width와 height 조절 가능, padding/ margin/ border 설정 가능</p>
+    <p>
+      2.display:inline 속성 설정 => 새 라인에서 시작하지 않음, 모든 박스 내 배치
+      가능, 옆에 다른 요소 배치 가능, width 와 height로 크기 조절 불가능,
+      margin-top margin-bottom 조절 불가능
+    </p>
+    <p>
+      3.display:inline-block 속성 설정 => 새 라인에서 시작하지 않음, 모든 박스
+      내 배치 가능, 옆에 다른 요소 배치 가능, width와 height 조절 가능, padding/
+      margin/ border 설정 가능
+    </p>
 
-    <span style="display: block; width: 500px; height: 500px;">span 태그를 block으로 바꾸기기</span>
+    <span style="display: block; width: 500px; height: 500px"
+      >span 태그를 block으로 바꾸기기</span
+    >
 
     <div>
-      <span style="display: block; width: 100px; height: 50px;">block span</span>과 <span style="display: block; width: 100px; height: 50px;">block span</span>
+      <span style="display: block; width: 100px; height: 50px">block span</span
+      >과
+      <span style="display: block; width: 100px; height: 50px">block span</span>
     </div>
 
-    <div style="background-color: orange;">
+    <div style="background-color: orange">
       <div>inline-div</div>
       <div>inline-div</div>
       <div>inline-div</div>
@@ -696,14 +898,31 @@
 
     <h3>nomarl flow</h3>
     <p>기본 HTML 선언 순서 구조 대로 출력되는 형태를 노멀 플로우라고 함</p>
-    <p>position 속성을 사용하면 normal flow를 무시하고 원하는 위치에 박스를 배치할 수 있음</p>
-    <p>position 속성의 값 : static(기본값:normal flow)/ relative / absolute/ fixed</p>
-    <p>static 정적배치상태에서는 left/top/right/bottom 등 값을 설정할 수 없음 </p>
-    <p>relative 상대배치 : static 기본 배치에서 left/top/bottom/right 프로퍼티 값을 준만큼 상대적으로 이동한 위치베 배치하는 방법</p>
-    <p>absolute 절대 배치: HTML 태그를 절대 위치에 배치 가능, 절대 위치는 l/r/t/b 으로 값을 정하고 부모 태그안에서의 상대 좌표이다(공중에 뜬다).</p>
-    <p>absolute 포지션을 적용하면 div가 일반적인 문서 흐름에 따른 위치를 차지하지 않고 공중에 떠서 배치 된다. 즉, absolute로 설정된 요소는 문서 레이아웃 흐름에서 제외된다. 그저 부모의 위치 기반의 상대 위치로 배치됨, div블록요소처럼 배치되지 않음</p>
-
-
+    <p>
+      position 속성을 사용하면 normal flow를 무시하고 원하는 위치에 박스를
+      배치할 수 있음
+    </p>
+    <p>
+      position 속성의 값 : static(기본값:normal flow)/ relative / absolute/
+      fixed
+    </p>
+    <p>
+      static 정적배치상태에서는 left/top/right/bottom 등 값을 설정할 수 없음
+    </p>
+    <p>
+      relative 상대배치 : static 기본 배치에서 left/top/bottom/right 프로퍼티
+      값을 준만큼 상대적으로 이동한 위치베 배치하는 방법
+    </p>
+    <p>
+      absolute 절대 배치: HTML 태그를 절대 위치에 배치 가능, 절대 위치는 l/r/t/b
+      으로 값을 정하고 부모 태그안에서의 상대 좌표이다(공중에 뜬다).
+    </p>
+    <p>
+      absolute 포지션을 적용하면 div가 일반적인 문서 흐름에 따른 위치를 차지하지
+      않고 공중에 떠서 배치 된다. 즉, absolute로 설정된 요소는 문서 레이아웃
+      흐름에서 제외된다. 그저 부모의 위치 기반의 상대 위치로 배치됨,
+      div블록요소처럼 배치되지 않음
+    </p>
 
     <div class="test" id="a">A</div>
     <div class="test" id="down">B</div>
@@ -727,33 +946,59 @@
       <div style="width: 40%; height: 80%; background-color: aqua;"></div>
     </div> -->
 
-    <p>fixed 고정 배치 : 스크롤을 내리거나 브라우저 크기를 변경해도 항상 같은 위치에 고정되는 배치 방법, 고정배치는 절대 배치와 달리 뷰포트에 고정 시켜 브라우저에 항상 보이게 한다.(스크롤을 따라다닌다.)</p>
+    <p>
+      fixed 고정 배치 : 스크롤을 내리거나 브라우저 크기를 변경해도 항상 같은
+      위치에 고정되는 배치 방법, 고정배치는 절대 배치와 달리 뷰포트에 고정 시켜
+      브라우저에 항상 보이게 한다.(스크롤을 따라다닌다.)
+    </p>
 
     <a href="">
-      <div style="width: 100px; height: 100px; background-color: rgb(54, 46, 133); position: fixed;  bottom:10px; color: wheat; text-align: center; border-radius: 50%; right: 10px;">
+      <div
+        style="
+          width: 100px;
+          height: 100px;
+          background-color: rgb(54, 46, 133);
+          position: fixed;
+          bottom: 10px;
+          color: wheat;
+          text-align: center;
+          border-radius: 50%;
+          right: 10px;
+        "
+      >
         fixed
-      </div>  
+      </div>
     </a>
-    
+
     <h3>z-index</h3>
-    <p>z-index는 HTML 요소들의 z축 stacking 쌓기 설정 방법으로 값이 클수록 위에 쌓인다.</p>
-    
+    <p>
+      z-index는 HTML 요소들의 z축 stacking 쌓기 설정 방법으로 값이 클수록 위에
+      쌓인다.
+    </p>
+
     <div id="zboxcont">
       <div id="z1">1번</div>
       <div id="z2">2번</div>
     </div>
 
     <h3>감추기 속성 visibility</h3>
-    <p>visibility속성을 사용하면 HTML 태그를 나타나게 할 것인지 숨길 것인지를 지정할 수 있음. visibility속성에 대한 값으로는 visible(보이게) 혹은 hidden(안보이게) 값 지정</p>
-    <p>visibility를 hidden으로 처리해도 보이진 않지만 해당 태그가 영역을 차지하고 있음.</p>
+    <p>
+      visibility속성을 사용하면 HTML 태그를 나타나게 할 것인지 숨길 것인지를
+      지정할 수 있음. visibility속성에 대한 값으로는 visible(보이게) 혹은
+      hidden(안보이게) 값 지정
+    </p>
+    <p>
+      visibility를 hidden으로 처리해도 보이진 않지만 해당 태그가 영역을 차지하고
+      있음.
+    </p>
     <p>display:none의 경우 영역도 할당되지 않고 보이지 않음</p>
 
     <ul>
       <li>12 <span>3</span>45</li>
       <li>가나 <span>다라마</span></li>
       <li>ABCD <span>E</span></li>
-      <li style="display: none;">abcd</li>
-      <li style="visibility: hidden;">abcd</li>
+      <li style="display: none">abcd</li>
+      <li style="visibility: hidden">abcd</li>
     </ul>
 
     <h3>overflow 컨텐츠가 크기를 넘어갈 때</h3>
@@ -775,9 +1020,19 @@
     <p>list-style-position: 아이템 마커 출력 위치 지정</p>
     <p>list-style: 아이템 마커 단축 프로퍼티</p>
 
-    <p>list-style-type의 속성 값은 이미지 마커를 만들 수 있다. background-image 처럼 url로 이미지 지정</p>
-    <p>list-style-position의 값은 inside/outside 로 마커가 컨텐츠 영역 안/밖 에 오도록 설정</p>
-    <p>list-style 단축 프로퍼티는 위 속성들을 한번에 설정한다. 값에는 1.list-style-type 2. list-style-position 3.list-style-image 순으로 한번에 작성하여 값 할당</p>
+    <p>
+      list-style-type의 속성 값은 이미지 마커를 만들 수 있다. background-image
+      처럼 url로 이미지 지정
+    </p>
+    <p>
+      list-style-position의 값은 inside/outside 로 마커가 컨텐츠 영역 안/밖 에
+      오도록 설정
+    </p>
+    <p>
+      list-style 단축 프로퍼티는 위 속성들을 한번에 설정한다. 값에는
+      1.list-style-type 2. list-style-position 3.list-style-image 순으로 한번에
+      작성하여 값 할당
+    </p>
 
     <nav id="menubar">
       <ul>
@@ -790,34 +1045,57 @@
 
     <h3>CSS를 통한 동적 변화</h3>
     <p>JS없이 CSS만으로 애니메이션/ 전환/ 변환 정도는 가능</p>
-    <p>애니메이션:HTML 태그의 모양 변화를 시간 단위로 설정해서 애니메이션 효과를 만들 수 있음.</p>
+    <p>
+      애니메이션:HTML 태그의 모양 변화를 시간 단위로 설정해서 애니메이션 효과를
+      만들 수 있음.
+    </p>
     <p>1. 시간별 애니메이션 장면 작성</p>
     <p>@keyframes키워드를 이용해서 시간 별로 HTML가 변화하는 장면 설정</p>
-    <p>@keyframes name{ 시간비율 {스타일} 시간비율 {스타일}} </p>
+    <p>@keyframes name{ 시간비율 {스타일} 시간비율 {스타일}}</p>
     <p>0%{color red} 50%{color yellow} 100%{color blue}</p>
     <p>0%{left:0} 30%{left:210}100%{left:210}</p>
     <p>0~100 설정시 from{} to{}로 작성 가능</p>
-    
+
     <div class="element">애니메이션 효과</div>
 
     <p>animation-name: 애니메이션의 정의된 이름 @keyframes 이름</p>
     <p>animation-duration : 애니메이션의 시간 10s</p>
     <p>animation-iteration-count : 애니메이션의 반복 횟수 infinite or 숫자자</p>
-    <p>animation-timing-function : 애니메이션의 타이밍 함수 설정 linear / ease(디폴트) 시작과 끝은 천천히 중앙은 빠르게 ease-in 시작은 천천히 끝은 빠르게 ease-out 시작은 빠르고 끝은 천천히 / ease-in-out 시작과 끝은 천천히 중간은 빠르게
+    <p>
+      animation-timing-function : 애니메이션의 타이밍 함수 설정 linear /
+      ease(디폴트) 시작과 끝은 천천히 중앙은 빠르게 ease-in 시작은 천천히 끝은
+      빠르게 ease-out 시작은 빠르고 끝은 천천히 / ease-in-out 시작과 끝은 천천히
+      중간은 빠르게
     </p>
-    
-    <p>전환: HTML태그에 적용된 css값이 변할 때, 값의 변화를 서서히 진행시켜 애니메이션 효과를 내는 것이며 1회만 이루어짐</p>
+
+    <p>
+      전환: HTML태그에 적용된 css값이 변할 때, 값의 변화를 서서히 진행시켜
+      애니메이션 효과를 내는 것이며 1회만 이루어짐
+    </p>
     <p>이 전환을 유발하는 프로퍼티를 전환프로퍼티라고 함</p>
-    
+
     <p>transition: 전환프로퍼티 전환시간</p>
-    <p>전환프로퍼티 : 해당 프로퍼티의 값이 변경되면 현재 값에서 새 값으로 저환효과 시작</p>
+    <p>
+      전환프로퍼티 : 해당 프로퍼티의 값이 변경되면 현재 값에서 새 값으로
+      저환효과 시작
+    </p>
     <p>전환시간: 현재 값에서 새 값으로 전환되는데 걸리는 시간간</p>
 
-    <div>transition <span id="sss">전환</span>효과는 프로퍼티 값 변화를 서서히 나타냄</div>
+    <div>
+      transition <span id="sss">전환</span>효과는 프로퍼티 값 변화를 서서히
+      나타냄
+    </div>
 
-    <p>변환: CSS의 변환 기능을 이용하면 텍스트나 이미지를 회전/확대 등 효과를 주는 것, 변환 효과에서 사용되는 단위 deg 각도에 따라 시계방향으로 움직인다.</p>
+    <p>
+      변환: CSS의 변환 기능을 이용하면 텍스트나 이미지를 회전/확대 등 효과를
+      주는 것, 변환 효과에서 사용되는 단위 deg 각도에 따라 시계방향으로
+      움직인다.
+    </p>
 
-    <p>변환 표과의 프로퍼티 명은 transform이고 transform 프로퍼티의 값으로는 여러 함수가 올 수 있다.</p>
+    <p>
+      변환 표과의 프로퍼티 명은 transform이고 transform 프로퍼티의 값으로는 여러
+      함수가 올 수 있다.
+    </p>
     <p>transform 프로퍼티의 값으로 올 수 있는 함수의 목록</p>
     <p>translate(x,y): 태그를 x,y 만큼 이동</p>
     <p>translateX(n): x축방향으로 n만큼 이동</p>
@@ -827,12 +1105,18 @@
     <p>scaleY(n): Y축 방향 n배 확대</p>
     <p>rotate(angle): deg만큼 회전(시계방향</p>
     <p>skew(xangle,yangle): x각도 y각도 만큼 기울임</p>
-    
-    <div id="imgdiv"><img src="src/rabbit.jpg" alt=""></div>
+
+    <div id="imgdiv"><img src="src/rabbit.jpg" alt="" /></div>
 
     <h1>자바스크립트</h1>
-    <p>자바스크립트는 모든 브라우저에서 실행되는 웹 범용 언어로 HTML 페이지에 내장된다.</p>
-    <p>자바스크립트 소스 코드는 컴파일 과정 없이 브라우저 내부의 자바스크립트 처리기(인터프리터)에 의해 바로 실행된다</p>
+    <p>
+      자바스크립트는 모든 브라우저에서 실행되는 웹 범용 언어로 HTML 페이지에
+      내장된다.
+    </p>
+    <p>
+      자바스크립트 소스 코드는 컴파일 과정 없이 브라우저 내부의 자바스크립트
+      처리기(인터프리터)에 의해 바로 실행된다
+    </p>
     <p>자바스크립트는 C언어 구조를 차용하고 단순화 시킨 것</p>
     <p>동적인 효과를 구현할 때 자바스크립트로 구성</p>
     <p>사용자의 입력처리 계산</p>
@@ -848,34 +1132,55 @@
     <p>3.외부 js파일에 작성</p>
     <p>4.URL부분에 작성</p>
 
-    <img src="src/rabbit.jpg" alt="img" onclick="this.src='src/test.jpg'">
-    <p>위 경우 처럼 HTML 태그의 이벤트리스너 속성에 직접 JS를 작성하는 방식은 아주 간단한 코드일 때 사용</p>
+    <img src="src/rabbit.jpg" alt="img" onclick="this.src='src/test.jpg'" />
+    <p>
+      위 경우 처럼 HTML 태그의 이벤트리스너 속성에 직접 JS를 작성하는 방식은
+      아주 간단한 코드일 때 사용
+    </p>
 
-    <p>onmouseover(마우스 영역에 올라갔을 때) onmouseout(마우스가 영역에서 나왔을 때)</p>
+    <p>
+      onmouseover(마우스 영역에 올라갔을 때) onmouseout(마우스가 영역에서 나왔을
+      때)
+    </p>
 
-    <div style="width: 500px; height: 500px;">
-      <img src="src/test.jpg" alt="" width="100%" height="100%" onmouseover="this.src='src/test2.jpg'" onmouseout="this.src='src/test.jpg'" onclick="this.src='src/test3.jpg'">
+    <div style="width: 500px; height: 500px">
+      <img
+        src="src/test.jpg"
+        alt=""
+        width="100%"
+        height="100%"
+        onmouseover="this.src='src/test2.jpg'"
+        onmouseout="this.src='src/test.jpg'"
+        onclick="this.src='src/test3.jpg'"
+      />
     </div>
 
-    <div style="width: 500px; height: 500px;">
-      <img src="src/test.jpg" alt="" width="100%" height="100%" onmouseover="over(this)" onmouseout="out(this)">
+    <div style="width: 500px; height: 500px">
+      <img
+        src="src/test.jpg"
+        alt=""
+        width="100%"
+        height="100%"
+        onmouseover="over(this)"
+        onmouseout="out(this)"
+      />
     </div>
 
-    <p>script 태그는 head 안에 넣어도 되고, body 안에 넣어도 되고, 여러개 만들어도 됨. body에 가장 아래쪽에 만드는게 권장장</p>
+    <p>
+      script 태그는 head 안에 넣어도 되고, body 안에 넣어도 되고, 여러개
+      만들어도 됨. body에 가장 아래쪽에 만드는게 권장장
+    </p>
 
     <a href="javaScript:alert('123')">링크클릭</a>
 
-    <p>JS에서 사용자 입력은 prompt함수를 사용한다. promt함수의 매개변수는 1. 매세지, 2.디폴트입력값값</p>
+    <p>
+      JS에서 사용자 입력은 prompt함수를 사용한다. promt함수의 매개변수는 1.
+      매세지, 2.디폴트입력값값
+    </p>
 
     <p>alert함수는 경고창 출력</p>
 
     <p>confirm 함수는 사용자의 확인 or 취소 리턴받음</p>
-
-
-
-
-
-
 
     <pre>
       <br>

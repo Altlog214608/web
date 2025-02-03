@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Game</title>
     <style>
+      table {
+        border-collapse: separate;
+        border-spacing: 10px;
+      }
       td {
         width: 100px;
         height: 100px;
         border: 1px solid black;
       }
+
+      /* .effectCSS{
+
+        } */
     </style>
   </head>
   <body>
@@ -39,6 +47,7 @@
         <td></td>
       </tr>
     </table>
+    <p id="counter">1</p>
     <script src="imagegame.js"></script>
   </body>
 </html>
@@ -52,5 +61,6 @@
   이미지의 종류는 8개이다.
   총 몇 번 엔터를 했는지 체크하는 게임
   전체 이미지를 다 맞춰 뒤집으면 끝
-
+  태그에 이벤트리스너를 직접등록하지 않는다
+  짝이 맞지 않는 카드르 뽑으면 카드 위치는 유지된 상태로 초기화
 -->

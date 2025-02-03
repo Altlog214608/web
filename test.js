@@ -612,10 +612,12 @@ function bub() {
 let tds;
 let prevIndex = 0;
 let index = 0;
+
 window.onload = function () {
   tds = document.getElementById("td");
   tds[index].style.backgroundColor = "orchid";
 };
+
 window.onkeydown = function (e) {
   switch (e.key) {
     case "ArrowDown":

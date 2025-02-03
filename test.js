@@ -407,7 +407,7 @@ btn.addEventListener("click", () => {
     } else {
       setTimeout(() => {
         alert("end");
-      }, 0);
+      }, 2);
     }
   }
 });
@@ -454,3 +454,37 @@ function roll(rnd) {
 }
 
 function end() {}
+
+//이벤트와 이벤트 객체
+//이벤트란 마우스/키보드 입력, 이미지나 문서의 로딩, 타임아웃 등 사용자의 입력 외
+//문서나 브라우저의 상태 변화를 브라우저가 자바스크립트에게 알리는 notification
+
+//이벤트리스너란
+//발생한 이벤트에 대한 적절한 대처를 하기 위해 작성된 자바스크립트 코드
+
+//주요 이벤트리스너 목록
+//onkeydown : 키보드의 아무 키 누르는 순간
+//onkeypress : 키보드의 알파뉴메릭(알파벳과 숫자만 허용) 키 누르는 순간
+//onkeyup : 키보드 누른 키 놓는 순간
+//onclick : 좌클릭
+//oncontextmenu : 우클릭
+//ondbclick : 더블 클릭
+//onmousedown : 마우스의 물리버튼 누르는 경우
+//onmouseenter : 마우스 커서가 객체 영역 안으로 들어오는 순간
+//onmouseleave : 마우스 커서가 객체 영역 밖으로 나가는 순간
+//onmouseover : 마우스 커서가 객체 영역 안으로 들어오는 순간(자식 객체에게 전파)
+//onmouseout : 마우스 커서가 객체 영역 밖으로 나가는 순간(자식 객체에게 전파)
+//onmouseup : 누른 마우스 버튼 놓는 순간간
+//onwheel : 마우스 휠 변화 생길 때
+//onabort : 이미지나 문서 로딩이 중단되는 경우
+//onerror : 문서나 이미지, 리소스 등의 로딩에서 오류 발생할 때
+//onload : 문서나 이미지의 로딩이 완료된 후
+//onresize : 윈도우, 프레임 혹은 객체의 크기가 변경될 때
+//onfocus : 객체가 포커스를 가질 때
+//onchange : 체크박스, input 등의 내용이 변하는 경우
+//onsearch : 폼이 reset 되는 경우
+//onreset : input type search 창에 엔터 입력시
+//onselect : input 영역의 텍스트를 선택할 때
+//onsubmit : 제출버튼 클릭시 발생
+
+//이벤트 리스너 만드는 방법

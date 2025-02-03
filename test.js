@@ -522,5 +522,28 @@ d11.addEventListener("mouseup", (event) => {
 });
 
 document.body.addEventListener("keypress", (event) => {
-  console.log(event);
+  console.log(KeyboardEvent.DOM_KEY_LOCATION_LEFT);
 });
+
+//이벤트 객체의 target 프로퍼티
+//타겟 프로퍼티는 이벤트의 대상 객체를 가리킴
+//이벤트 타겟이란 이벤트를 유발시킨 객체를 의미함
+//target과 유사한 프로퍼티로 currentTarget프로퍼티가 있다.
+//currentTarget은 이벤트가 흘러가는 경로 상에 있는 DOM 객체 중 현재 이벤트 리스너를 실행하고 있는 DOM 객체를 가리킨다.
+
+var ppp = document.getElementById("d11");
+ppp.addEventListener("click", ff);
+
+function ff(e) {
+  let text =
+    "type:" +
+    e.type +
+    "<br>" +
+    "target:" +
+    e.target +
+    "<br>" +
+    "currentTarget:" +
+    e.currentTarget +
+    "<br>";
+  ppp.innerHTML = text;
+}

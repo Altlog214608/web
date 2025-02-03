@@ -488,3 +488,17 @@ function end() {}
 //onsubmit : 제출버튼 클릭시 발생
 
 //이벤트 리스너 만드는 방법
+//1. HTML 태그에 직접 작성하는 방법
+// <p id='pp' onclick=''>p태그입니다</p>
+//2. DOM 객체의 이벤트리스너 프로퍼티에 작성하는 방법
+// var pp = document.getElementById('pp'); //DOM 객체화
+// function x(){}; //함수 x 선언
+// pp.onmouseover = x;  //DOM 객체의 이벤트리스너 프로퍼티에 함수를 등록
+//3. DOM객체의 addEventListener() 메서드로 등록하는 방법
+//addEventListener(eventname,Listener[,useCapture])함수의 매개변수
+//eventName: 이벤트 타입을 나타내는 문자열 click, load, keydown 등
+//listener : 이벤트 리스너로 등록할 함수 이름
+//useCapture : true로 놓는 경우 이벤트 흐름 중 캡쳐 단계에서 실행될 리스너로 등록하는 것
+//false로 등록하면 버블 단게에서 실행되는 리스너로 등록함, 기본값은 false
+// pp.addEventLisener("click", x) // 정의 되어있는 함수 등록록
+// pp.addEventListener("click", function(){함수의 실행문}) //익명 함수 사용

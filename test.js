@@ -502,3 +502,25 @@ function end() {}
 //false로 등록하면 버블 단게에서 실행되는 리스너로 등록함, 기본값은 false
 // pp.addEventLisener("click", x) // 정의 되어있는 함수 등록록
 // pp.addEventListener("click", function(){함수의 실행문}) //익명 함수 사용
+// pp.addEventListener("click", () => {}) //화살표 함수
+
+//이벤트 객체
+//이벤트가 발생하면 브라우저는 발생한 이벤트에 대한 여러 정보를 담은 이벤트 객체를 만들어서
+//이벤트 리스너에게 전달한다. onmousedown 이벤트의 경우 마우스 관련이기 때문에 마우스의 좌표 등 정보를
+//담은 마우스 이벤트 객체를 전달하고 onkeydown의 경우 키보드 관련으로 키보드의 어떤키가 눌렸는지
+//keycode등의 정보를 담아 전달한다.
+
+//이벤트가 처리되고 나면 이벤트 객체는 소멸한다.
+//브라우저는 한 개의 이벤트를 완전히 처리한 후 다음 이벤트를 처리하므로, 이벤트 리스너 실행 중에는
+//오직 한 개의 이벤트 객체만 존재한다.
+
+//마우스 이벤트 객체 and 키보드 이벤트 객체 각각 console.log로 출력력
+var dd = document.getElementById("d11");
+
+d11.addEventListener("mouseup", (event) => {
+  console.log(event);
+});
+
+document.body.addEventListener("keypress", (event) => {
+  console.log(event);
+});

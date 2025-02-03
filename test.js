@@ -558,3 +558,45 @@ function ff(e) {
 // a 링크를 클릭하면 이동하는 것
 // submit 버튼을 클릭하면 폼 데이터를 전송하는 것
 // reset을 클릭하면 폼이 초기화 되는 것
+// wheel을 굴리면 브라우저 스크롤이 움직이는 것
+
+//이벤트 객체의 cancelable 프로퍼티가 true 인 경우만 preventDefault가 가능하다.
+
+//이벤트의 흐름
+//이벤트가 발생하면 이벤트는 타겟 객체에 전달된다.
+//이벤트가 단번에 타겟 객체로 직접 전달되는 것이 아니라 window 객체로부터 DOM트리를 타고 중간 DOM객체들을 거쳐
+//타겟 객체로 이벤트가 흘러들어가고, 다시 반대 방향으로 이동하여 window 객체에 도달한 후 이벤트는 소멸한다.
+//위 과정을 이벤트의 흐름이라고 함.
+//이벤트의 흐름은 2가지 단계로 나누어 볼 수 있다. 1.캡쳐 단계와 2.버블 단계
+
+//캡쳐단계는 window 객체에서 타겟 객체까지 전파되는 과정
+//버블단계는 타겟 객체에서 거꾸로 window까지 이벤트 객체가 전파되는 과정
+//DOM객체들은 동일한 이벤트에 대해 캡쳐 리스너와 버블 리스너를 모두 가질 수 있음
+
+var bt1 = document.getElementById("bt1");
+bt1.addEventListener("click", cap, true);
+bt1.addEventListener("click", bub, false);
+
+function cap() {
+  console.log(1);
+}
+
+function bub() {
+  console.log(2);
+}
+
+//캡쳐와 버블 단계 구분: 이벤트 발동 순서에 대한 관리 / 이벤트 우선 순위 관리 필요할 때
+
+//이벤트 객체의 멤버 중 이벤트 흐름과 관계된 멤버
+//cancelable : 디폴트 취소 가능 여부
+//stopPropagetion() : 객체에 등록된 리스너를 모두 실행 후 이벤트 흐름 중단
+//stopImmediatePropagtion() : 현재 리스너만 실행하고 이벤트 흐름 즉각 중단
+
+//마우스 핸들링
+//마우스 객체 관련 프로퍼티
+//x,y : x,y는 타겟 객체의 부모 객체 내에서의 마우스 좌표
+//clientX,clientY: 브라우저 윈도우의 문서출력 영역 내애서의 마우스 좌표
+//screenX, screenY : 스크린을 기준으로 한 마우스 좌표
+//offsetX, offsetY : 타겟 객체 내에서의 마우스 좌표
+//button : 눌러진 마우스 버튼 종류 0: 아무것도 안눌린 상태 1: 왼쪽 버튼 2: 오른쪽 버튼 3:왼쪽, 오른쪽 모두 4:중간버튼
+//wheelDelta : 휠이 구른 방향 , 양수 : 위쪽으로 굴림 / 음수 : 아래로 굴림

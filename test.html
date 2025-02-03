@@ -314,8 +314,13 @@
     <a href="https://www.naver.com" onclick="return false"
       >디폴트행동 취소 링크</a
     >
+
     <input type="checkbox" onclick="return false" /> no click
+    <a href="https://www.google.com" onclick="event.preventDefault()">123123</a>
+    <button id="bt1"></button>
+
     <br />
+
     <button onclick="change1(this,'30px','red')">버튼</button>
     <div onclick="change1(this,'30px','red')">div 버튼</div>
     <p id="firstP">

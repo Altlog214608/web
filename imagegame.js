@@ -45,9 +45,7 @@ window.addEventListener("keydown", function (e) {
       count++;
       counter.innerHTML = count;
       imagecheck();
-      if (index != 0) {
-        temp = index;
-      }
+
       console.log(index);
 
       break;
@@ -74,6 +72,16 @@ function imagecheck() {
     } else {
       temp = 0;
     }
+  } else if (index != 0) {
+    temp = index;
+  } else if (temp == 0) {
+    temp = index;
+    setTimeout(() => {
+      for (let i = 0; i < tds.length; i++) {
+        tds[i].style.backgroundPosition = "150px";
+      }
+      temp = 0;
+    }, 1000);
   }
 }
 function openimage() {

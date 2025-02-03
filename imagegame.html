@@ -15,6 +15,18 @@
         border: 1px solid black;
       }
 
+      td.card {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        cursor: pointer;
+        position: relative;
+        border-radius: 10px;
+      }
+
+      .card.flipped {
+        background-color: green;
+      }
       /* .effectCSS{
 
         } */
@@ -48,7 +60,17 @@
       </tr>
     </table>
     <p id="counter">1</p>
-    <script src="imagegame.js"></script>
+    <script src="imagegame.js">
+      document.querySelectorAll('.card').forEach(i => { //.card 클래스 명은 전부 td 요소들인데 tagName으로 td들을 DOM객체화 하면 td들이 컬렉션으로 묶이고
+        //querySelectorAll로 DOM객체화 해서 묶으면 배열로 묶인다. forEach는 배열 대상으로 사용 가능.
+        i.addEventListener('click', function() {
+          this.classList.add('flipped'); // 클릭된 요소에게 flipped 클래스명을 추가한다.
+          setTimeout(() => { //2000ms 후에 flipped 클래스명을 제거한다.
+            this.classList.remove('flipped');
+          }, 1000);
+        });
+      }
+    </script>
   </body>
 </html>
 

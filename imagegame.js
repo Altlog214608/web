@@ -61,10 +61,9 @@ function imagecheck() {
   if (tds[index].style.backgroundImage === temp) {
     alert("같은 이미지");
   } else {
-    alert("다른 이미지");
     setTimeout(() => {
       tds[index].style.backgroundPosition = "110px";
-    }, 1000);
+    }, 100);
     temp = tds[index].style.backgroundImage;
   }
 }

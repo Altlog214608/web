@@ -2,31 +2,28 @@ let tds;
 let prevIndex = 0;
 let index = 0;
 
-window.onload = function () {
-  tds = document.getElementById("td");
+window.addEventListener("load", function () {
+  tds = document.getElementsByTagName("td");
   tds[index].style.backgroundColor = "orchid";
-};
+});
 
-window.onkeydown = function (e) {
+window.addEventListener("keydown", function (e) {
   switch (e.key) {
     case "ArrowDown":
-      if (index / 3 >= 2) return;
-      index += 3;
+      if (index + 4 < tds.length) index += 4;
       break;
     case "ArrowLeft":
-      if (index % 3 == 0) return;
-      index--;
+      if (index % 4 != 0) index--;
       break;
     case "ArrowUp":
-      if (index / 3 < 1) return;
-      index -= 3;
+      if (index - 4 >= 0) index -= 4;
       break;
     case "ArrowRight":
-      if (index % 3 == 2) return;
-      index++;
+      if (index % 4 != 3) index++;
       break;
   }
-  tds[index].style.backgroundColor = "orchid";
+
   tds[prevIndex].style.backgroundColor = "white";
+  tds[index].style.backgroundColor = "orchid";
   prevIndex = index;
-};
+});

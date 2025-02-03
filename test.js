@@ -547,3 +547,14 @@ function ff(e) {
     "<br>";
   ppp.innerHTML = text;
 }
+
+//type프로퍼티는 현재 발생한 이벤트의 종류
+//target프로퍼티는 이벤트가 실제로 발생한 요소
+//currentTarget프로퍼티는 이벤트가 바인딩 된 요소
+//defaultPrevented 프로퍼티는 이벤트의 디폴트 행동이 취소되었는지 여부 t/f로 나타남
+//preventDefault() 메서드는 이벤트의 디폴트 행동을 취소시키는 메서드
+
+//HTML태그 중 몇몇은 특정 이벤트에 대해 디폴트 행동을 한다.
+// a 링크를 클릭하면 이동하는 것
+// submit 버튼을 클릭하면 폼 데이터를 전송하는 것
+// reset을 클릭하면 폼이 초기화 되는 것

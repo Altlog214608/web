@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			td {
+				width: 100px;
+				height: 100px;
+				border: 1px solid black;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.selected {
+				border: 3px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="board"></table>
+		<p id="count"></p>
+
+		<script>
+			const rows = 4;
+			const cols = 4;
+			// const background = {
+			// 	0: "Crimson",
+			// 	1: "Coral",
+			// 	2: "Gold",
+			// 	3: "GreenYellow",
+			// 	4: "SeaGreen",
+			// 	5: "RoyalBlue",
+			// 	6: "BlueViolet",
+			// 	7: "Violet"
+			// };
+			// const background = {
+			// 	0: "url(https://img.piku.co.kr/w/uploads/a9Nmdk/42479d2a80bd52358bdc1bf0afb3c2fd.jpg)",
+			// 	1: "url(https://img.piku.co.kr/w/uploads/a9Nmdk/fa31beb5ce4b0fd49c8cb8222d0828a6.jpg)",
+			// 	2: "url(https://img.piku.co.kr/w/video_uploads/a9Nmdk/0c2444ec4fc42b6ddd60a5931fecbe90.jpg)",
+			// 	3: "url(https://img.piku.co.kr/w/uploads/a9Nmdk/0043eb4840579f3d3b03207ebd91971d.jpg)",
+			// 	4: "url(https://img.piku.co.kr/w/video_uploads/a9Nmdk/4df8ed4d0cc7fa1bd004cb8f4a9f82cc.jpg)",
+			// 	5: "url(https://img.piku.co.kr/w/video_uploads/a9Nmdk/15e9d7d3d565a37b2b99162cab742ad5.jpg)",
+			// 	6: "url(https://img.piku.co.kr/w/uploads/a9Nmdk/8fe8a54b4f407fd1d00215f97c3f5b59.jpg)",
+			// 	7: "url(https://img.piku.co.kr/w/uploads/a9Nmdk/b62f2f3b9df567520c3def6c824211be.jpg)"
+			// };
+			const background = {
+				0: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/fae114b6282ab2c0ce1b22fa33949cf3.jpg)",
+				1: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/e1fdc2ec45a384d0840e70e4994f86ce.jpg)",
+				2: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/f965d404e0afe7972b734fd0fad798de.jpg)",
+				3: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/49f722beb52bd2f21c5fe66997fe4909.jpg)",
+				4: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/95834876d5b9bb2c6fe2aff9129ebc97.jpg)",
+				5: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/8038ec3679206c1d80876320525e20ea.jpg)",
+				6: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/1a57a9759beecb482663fcc6e4c672d0.jpg)",
+				7: "url(https://img.piku.co.kr/w/uploads/6ukeHZ/1369c24e9ca78d96283e7d7e1dd1a81b.jpg)"
+			};					
+			const table = document.getElementById("board");
+
+			let prevIndex = 0;
+			let currentIndex = 0;
+			let openlist = [];
+			let count = -1;
+
+			// 테이블 생성			
+			for (let i = 0; i < rows; i++) {
+				let tr = document.createElement("tr");
+				for (let j = 0; j < cols; j++) {
+					let td = document.createElement("td");
+					tr.appendChild(td);
+				}
+				table.appendChild(tr);
+			}
+			const tds = document.getElementsByTagName("td");
+
+			// 보드 생성 + 섞기
+			let state = Array.from({length: rows * cols}, (e, i) => {
+				return {
+					answer: Math.floor(i / 2),
+					opened: false
+				}
+			});
+			for (let i = 0; i < rows * cols; i++) {
+				let r = Math.floor(Math.random() * rows * cols);
+				let tmp = state[i].answer;
+				state[i].answer = state[r].answer;
+				state[r].answer = tmp;
+			}
+
+			// test
+			Array.from({length: rows}, (e, i) => i * rows).forEach((e, i) => {
+				console.log(state.slice(e, e + cols).map((e) => e.answer).toString());
+			});
+
+			// 초기화
+			window.onload = () => {
+				tds[0].classList.toggle("selected");
+				open(0);
+				counting(0);
+			}
+
+			window.onkeydown = (e) => {
+				switch(e.key) {
+					case "ArrowDown":
+						if (currentIndex >= rows * (cols - 1)) return;
+						currentIndex += cols;
+						break;
+					case "ArrowUp":
+						if (currentIndex < cols) return;
+						currentIndex -= cols;
+						break;
+					case "ArrowLeft":
+						if (currentIndex % rows === 0) return;
+						currentIndex--;
+						break;
+					case "ArrowRight":
+						if (currentIndex % rows === cols - 1) return;
+						currentIndex++;
+						break;
+					case "Enter":
+						open(currentIndex);
+						return;
+					default:
+						return;
+				}
+
+				// update
+				tds[currentIndex].classList.toggle("selected");
+				tds[prevIndex].classList.toggle("selected");
+				prevIndex = currentIndex;
+			}
+
+			function open(index) {
+				if (state[index].opened) return;
+
+				counting(++count);
+				state[index].opened = true;
+				tds[index].style.backgroundImage = background[state[index].answer];
+				openlist.push(index);
+
+				if (openlist.length > 0 && openlist.length % 2 === 0) {
+					if (state[openlist[0]].answer !== state[openlist[1]].answer) {
+						setTimeout(() => {
+							// close(openlist.shift());
+							// close(openlist.shift());
+							state.forEach((e, i) => close(i));
+							openlist = [];
+						}, 1000);						
+					} else {
+						openlist.shift();
+						openlist.shift();
+					}
+				}
+			}
+
+			function close(index) {
+				state[index].opened = false;
+				tds[index].style.backgroundImage = "none";
+			}
+
+			function counting(count) {
+				document.getElementById("count").innerHTML = count;
+			}
+		</script>
+	</body>
+</html>
+<!-- 
+4x4 테이블 td칸
+
+각 칸은 키보드 화살표로 이동한다
+엔터를 누르면 뒤집힌다
+게임 시작시 1장이 기본적으로 뒤집혀 있음
+뒤집힌 칸에는 이미지가 뜬다
+이미지의 종류 8개이다
+같은 이미지를 찾는 게임
+총 몇번 엔터를 입력헀는지 체크하는 게임
+전체 이미지를 다 맞춰 뒤집으면 끝난다
+태그에 이벤트리스너를 직접 등록하지 않는다
+짝이 맞지 않는 카드를 뽑으면 카드위치는 유지된상태로 모든 카드가 다시 가려진다. 누적 엔터입력수는 유지된다
+-->

@@ -808,3 +808,65 @@ function dort() {
 // window.scrollBy(0, 10);
 // window.scrollBy(10, -15);
 // window.scrollTo(0, 200);
+
+//location 객체
+//window.location
+//location객체는 윈도우에 로드댑된 웹페이지URL정도 나타내는 개체
+//윈도우가 열릴 때 자동 생성 됨
+//window.은 생략가능하다
+
+//https://www.example.com:8000/content/ABC.html#labe11
+//https: 프로토콜
+//wwww.exapmle.com : 호스트 네임
+//8080 : 포트번호
+//content/ABC.HTML경로
+//#labeli : 해시(#을 포함하는 앵커 이름 문자열)
+
+//history 객체
+//히스토리 객체는 사용자가 방문한 웹 페이의 리스ㅅ,트 정보를 담고 있는 객체
+//window.history 혹은 history로 접근
+
+//history 관련 프로퍼티와 메서드
+//length : 히스토리 리스트에 있는 엔트리 수
+//back() : 히스토리에 있는 이전 웹 페이지로 이동하는 메서드 브라우저의 뒤로 버튼과 동일
+//forward(): 히스토리에 있는 다음 웹 페이지
+//
+
+let canvas = document.getElementById("cv1");
+let context = canvas.getContext("2d");
+//getContext('2d')가 리턴한 context 객체는 2차원 그래픽에 사용되는 프로퍼티와 메서드 제공
+//let context변수에 할당 된 객체는 CanvasRenderingContext2D 타입의 객체임
+//HTML5의 캔버스는 비트맵 렌더링 엔진을 장착하여 브라우저에 즉시 그려내는 구조
+//속도가 빠르다.
+
+//canvas 객체의 프로퍼티와 메서드
+//width : 캔버스의 폭
+//height : 캔버스의 높이
+//style : 캔버스의 스타일
+//getContext() : 캔버스에 그림을 그리는 컨텍스트 객체 리턴하는 메서드
+
+context.beginPath(); //그리기 시작
+context.strokeStyle = "blue"; //색상
+context.rect(60, 60, 50, 50); //60,60 좌표에 50x50 사이즈 사각형(rect)
+context.stroke(); //그리기
+
+//context 객체 프로퍼티 메서드
+//strokeStyle : 선 색상
+//fillStyle : 채우기 색상
+//lineWidth : 선 두께
+//font : 텍스트 폰트 설정
+//textAlign : 텍스트 정렬 방식
+
+//beginPath() : 이전 경로 모두 지우고 새로운 경로 시작
+//closePath() : 경로의 끝 점과 시작점을 연결하는 선을 추가하고 경로 닫음.
+//moveTo() : 경로에 새 점을 만듬
+//lineTo() : 경로의 끝 점과 연결하는 선을 추가한다.
+//rect() : 사각형 그리기
+//arc() : 원호 그리기
+//fill() : 경로에 만들어진 도형을 외곽선 없이 내부 색을 채워 그린다.\
+//stroke() : 경로에 담겨진 모든 도형을 외곽선만 캔버스에 그린다.
+//clearRect() : 캔버스에 사각형 영역을 지운다.
+//fillRect() : 캔버스에 외곽선 없이 사각형 영역을 색으로 바로 칠한다.
+//strokeRect() : 사각형을 경로에 추가하지 않고 캔버스에 바로 그림
+//strokeText() : 텍스트를 캔버스에 바로 그린다.
+//drawImage() : 이미지를 캔버스에 바로 그린다.

@@ -295,7 +295,45 @@
     <title>Document</title>
   </head>
 
-  <body onload='alert("문서 로딩 완료시 호출")' id="id" class="main">
+  <body id="id" class="main">
+    <p>canvas 는 웹페이지 그래픽 표현 방법</p>
+    <p>
+      이미지 태그를 출력할 때는 img태그를 이용하고 그래픽애니메이션이나 사용자
+      그래픽이 필요한 경우 활용
+    </p>
+    <p>
+      캔버스의 그래픽 기능을 이용하여 선, 원, 곡선, 사각형 이미지, 2차원 문자 등
+      자유롭게 그려낼 수 있음
+    </p>
+    <p>
+      실시간 그래프, 애니메이션, 지도,게임 등을 간단하게 플러그인 없이 구현
+      가능하다.
+    </p>
+    <p>캔버스에 그래픽 그리기는 js 코드로만 가능하다다</p>
+
+    <canvas
+      id="cv1"
+      width="500px"
+      height="500px"
+      style="background-color: yellowgreen"
+    ></canvas>
+    <canvas
+      id="cv2"
+      width="200px"
+      height="200px"
+      style="background-color: rgb(99, 112, 72)"
+    ></canvas>
+    <canvas
+      id="cv3"
+      width="300px"
+      height="300px"
+      style="background-color: rgb(50, 205, 89)"
+    ></canvas>
+
+    <button onclick="history.back()">back</button>
+    <button onclick="history.forward()">fork</button>
+    <button onclick="history.go(-1)">gpton</button>
+
     <div>
       <span id="sp1" style="background-color: yellow">1234567텍스트abcdef</span>
     </div>

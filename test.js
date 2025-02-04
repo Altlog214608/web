@@ -790,3 +790,17 @@ on.addEventListener("click", () => {
 off.addEventListener("click", () => {
   clearInterval(timer);
 });
+
+let span = document.getElementById("sp1");
+let timerITV = setInterval("dort()", 200);
+span.onclick = function (e) {
+  clearInterval(timerITV);
+};
+
+function dort() {
+  let str = span.innerHTML;
+  let firstChar = str.substr(0, 1);
+  let remains = str.substr(1, str.length - 1);
+  str = remains + firstChar;
+  span.innerHTML = str;
+}

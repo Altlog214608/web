@@ -772,7 +772,7 @@ var off = document.getElementById("off");
 var ptag = document.getElementById("ptag");
 
 function changeBG() {
-  ptag.style.transition = "backgroundColor, 1s, easy-in";
+  ptag.style.transition = "backgroundColor, 0.5s, easy-in";
   if (ptag.style.backgroundColor == "red") {
     ptag.style.backgroundColor = "blue";
   } else if (ptag.style.backgroundColor == "blue") {
@@ -782,9 +782,9 @@ function changeBG() {
   }
 }
 
-on.addEventListener("click", (e) => {
+on.addEventListener("click", () => {
   ptag.style.backgroundColor = "red";
-  timer = setInterval("changeBG()", 1000);
+  timer = setInterval("changeBG()", 100);
 });
 
 off.addEventListener("click", () => {

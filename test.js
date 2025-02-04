@@ -792,7 +792,7 @@ off.addEventListener("click", () => {
 });
 
 let span = document.getElementById("sp1");
-let timerITV = setInterval("dort()", 200);
+let timerITV = setInterval("dort()", 0);
 span.onclick = function (e) {
   clearInterval(timerITV);
 };
@@ -804,3 +804,7 @@ function dort() {
   str = remains + firstChar;
   span.innerHTML = str;
 }
+
+// window.scrollBy(0, 10);
+// window.scrollBy(10, -15);
+// window.scrollTo(0, 200);

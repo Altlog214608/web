@@ -676,7 +676,7 @@ window.onkeydown = function (e) {
 //outerHeight : 윈도우 전체의 높이
 //ScreenX : 스크린상 윈도우 X좌표
 //ScreenY : 스크린상 윈도우 Y좌표
-//scrollX : 현재 문서의 스크롤 x 값
+//scrollX : 현재 문서의 스크롤 x 값
 //scrollY : 현재 문서의 스크롤 y 값
 
 //메서드
@@ -700,7 +700,6 @@ window.onkeydown = function (e) {
 //scrollTo() : 특정 좌표로 스크롤한다.
 
 //window 객체에도 이벤트리스너를 등록할 수 있다.
-window.open("url", "윈도우명", "속성");
 
 //url : 페이지 주소 , 이 매개변수는 필수, null 허용 않는다
 //윈도우명(생략가능) : 새로 여는 윈도우의 이름 전달 매개변수
@@ -710,3 +709,39 @@ window.open("url", "윈도우명", "속성");
 //      _top : 브라우저 윈도우에 웹 페이지 출력
 //속성(생략가능능) : 윈도우의 모양이나 크기 등 속성을 설정하는 부분 ex)"resizealbe=yes", "resizeable=1"
 //      width/height/left/top/location/menubar/scrollbars/status
+
+let newWin = null;
+function load(URL) {
+  newWin = window.open(
+    URL,
+    "_blank",
+    "left=300, top=300, width=300, height=300"
+  );
+}
+
+function closeNewWindow() {
+  if (newWin == null || newWin.closed) {
+    return;
+  } else {
+    newWin.close();
+  }
+}
+
+//window의 타이머 활용
+
+//window에는 타이머 작동 메서드가 있어 이를 활용하여 시간에 따라 웹 페이지에 동적인 효과를 줄 수 있음.
+//단발성 -> setTimeout()
+
+// function myAlert(t) {
+//   alert(t + "초 지남");
+// }
+
+// let timerID = setTimeout("myAlert(3)", 3000);
+// clearTimeout(timerID);
+
+//반복성 -> setInterval()
+
+// let timerID2 = setInterval("myAlert(3)", 3000);
+// clearInterval(timerID2); //interval은 무한 반복이기에 clearInterval 함수로 꺼줘야 함
+
+//setTimeout()을 통해서 5초간 div 박스에 마우스를 올려놓으면 새로운 윈도우가 하나 열리도록 해보세요

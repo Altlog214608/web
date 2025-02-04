@@ -689,7 +689,7 @@ window.onkeydown = function (e) {
 //confirm() : 확인 다이얼로그
 //prompt() : 입력 다이얼로그
 //setInterval() : 타임아웃 코드가 반복 호출되도록 타이머 설정
-//clearInterval() : 설정된 타이머 젝
+//clearInterval() : 설정된 타이머 제거
 //setTimeout() : 타임아웃 단발성 타이머 설정
 //clearTimeout() : 단발성 타임아웃 해제
 //moveBy() : 지정된 픽셀만큼 윈도우 이동

@@ -745,3 +745,8 @@ function closeNewWindow() {
 // clearInterval(timerID2); //interval은 무한 반복이기에 clearInterval 함수로 꺼줘야 함
 
 //setTimeout()을 통해서 5초간 div 박스에 마우스를 올려놓으면 새로운 윈도우가 하나 열리도록 해보세요
+var box = document.getElementById("windowbox");
+
+let timer = setTimeout('load("https://www.naver.com")', 5000);
+
+box.addEventListener("mouseover", timer);

@@ -772,6 +772,7 @@ var off = document.getElementById("off");
 var ptag = document.getElementById("ptag");
 
 function changeBG() {
+  ptag.style.transition = "backgroundColor, 1s, easy-in";
   if (ptag.style.backgroundColor == "red") {
     ptag.style.backgroundColor = "blue";
   } else if (ptag.style.backgroundColor == "blue") {
@@ -781,9 +782,9 @@ function changeBG() {
   }
 }
 
-on.addEventListener("click", () => {
+on.addEventListener("click", (e) => {
   ptag.style.backgroundColor = "red";
-  timer = setInterval("changeBG()", 2000);
+  timer = setInterval("changeBG()", 1000);
 });
 
 off.addEventListener("click", () => {

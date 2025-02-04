@@ -748,10 +748,44 @@ function closeNewWindow() {
 var box = document.getElementById("windowbox");
 let timer;
 
-box.addEventListener("mouseover", () => {
-  timer = setTimeout('load("https://www.naver.com")', 3000);
+// box.addEventListener("mouseover", () => {
+//   timer = setTimeout('load("https://www.naver.com")', 3000);
+// });
+
+// box.addEventListener("mouseout", () => {
+//   clearTimeout(timer);
+// });
+
+// function f() { //2초마다 호출할 함수의 정의
+
+// }
+// let timerId = setInterval('',2000); //on
+
+// clearInterval(timerId); //off
+// p태그에 어떤 문장이 쓰여있고, p태그의 기본 배경색은 red 색상이다.
+// p태그의 우측에는 2개의 div로 만들어진 버튼이 있고 첫번째 버튼은 On버튼 두번째 버튼은 OFF 버튼이다.
+// ON버튼을 누르면 2초마다 반복적으로 배경색상이 R->G->B->R->G ... 형태로 변경되는 작동이 켜지고
+// OFF버튼을 누르면 작동이 꺼진다.
+
+var on = document.getElementById("on");
+var off = document.getElementById("off");
+var ptag = document.getElementById("ptag");
+
+function changeBG() {
+  if (ptag.style.backgroundColor == "red") {
+    ptag.style.backgroundColor = "blue";
+  } else if (ptag.style.backgroundColor == "blue") {
+    ptag.style.backgroundColor = "green";
+  } else {
+    ptag.style.backgroundColor = "red";
+  }
+}
+
+on.addEventListener("click", () => {
+  ptag.style.backgroundColor = "red";
+  timer = setInterval("changeBG()", 2000);
 });
 
-box.addEventListener("mouseout", () => {
-  clearTimeout(timer);
+off.addEventListener("click", () => {
+  clearInterval(timer);
 });

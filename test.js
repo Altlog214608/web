@@ -641,3 +641,60 @@ window.onkeydown = function (e) {
   tds[prevIndex].style.backgroundColor = "white";
   prevIndex = index;
 };
+
+//3.BOM 객체
+//browser object model 객체
+//DOM객체들은 HTML 태그들을 객체화 한 것이고
+//BOM은 윈도우와 윈도우에 로드된 문서의 url, 브라우저가 출력된 스크린 장치, 브라우저의 종류와 기능 등
+//브라우저와 브라우저가 실행하고 있는 환경을 자바스크립트 코드로 접근하기 위해 객체화 하는 것
+
+//BOM의 종류
+//1.window
+//2.location
+//3.history
+//4.screen
+
+//window 객체는 열려 있는 브라우저 윈도우나 탭 윈도우를 나타내는 객체로 윈도우마다 하나의 window객체가 생성
+//window 객체가 생성되는 경우는 다음 3가지
+//1.브라우저가 새로운 웹 페이지를 로드할 때
+//2.iframe 하나당 하나의 window 객체이다
+//3.개발자가 js코드를 통해 직접 window 객체를 임의로 생성하는 경우 ex) window.open("url",'윈도우명','속성')
+
+//BOM은 w3c의 규격이 아니다.
+//window객체의 프로퍼티와 컬렉션, 메서드 목록
+//프로퍼티와 컬렉션
+//window : 현재 윈도우 객체에 대한 ref
+//document : 윈도우에 담긴 document 객체에 대한 ref
+//history : 히스토리 객체
+//menubar : 메뉴바 객체
+//locationbar : 위치바 객체
+//length : 윈도ㅜㅇ에 존재하는 iframe 수
+//frames : 윈도우에 존재하는 iframe 객체들의 컬렉션
+//innerWidth : 수직 스크롤바를 포함한 브라우저 내 HTML 문서가 출력되는 영역의 폭
+//innerHeight : 수평 스크롤바를 포함한 브라우저 내 HTML 문서가 출력되는 영역의 높이
+//outerWidth : 윈도우 전체의 폭
+//outerHeight : 윈도우 전체의 높이
+//ScreenX : 스크린상 윈도우 X좌표
+//ScreenY : 스크린상 윈도우 Y좌표
+//scrollX : 현재 문서의 스크롤 x 값
+//scrollY : 현재 문서의 스크롤 y 값
+
+//메서드
+//open() : 새 윈도우 오픈
+//close() : 윈도우 닫기
+//focus() : 윈도우에 포커스를 줘서 키보드 입력 가능 상태로 만듬
+//blur() :  윈도우가 포커스를 잃음
+//stop() : HTML 페이지 로딩 중단 (브라우저의 stop 버튼 누른 것 동일)
+//alert() : 경고 다이얼로그 출력
+//confirm() : 확인 다이얼로그
+//prompt() : 입력 다이얼로그
+//setInterval() : 타임아웃 코드가 반복 호출되도록 타이머 설정
+//clearInterval() : 설정된 타이머 젝
+//setTimeout() : 타임아웃 단발성 타이머 설정
+//clearTimeout() : 단발성 타임아웃 해제
+//moveBy() : 지정된 픽셀만큼 윈도우 이동
+//moveTo() : 지정된 위치로 윈도우 이동
+//resizeBy() : 지정된 크기만큼 윈도우 크기 조절
+//resizeTo() : 지정된 크기로 윈도우 크기 조절
+//scrollBy() : 주어진 픽셀만큼 상하좌우 스크롤한다.
+//scrollTo() : 특정 좌표로 스크롤한다.

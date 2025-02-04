@@ -832,8 +832,8 @@ function dort() {
 //forward(): 히스토리에 있는 다음 웹 페이지
 //
 
-let canvas = document.getElementById("cv1");
-let context = canvas.getContext("2d");
+// let canvas = document.getElementById("cv1");
+// let context = canvas.getContext("2d");
 //getContext('2d')가 리턴한 context 객체는 2차원 그래픽에 사용되는 프로퍼티와 메서드 제공
 //let context변수에 할당 된 객체는 CanvasRenderingContext2D 타입의 객체임
 //HTML5의 캔버스는 비트맵 렌더링 엔진을 장착하여 브라우저에 즉시 그려내는 구조
@@ -845,12 +845,12 @@ let context = canvas.getContext("2d");
 //style : 캔버스의 스타일
 //getContext() : 캔버스에 그림을 그리는 컨텍스트 객체 리턴하는 메서드
 
-context.beginPath(); //그리기 시작
-context.strokeStyle = "red"; //색상
-context.fillStyle = "green";
-context.rect(60, 60, 50, 50); //60,60 좌표에 50x50 사이즈 사각형(rect)
-context.stroke(); //그리기
-context.fill();
+// context.beginPath(); //그리기 시작
+// context.strokeStyle = "red"; //색상
+// context.fillStyle = "green";
+// context.rect(60, 60, 50, 50); //60,60 좌표에 50x50 사이즈 사각형(rect)
+// context.stroke(); //그리기
+// context.fill();
 //context 객체 프로퍼티 메서드
 //strokeStyle : 선 색상
 //fillStyle : 채우기 색상
@@ -871,3 +871,141 @@ context.fill();
 //strokeRect() : 사각형을 경로에 추가하지 않고 캔버스에 바로 그림
 //strokeText() : 텍스트를 캔버스에 바로 그린다.
 //drawImage() : 이미지를 캔버스에 바로 그린다.
+
+// let canvas2 = document.getElementById("cv2");
+// let context2 = canvas2.getContext("2d");
+
+// context2.beginPath(); //빈 경로 만들기
+// context2.strokeStyle = "blue"; //선 색상 설정
+// context2.rect(30, 30, 50, 50); //30,30 에 50x50 짜리 사각형을 경로에 넣는다.
+// context2.stroke(); // 경로에 있는 모든 도형의 외곽선 그리기
+
+// context2.beginPath(); //새 빈 경로 만들기
+// context2.fillStyle = "violet"; //채우기 색상 설정
+// context2.rect(60, 60, 50, 50); //60,60 좌표에 50x50 사이즈 사각형(rect)
+// context2.fill(); //경로에 있는 모든 도형을 내부 색상 채워 그리기
+
+// context2.font = "20px Gothic";
+// context2.fillStyle = "red";
+// context2.fillText("text123123123", 100, 50);
+
+//도형 그리기
+//1.Path만들기
+//2.캔버스에 담긴 경로를 그려내기
+
+//경로path란 캔버스위에 펜이 지나가는 길
+//경로 만들기는 캔버스에 그리고자 하는 도형들을 먼저 컨텍스트 내의 경로에 담는 과정이다.
+//moveTo() lineTo() rect() arc() 등 메서드는 캔버스에 직접 그리지 않고 도형을 경로에 추가하는 메서드이다.
+//stroke이나 fill 메서드가 호출될때 실질적으로 경로에서 그림으로 캔버스에 올라옴
+//closePath : 경로 종료
+
+// context.beginPath();
+// context.moveTo(150, 180); //경로에 담긴 도형은 그대로 두고, 점 x,y를 새 시작점으로 삽입
+// context.lineTo(30, 250); //경로의 끝점에서 x,y 까지 직선을 경로에 추가
+// context.lineTo(150, 320);
+// context.lineTo(50, 320);
+// context.lineTo(150, 180);
+// context.stroke();
+
+//원그리기 arc()
+//arc(x,y,radius,startAngle,endAngle,anticlockwise)
+//x,y 원호의 중심
+//radius 반지름
+//startAngle : 시작 각도 3시가 기준점(시계방향)
+//endAngle : 종료 각도
+//anticlockwise : 시계 방향은 true 반시계방향은 false로 설정
+
+//각도법에서는 360도로 표현 -> 호도법으로 표현하면 라디안 단위로 표현
+//360도 = 2파이
+//1도 = 파이/180
+
+//arc() 메서드에서 startangle과 endangle은 원주율로 지정한다.
+//각도는 3시에서 기준점 시작
+//math클래스에 있는 PI상수를 이용해서 각도 설정
+//270도 => math.PI * 1.5
+//360도 => math.PI * 2
+
+// context.arc(50, 50, 10, 50, 1.5 * Math.PI, false);
+// context.fillStyle = "red";
+// context.fill();
+
+// context.beginPath();
+// context.arc(150, 150, 50, Math.PI * 2, false);
+// context.fillStyle = "blue";
+// context.fill();
+
+// context.fillStyle = "violet";
+// context.fillRect(20, 20, 100, 100);
+
+// context.beginPath();
+// context.rect(20, 150, 100, 100);
+// context.fillStyle = "violet";
+// context.fill();
+
+// context.strokeStyle = "grey";
+// context.lineWidth = 10;
+// context.stroke();
+
+// context.beginPath();
+// context.moveTo(80, 340);
+// context.arc(80, 340, 50, 0, 1.5 * Math.PI);
+// context.closePath();
+
+// context.fillStyle = "skyblue";
+// context.fill();
+
+// context.strokeStyle = "gray";
+// context.lineWidth = 20;
+// context.stroke();
+
+//이미지그리기
+//이미지 객체의 생성
+//캔버스에 이미지를 그리기 위해서는 이미지를 담을 이미지 객체가 필요함
+//이미지 객체는 JS코드로 new 키워드 사용해서 만듬
+//let img = new Image();
+
+//이미지의 로딩과 onload
+//이미지 파일로부터 이미지를 로딩시키기 위해서는 Image 객체의 src 프로퍼티 이용
+
+// Image.onload=function() {
+//     -------
+//     ------- // img 객체에 로드된 이미지를 그리는 코드
+// }
+
+// img.src = "src/test2.jpg"; //img 객체에 ~~~~파일로부터 이미지 로딩 시작
+
+// img.src = "src/test2.jpg"; 라인은 이미지 로딩을 시작시키는 코드
+//이미지 로딩이 완료되어야 이미지를 그릴 수 있기 때문에, 이밎 ㅣ로딩을 지시하기 전
+//img.onload 리스너에 이미지가 로딩 되었을 때 이미지를 그리는 JS코드를 쓴다.
+
+//이미지 그리기
+//이미지 로딩이 완료되면 컨텍스트 객체의 drawImage() 메서드를 이용해 이미지를 그린다.
+//drawImage(img,dx,dy)
+//img : 이미지 객체
+//dx : 이미지 그릴 캔버스 좌표 x
+//dy : 이미지 그릴 캔버스 좌표 y
+//width : 이미지 폭
+//height : 이미지 높이
+
+let canvas = document.getElementById("cv1");
+let context = canvas.getContext("2d");
+
+// let img = new Image();
+// img.onload = function () {
+//   context.drawImage(img, 0, 0, canvas.width, canvas.height);
+// };
+// img.src = "src/test2.jpg";
+
+canvas.addEventListener(
+  "mousemove",
+  (e) => {
+    down(e);
+  },
+  false
+);
+
+function down(e) {
+  startX = e.offsetX;
+  startY = e.offsetY;
+  console.log(startX);
+}

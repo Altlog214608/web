@@ -846,10 +846,11 @@ let context = canvas.getContext("2d");
 //getContext() : 캔버스에 그림을 그리는 컨텍스트 객체 리턴하는 메서드
 
 context.beginPath(); //그리기 시작
-context.strokeStyle = "blue"; //색상
+context.strokeStyle = "red"; //색상
+context.fillStyle = "green";
 context.rect(60, 60, 50, 50); //60,60 좌표에 50x50 사이즈 사각형(rect)
 context.stroke(); //그리기
-
+context.fill();
 //context 객체 프로퍼티 메서드
 //strokeStyle : 선 색상
 //fillStyle : 채우기 색상

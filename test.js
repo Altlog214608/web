@@ -698,3 +698,15 @@ window.onkeydown = function (e) {
 //resizeTo() : 지정된 크기로 윈도우 크기 조절
 //scrollBy() : 주어진 픽셀만큼 상하좌우 스크롤한다.
 //scrollTo() : 특정 좌표로 스크롤한다.
+
+//window 객체에도 이벤트리스너를 등록할 수 있다.
+window.open("url", "윈도우명", "속성");
+
+//url : 페이지 주소 , 이 매개변수는 필수, null 허용 않는다
+//윈도우명(생략가능) : 새로 여는 윈도우의 이름 전달 매개변수
+//      _blank :이름 없는 새 윈도우
+//      _parent : 새 윈도우를 열지 않고 현재 윈도우의 부모 윈도우애 웹 페이지 출력
+//      _self : 현재 윈도우에 페이지 출력
+//      _top : 브라우저 윈도우에 웹 페이지 출력
+//속성(생략가능능) : 윈도우의 모양이나 크기 등 속성을 설정하는 부분 ex)"resizealbe=yes", "resizeable=1"
+//      width/height/left/top/location/menubar/scrollbars/status

@@ -989,7 +989,7 @@ function dort() {
 
 let canvas = document.getElementById("cv1");
 let context = canvas.getContext("2d");
-
+let drawable = false;
 // let img = new Image();
 // img.onload = function () {
 //   context.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -1005,7 +1005,20 @@ canvas.addEventListener(
 );
 
 function down(e) {
+  //그림 그릴 수 있는 상태
   startX = e.offsetX;
   startY = e.offsetY;
-  console.log(startX);
+  return startX, startY; //그림 그리기가 가능한 상태
+}
+
+function out() {
+  //캔벗 영역 밖으로 나간 상태
+}
+function up() {
+  //마우스 움직여도 그림 안그려짐
+}
+
+function draw() {
+  canvas.beginPath();
+  //마우스 좌표 움직임에 따라 캔버스에 그림 그리는 함수
 }

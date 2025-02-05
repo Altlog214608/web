@@ -2,7 +2,9 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 400;
-const characterX = canvas.width / 2 - characterWidth / 2;
+const characterWidth = 50;
+const characterHeight = 50;
+let characterX = canvas.width / 2 - characterWidth / 2;
 const characterY = canvas.height - characterHeight - 10;
 const characterImage = new Image();
 characterImage.src = "src/test2.jpg";
@@ -11,13 +13,15 @@ let moveRight = false;
 window.addEventListener("keydown", function (event) {
   if (event.key === "ArrowLeft") {
     moveLeft = true;
+    console.log(event.key);
   }
   if (event.key === "ArrowRight") {
     moveRight = true;
+    console.log(event.key);
   }
 });
 function gameLoop() {
-  ctx.clearRact(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (moveLeft && characterX > 0) {
     characterX -= 5;
   }

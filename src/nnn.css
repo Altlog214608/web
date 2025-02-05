@@ -1,30 +1,17 @@
-.container {
-  /*모바일해상도 기준*/
-  display: flex; /*플렉스 박스를 사용*/
-  flex-direction: column; /*항목배치 세로 방향성*/
-  gap: 20px; /*아이템간 간격*/
-  height: 100vh; /*화면 전체 높이 차지*/
-  align-items: center; /*가로 기준 아이템 정렬*/
-  justify-content: center; /*아이템 세로 정렬*/
-  /*justify-content는 주축 기반정렬*/
-  /*align-items는 교차축 기반정렬*/
+* {
+  padding: 0;
+  margin: 0;
 }
-
-.item {
-  background: lightblue;
-  padding: 20px;
-  font-size: 20px;
-  width: 80%;
-  text-align: center;
-  border-radius: 10px;
-}
-@media (min-width: 768px) {
-  .container {
-    flex-direction: row; /*가로 방향성 배치*/
-    justify-content: center; /*가로로 가운데 정렬*/
-    height: auto;
-  }
-  .item {
-    width: 15%;
-  }
-}
+/* .container {
+  background: url(https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f373094a5e1a48c4826431bfb8253593_9366/OG_Blue_ID1454_01_standard.jpg);
+  width: 500px;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+} */
+/* 
+.container img {
+  width: 300px;
+  height: 300px;
+} */

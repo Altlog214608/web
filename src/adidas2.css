@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#header_container ul {
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+  font-size: 12px;
+  align-items: center;
+  text-align: center;
+}
+
+#header_container ul li {
+  list-style: none;
+}
+
+#header_container ul li a {
+  text-decoration-line: none;
+  color: black;
+}
+
+#wrapper {
+  width: 100%;
+  height: 27px;
+  background-color: black;
+}
+#header {
+  width: 100%;
+  height: 100px;
+  background-color: #9b7979;
+}
+
+/* @media (min-width: 768px) {
+} */

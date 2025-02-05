@@ -1,15 +1,27 @@
-body {
-  font-size: 10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
+.item {
+  background: lightblue;
+  padding: 20px;
+  font-size: 20px;
+  width: 80%;
+  text-align: center;
+  border-radius: 10px;
+}
 @media (min-width: 768px) {
-  body {
-    font-size: 16px;
+  .container {
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
   }
-}
-
-@media (min-width: 1024px) {
-  body {
-    font-size: 30px;
+  .item {
+    width: 15%;
   }
 }

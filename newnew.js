@@ -7,7 +7,7 @@ const characterHeight = 50;
 let characterX = canvas.width / 2 - characterWidth / 2;
 const characterY = canvas.height - characterHeight - 10;
 const characterImage = new Image();
-characterImage.src = "src/test2.jpg";
+characterImage.src = "src/123.png";
 let moveLeft = false;
 let moveRight = false;
 window.addEventListener("keydown", function (event) {
@@ -18,6 +18,14 @@ window.addEventListener("keydown", function (event) {
   if (event.key === "ArrowRight") {
     moveRight = true;
     console.log(event.key);
+  }
+});
+window.addEventListener("keyup", function (event) {
+  if (event.key === "ArrowLeft") {
+    moveLeft = false;
+  }
+  if (event.key === "ArrowRight") {
+    moveRight = false;
   }
 });
 function gameLoop() {

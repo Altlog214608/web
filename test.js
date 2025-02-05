@@ -609,38 +609,38 @@ function bub() {
 //shiftKey : 시프트키 눌린 상태 여부
 //keyCode : 키코드 값 숫자
 
-let tds;
-let prevIndex = 0;
-let index = 0;
+// let tds;
+// let prevIndex = 0;
+// let index = 0;
 
-window.onload = function () {
-  tds = document.getElementById("td");
-  tds[index].style.backgroundColor = "orchid";
-};
+// window.onload = function () {
+//   tds = document.getElementById("td");
+//   tds[index].style.backgroundColor = "orchid";
+// };
 
-window.onkeydown = function (e) {
-  switch (e.key) {
-    case "ArrowDown":
-      if (index / 3 >= 2) return;
-      index += 3;
-      break;
-    case "ArrowLeft":
-      if (index % 3 == 0) return;
-      index--;
-      break;
-    case "ArrowUp":
-      if (index / 3 < 1) return;
-      index -= 3;
-      break;
-    case "ArrowRight":
-      if (index % 3 == 2) return;
-      index++;
-      break;
-  }
-  tds[index].style.backgroundColor = "orchid";
-  tds[prevIndex].style.backgroundColor = "white";
-  prevIndex = index;
-};
+// window.onkeydown = function (e) {
+//   switch (e.key) {
+//     case "ArrowDown":
+//       if (index / 3 >= 2) return;
+//       index += 3;
+//       break;
+//     case "ArrowLeft":
+//       if (index % 3 == 0) return;
+//       index--;
+//       break;
+//     case "ArrowUp":
+//       if (index / 3 < 1) return;
+//       index -= 3;
+//       break;
+//     case "ArrowRight":
+//       if (index % 3 == 2) return;
+//       index++;
+//       break;
+//   }
+//   tds[index].style.backgroundColor = "orchid";
+//   tds[prevIndex].style.backgroundColor = "white";
+//   prevIndex = index;
+// };
 
 //3.BOM 객체
 //browser object model 객체
@@ -990,35 +990,60 @@ function dort() {
 let canvas = document.getElementById("cv1");
 let context = canvas.getContext("2d");
 let drawable = false;
+let x = 0;
+let y = 0;
 // let img = new Image();
 // img.onload = function () {
 //   context.drawImage(img, 0, 0, canvas.width, canvas.height);
 // };
 // img.src = "src/test2.jpg";
 
-canvas.addEventListener(
-  "mousemove",
-  (e) => {
-    down(e);
-  },
-  false
-);
+canvas.addEventListener("mousemove", (e) => {
+  if (drawable == true) {
+    move(e);
+    draw(x, y);
+  }
+});
 
-function down(e) {
+canvas.addEventListener("mousedown", (e) => {
+  context.beginPath();
+  drawable = true;
+});
+
+canvas.addEventListener("mouseup", () => {
+  drawable = false;
+});
+
+canvas.addEventListener("mouseout", () => {
+  out();
+});
+
+function move(e) {
   //그림 그릴 수 있는 상태
-  startX = e.offsetX;
-  startY = e.offsetY;
-  return startX, startY; //그림 그리기가 가능한 상태
+  x = e.offsetX;
+  y = e.offsetY;
+  //그림 그리기가 가능한 상태
+  console.log(x, y);
 }
 
 function out() {
-  //캔벗 영역 밖으로 나간 상태
+  context.clearRect(0, 0, canvas.width, canvas.height); //캔벗 영역 밖으로 나간 상태
 }
 function up() {
   //마우스 움직여도 그림 안그려짐
 }
 
-function draw() {
-  canvas.beginPath();
+function draw(x, y) {
+  context.strokeStyle = "black";
+  // context.fillStyle = "black";
+  // context.arc(x, y, 10, Math.PI * 2, false);
+
+  context.lineWidth = 10;
+  context.lineTo(x, y);
+  context.stroke();
+  // context.fill();
   //마우스 좌표 움직임에 따라 캔버스에 그림 그리는 함수
 }
+// context.closePath();
+
+// context.moveTo(x, y);

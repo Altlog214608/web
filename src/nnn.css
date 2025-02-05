@@ -1,15 +1,16 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
-}
-/* .container {
-  background: url(https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f373094a5e1a48c4826431bfb8253593_9366/OG_Blue_ID1454_01_standard.jpg);
-  width: 500px;
-  height: 500px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 } */
+/* .container { */
+/* position: absolute; */
+/* background: url(https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f373094a5e1a48c4826431bfb8253593_9366/OG_Blue_ID1454_01_standard.jpg); */
+/* width: 500px;
+  height: 500px; */
+/* background-repeat: no-repeat; */
+/* background-position: 50px 50px; */
+/* background-size: cover; */
+/* } */
 /* 
 .container img {
   width: 300px;

@@ -6,6 +6,8 @@
   height: 100vh; /*화면 전체 높이 차지*/
   align-items: center; /*가로 기준 아이템 정렬*/
   justify-content: center; /*아이템 세로 정렬*/
+  /*justify-content는 주축 기반정렬*/
+  /*align-items는 교차축 기반정렬*/
 }
 
 .item {

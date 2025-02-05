@@ -4,6 +4,10 @@ canvas.width = 800;
 canvas.height = 400;
 const characterWidth = 50;
 const characterHeight = 50;
+const gravity = 0.5;
+const jumpPower = -12;
+let velocityY = 0;
+let isJumping = false;
 let characterX = canvas.width / 2 - characterWidth / 2;
 const characterY = canvas.height - characterHeight - 10;
 const characterImage = new Image();
@@ -19,6 +23,11 @@ window.addEventListener("keydown", function (event) {
     moveRight = true;
     console.log(event.key);
   }
+  if (event.key === "ArrowUp" && !isJumping) {
+    velocityY = jumpPower;
+    isJumping = true;
+    console.log(event.key);
+  }
 });
 window.addEventListener("keyup", function (event) {
   if (event.key === "ArrowLeft") {
@@ -28,6 +37,7 @@ window.addEventListener("keyup", function (event) {
     moveRight = false;
   }
 });
+
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (moveLeft && characterX > 0) {

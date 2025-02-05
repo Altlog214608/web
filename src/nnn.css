@@ -1,18 +1,19 @@
-/* * {
+* {
   padding: 0;
   margin: 0;
-} */
-/* .container { */
-/* position: absolute; */
-/* background: url(https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/f373094a5e1a48c4826431bfb8253593_9366/OG_Blue_ID1454_01_standard.jpg); */
-/* width: 500px;
-  height: 500px; */
-/* background-repeat: no-repeat; */
-/* background-position: 50px 50px; */
-/* background-size: cover; */
-/* } */
-/* 
-.container img {
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+.container {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 300px;
-} */
+  background-repeat: no-repeat;
+  background-size: 300px 300px;
+}

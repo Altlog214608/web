@@ -1,10 +1,11 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
+  /*모바일해상도 기준*/
+  display: flex; /*플렉스 박스를 사용*/
+  flex-direction: column; /*항목배치 세로 방향성*/
+  gap: 20px; /*아이템간 간격*/
+  height: 100vh; /*화면 전체 높이 차지*/
+  align-items: center; /*가로 기준 아이템 정렬*/
+  justify-content: center; /*아이템 세로 정렬*/
 }
 
 .item {
@@ -17,8 +18,8 @@
 }
 @media (min-width: 768px) {
   .container {
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: row; /*가로 방향성 배치*/
+    justify-content: center; /*가로로 가운데 정렬*/
     height: auto;
   }
   .item {

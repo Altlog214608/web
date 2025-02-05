@@ -4,12 +4,12 @@ canvas.width = 800;
 canvas.height = 400;
 const characterWidth = 50;
 const characterHeight = 50;
-const gravity = 0.5;
+const gravity = 1;
 const jumpPower = -12;
 let velocityY = 0;
 let isJumping = false;
 let characterX = canvas.width / 2 - characterWidth / 2;
-const characterY = canvas.height - characterHeight - 10;
+let characterY = canvas.height - characterHeight - 10;
 const characterImage = new Image();
 characterImage.src = "src/123.png";
 let moveLeft = false;
@@ -45,6 +45,16 @@ function gameLoop() {
   }
   if (moveRight && characterX < canvas.width - characterWidth) {
     characterX += 5;
+  }
+  if (isJumping) {
+    characterY += velocityY;
+    velocityY += gravity;
+    if (characterY >= canvas.height - characterHeight - 10) {
+      //캐릭터가 바닥에 닿음
+      characterY = canvas.height - characterHeight - 10;
+      isJumping = false;
+      velocityY = 0;
+    }
   }
   ctx.drawImage(
     characterImage,

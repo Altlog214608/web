@@ -22,7 +22,12 @@ body {
   width: 25%;
 }
 
-/* The Modal (background) */
+/* 
+The Modal (background) 
+전체 modal box
+left, top 속성에 0을 주고
+화면 전체 크기로 덮고 display none 으로 숨김김
+*/
 .modal {
   display: none;
   position: fixed;
@@ -46,7 +51,12 @@ body {
   max-width: 1200px;
 }
 
-/* The Close Button */
+/* 
+The Close Button 
+화면 우측 상단 X 버튼
+absolute로 위치 고정 후
+fz와 fw 로 크기 조절절
+*/
 .close {
   color: white;
   position: absolute;
@@ -56,6 +66,10 @@ body {
   font-weight: bold;
 }
 
+/*
+close 버튼에 호버 했을때,
+색상, 커서 포인터 변경경
+*/
 .close:hover,
 .close:focus {
   color: #999;
@@ -63,6 +77,9 @@ body {
   cursor: pointer;
 }
 
+/*
+슬라이드 전체 숨기기기
+*/
 .mySlides {
   display: none;
 }
@@ -71,7 +88,10 @@ body {
   cursor: pointer;
 }
 
-/* Next & previous buttons */
+/* 
+Next & previous buttons 
+
+*/
 .prev,
 .next {
   cursor: pointer;

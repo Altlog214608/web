@@ -20,7 +20,7 @@ img.addEventListener("mousemove", (e) => {
 
 img.addEventListener("mouseover", () => {
   bool = true;
-  img.style.backgroundSize = "600px 600px";
+  img.style.scale = 2;
 });
 
 img.addEventListener("mouseout", () => {

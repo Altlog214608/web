@@ -5,12 +5,15 @@ img.src = "src/background1.png";
 
 const characterImage = new Image();
 characterImage.src = "src/player.png";
-const characterWidth = 20;
-const characterHeight = 20;
+const characterWidth = 100;
+const characterHeight = 100;
 let characterX = canvas.width / 2 - characterWidth / 2;
-let characterY = canvas.height - characterHeight - 10; // 캐릭터의 Y 위치 설정
+let characterY = img.height - characterHeight - 300; // 캐릭터의 Y 위치 설정
 let moveLeft = false;
 let moveRight = false;
+
+const deadLine = characterX - 200;
+
 // let isJumping = false;
 // let velocityY = 0;
 // const gravity = 0.5;
@@ -32,20 +35,11 @@ function gameLoop() {
   render(); // 배경과 캐릭터를 그립니다.
 
   if (moveLeft && characterX > 0) {
-    characterX -= 5;
+    characterX -= 8;
   }
   if (moveRight && characterX < canvas.width - characterWidth) {
-    characterX += 5;
+    characterX += 8;
   }
-  // if (isJumping) {
-  //   characterY += velocityY;
-  //   velocityY += gravity;
-  //   if (characterY >= canvas.height - characterHeight - 10) {
-  //     characterY = canvas.height - characterHeight - 10;
-  //     isJumping = false;
-  //     velocityY = 0;
-  //   }
-  // }
 
   requestAnimationFrame(gameLoop);
 }
@@ -70,7 +64,15 @@ window.addEventListener("keyup", function (event) {
 
 // 이미지 로드 완료 시 게임 루프 시작
 img.onload = function () {
+  // 캔버스 크기를 이미지 크기에 맞게 조정
+  canvas.width = img.width;
+  canvas.height = img.height;
+
   characterImage.onload = function () {
     gameLoop();
   };
+};
+
+canvas.onmousemove = function (e) {
+  console.log(e.offsetX, e.offsetY);
 };

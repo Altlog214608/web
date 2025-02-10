@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+.title {
+  position: absolute;
+  width: 80vw;
+  height: 100vh;
+  color: #f7f7f7;
+  font-size: 2rem;
+  background-image: url("src/lastwar_title.jpg");
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  z-index: 2; /* canvas 위에 오도록 설정 */
+}
+
 body {
   background-color: #000000;
   display: flex;

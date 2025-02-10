@@ -75,7 +75,8 @@ class Map {
       if (this.player.hp === 0) {
         // alert("Game Over");
         console.log("Game Over");
-        location.reload();
+        result_screen.style.display = "block";
+        this.closeInterval();
       }
     });
 
@@ -186,8 +187,6 @@ class Bullet {
   }
 
   draw() {
-    // this.map.ctx.fillStyle = "yellow";
-    // this.map.ctx.fillRect(this.x, this.y, this.width, this.height);
     this.map.ctx.drawImage(
       this.map.bulletImage,
       this.x,
@@ -205,7 +204,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 8;
+    this.speed = 1;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -287,29 +286,30 @@ class Monster {
   }
 }
 
-const start_button = document.getElementById("start_button");
-const start_screen = document.getElementById("start_screen");
-const game_screen = document.getElementById("game_screen");
-let gameset = false;
-// document.getElementById("gameCanvas").addEventListener("mousemove", (e) => {
-//   console.log(e.offsetX, e.offsetY);
-// });
+const restart_button = document.getElementById("restart_button");
+const result_screen = document.getElementById("result_screen");
+const result_text = document.getElementById("result_text");
 
-function start() {}
+restart_button.addEventListener("click", () => {
+  location.reload();
+});
+
 window.onmousemove = (e) => {
   console.log(e.offsetX, e.offsetY);
 };
 
-start_button.onclick = () => {
-  if (start_screen && game_screen) {
-    start_screen.style.display = "none";
-    game_screen.style.display = "block";
-    gameset = true;
-  }
-};
-
 window.onload = () => {
-  if (gameset) {
-    new Map();
-  }
+  const start_button = document.getElementById("start_button");
+  const start_screen = document.getElementById("start_screen");
+  const game_screen = document.getElementById("game_screen");
+  let gameset = false;
+
+  start_button.onclick = () => {
+    if (start_screen && game_screen && !gameset) {
+      start_screen.style.display = "none";
+      game_screen.style.display = "block";
+      const map = new Map();
+      gameset = true;
+    }
+  };
 };

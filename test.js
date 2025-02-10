@@ -992,6 +992,7 @@ let context = canvas.getContext("2d");
 let drawable = false;
 let x = 0;
 let y = 0;
+
 // let img = new Image();
 // img.onload = function () {
 //   context.drawImage(img, 0, 0, canvas.width, canvas.height);

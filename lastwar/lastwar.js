@@ -1,4 +1,21 @@
+const restart_button = document.getElementById("restart_button");
+const result_screen = document.getElementById("result_screen");
+const result_text = document.getElementById("result_text");
+const input = document.getElementById("text_box");
+const ranking = document.getElementById("ranking");
+const ul = document.getElementById("ul");
 let playtime = 0;
+
+window.onload = () => {
+  setInterval(() => {
+    playtime += 1;
+    console.log(playtime);
+  }, 1000);
+};
+
+restart_button.addEventListener("click", () => {
+  location.reload();
+});
 
 class Map {
   constructor() {
@@ -206,7 +223,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 10;
+    this.speed = 20;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -288,19 +305,6 @@ class Monster {
   }
 }
 
-const restart_button = document.getElementById("restart_button");
-const result_screen = document.getElementById("result_screen");
-const result_text = document.getElementById("result_text");
-const input = document.getElementById("text_box");
-const ranking = document.getElementById("ranking");
-const ul = document.getElementById("ul");
-
-ranking.chid;
-
-restart_button.addEventListener("click", () => {
-  location.reload();
-});
-
 // window.onmousemove = (e) => {
 //   console.log(e.offsetX, e.offsetY);
 // };
@@ -317,8 +321,8 @@ window.onload = () => {
       game_screen.style.display = "block";
       const map = new Map();
       var newli = document.createElement("li");
-      newli.innerHTML = input.value;
-      ul.appendChild(newli);
+      newli.innerHTML = "1." + input.value;
+      ranking.appendChild(newli);
       gameset = true;
     }
   };

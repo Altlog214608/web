@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="src/lastwar.css" />
   </head>
   <body>
-    <div class="title">
+    <div id="start_screen" class="title">
       <button type="button" id="start_button">게임 시작</button>
     </div>
-    <div class="game-container">
+    <div id="game_screen" class="game-container" style="display: none">
       <canvas id="gameCanvas"></canvas>
     </div>
     <script type="text/javascript" src="lastwar.js"></script>
   </body>
 </html>
+<!-- 
+공속 = 공격주기, 데미지, 화염방사기 -->

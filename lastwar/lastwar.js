@@ -1,7 +1,23 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+const title = document.getElementById("title");
+const startButton = document.getElementById("start_button");
+
+if (startButton) {
+  startButton.addEventListener("click", () => {
+    console.log("Game Start!");
+    if (title) {
+      title.style.display = "none";
+    }
+  });
+}
+
 const img = new Image();
 img.src = "src/background1.png";
+
+if (title) {
+  title.style.backgroundSize = "img.width img.height";
+}
 
 const characterImage = new Image();
 characterImage.src = "src/player.png";

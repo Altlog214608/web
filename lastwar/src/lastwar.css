@@ -4,16 +4,34 @@
   box-sizing: border-box;
 }
 
+#start_button {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  background-color: #343b34;
+  opacity: 0.8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  bottom: 200px;
+}
+
 .title {
+  display: flex;
   position: absolute;
   width: 80vw;
   height: 100vh;
   color: #f7f7f7;
   font-size: 2rem;
-  background-image: url("src/lastwar_title.jpg");
-  background-size: cover;
+  background-image: url("lastwar_title.jpg");
+  background-size: contain; /* 이미지가 왜곡되지 않도록 설정 */
   background-position: center;
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
   top: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
   z-index: 2; /* canvas 위에 오도록 설정 */
 }
 

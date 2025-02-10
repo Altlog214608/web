@@ -1,3 +1,5 @@
+let playtime = 0;
+
 class Map {
   constructor() {
     this.canvas = document.getElementById("gameCanvas");
@@ -76,7 +78,6 @@ class Map {
         // alert("Game Over");
         console.log("Game Over");
         result_screen.style.display = "block";
-        this.closeInterval();
       }
     });
 
@@ -100,6 +101,7 @@ class Map {
     this.update();
     this.render();
     this.hitcheck();
+
     requestAnimationFrame(() => this.gameLoop()); //계속 호출
   }
 
@@ -204,7 +206,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 1;
+    this.speed = 10;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -289,14 +291,19 @@ class Monster {
 const restart_button = document.getElementById("restart_button");
 const result_screen = document.getElementById("result_screen");
 const result_text = document.getElementById("result_text");
+const input = document.getElementById("text_box");
+const ranking = document.getElementById("ranking");
+const ul = document.getElementById("ul");
+
+ranking.chid;
 
 restart_button.addEventListener("click", () => {
   location.reload();
 });
 
-window.onmousemove = (e) => {
-  console.log(e.offsetX, e.offsetY);
-};
+// window.onmousemove = (e) => {
+//   console.log(e.offsetX, e.offsetY);
+// };
 
 window.onload = () => {
   const start_button = document.getElementById("start_button");
@@ -309,6 +316,9 @@ window.onload = () => {
       start_screen.style.display = "none";
       game_screen.style.display = "block";
       const map = new Map();
+      var newli = document.createElement("li");
+      newli.innerHTML = input.value;
+      ul.appendChild(newli);
       gameset = true;
     }
   };

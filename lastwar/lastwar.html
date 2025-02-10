@@ -8,18 +8,20 @@
   </head>
   <body>
     <div id="start_screen" class="title">
-      <button type="button" id="start_button">게임 시작</button>
+      <div id="btn-box">
+        <button type="button" id="start_button">게임 시작</button>
+        <input type="text" id="text_box" placeholder="이름을 입력하세요"></input>
+      </div>
+    </div>
+    <div id="result_screen">
+      <div id="result_text">랭킹</div>
+      <ol id="ranking">
+        
+      </ol>
+      <button type="button" id="restart_button">다시 시작</button>
     </div>
     <div id="game_screen" class="game-container" style="display: none">
       <canvas id="gameCanvas"></canvas>
-    </div>
-    <div id="result_screen">
-      <div id="result_text"></div>
-      <ul>
-        랭킹
-        <li></li>
-      </ul>
-      <button type="button" id="restart_button">다시 시작</button>
     </div>
     <script type="text/javascript" src="lastwar.js"></script>
   </body>

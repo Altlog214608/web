@@ -4,14 +4,9 @@ const result_text = document.getElementById("result_text");
 const input = document.getElementById("text_box");
 const ranking = document.getElementById("ranking");
 const ul = document.getElementById("ul");
+const rankingList = [];
+let frame = 0;
 let playtime = 0;
-
-window.onload = () => {
-  setInterval(() => {
-    playtime += 1;
-    console.log(playtime);
-  }, 1000);
-};
 
 restart_button.addEventListener("click", () => {
   location.reload();
@@ -93,6 +88,7 @@ class Map {
       }
       if (this.player.hp === 0) {
         // alert("Game Over");
+        console.log(playtime);
         console.log("Game Over");
         result_screen.style.display = "block";
       }
@@ -118,7 +114,13 @@ class Map {
     this.update();
     this.render();
     this.hitcheck();
-
+    console.log(rankingList);
+    frame += 1;
+    if (frame == 60) {
+      playtime += 1;
+      frame = 0;
+    }
+    console.log(playtime);
     requestAnimationFrame(() => this.gameLoop()); //계속 호출
   }
 
@@ -223,7 +225,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 20;
+    this.speed = 30;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -321,8 +323,9 @@ window.onload = () => {
       game_screen.style.display = "block";
       const map = new Map();
       var newli = document.createElement("li");
-      newli.innerHTML = "1." + input.value;
+      newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
       ranking.appendChild(newli);
+      rankingList.push(input.value);
       gameset = true;
     }
   };

@@ -4,11 +4,15 @@ const result_text = document.getElementById("result_text");
 const input = document.getElementById("text_box");
 const ranking = document.getElementById("ranking");
 const ul = document.getElementById("ul");
+const start_button = document.getElementById("start_button");
+const start_screen = document.getElementById("start_screen");
+const game_screen = document.getElementById("game_screen");
 const rankingList = [];
 let frame = 0;
 let playtime = 0;
 let score = 0;
 let gameset = false;
+let loop;
 
 restart_button.addEventListener("click", () => {
   location.reload();
@@ -56,24 +60,28 @@ class Map {
   }
 
   setupControls() {
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") this.player.moveLeft = true;
-      if (event.key === "ArrowRight") this.player.moveRight = true;
-    });
-    window.addEventListener("keyup", (event) => {
-      if (event.key === "ArrowLeft") this.player.moveLeft = false;
-      if (event.key === "ArrowRight") this.player.moveRight = false;
-    });
+    if (gameset == true) {
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") this.player.moveLeft = true;
+        if (event.key === "ArrowRight") this.player.moveRight = true;
+      });
+      window.addEventListener("keyup", (event) => {
+        if (event.key === "ArrowLeft") this.player.moveLeft = false;
+        if (event.key === "ArrowRight") this.player.moveRight = false;
+      });
+    }
   }
 
   setMonsters() {
-    setInterval(() => {
-      const canvasCenterX = this.canvas.width / 2;
-      const minX = canvasCenterX - 170;
-      const maxX = canvasCenterX + 150;
-      let lane = minX + Math.random() * (maxX - minX); // minX부터 maxX 사이의 랜덤 값
-      this.monsters.push(new Monster(this, lane));
-    }, 100);
+    if (gameset == true) {
+      setInterval(() => {
+        const canvasCenterX = this.canvas.width / 2;
+        const minX = canvasCenterX - 170;
+        const maxX = canvasCenterX + 150;
+        let lane = minX + Math.random() * (maxX - minX); // minX부터 maxX 사이의 랜덤 값
+        this.monsters.push(new Monster(this, lane));
+      }, 100);
+    }
   }
 
   hitcheck() {
@@ -106,12 +114,12 @@ class Map {
     });
 
     if (this.player.hp === 0) {
-      result_screen.style.display = "block";
-      var newli = document.createElement("li");
-      newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
-      ranking.appendChild(newli);
-      rankingList.push(input.value);
-      // game(gameset);
+      // result_screen.style.display = "block";
+      // var newli = document.createElement("li");
+      // newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
+      // ranking.appendChild(newli);
+      // rankingList.push(input.value);
+      game(gameset);
     }
   }
 
@@ -126,7 +134,7 @@ class Map {
       frame = 0;
     }
 
-    let loop = requestAnimationFrame(() => this.gameLoop()); //계속 호출
+    loop = requestAnimationFrame(() => this.gameLoop());
   }
 
   update() {
@@ -155,6 +163,7 @@ class Player {
     this.map = map;
     this.x = map.backgroundImage.width / 2 - 25;
     this.y = map.backgroundImage.height - 300;
+    // this.y = map.canvas.height + 2000;
     this.width = 120;
     this.height = 120;
     this.speed = 4;
@@ -244,7 +253,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 20;
+    this.speed = 30;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -363,16 +372,13 @@ class Monster {
 // };
 
 function game(gameset) {
-  if (start_screen && game_screen && !gameset) {
+  if (gameset == false) {
     start_screen.style.display = "none";
     game_screen.style.display = "block";
-    const map = new Map();
 
-    gameset = true;
-  } else if (gameset == false) {
+    const map = new Map();
+  } else if (gameset == true) {
     cancelAnimationFrame(loop);
-    console.log(playtime);
-    console.log("Game Over");
     result_screen.style.display = "block";
     var newli = document.createElement("li");
     newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
@@ -382,17 +388,14 @@ function game(gameset) {
 }
 
 window.onload = () => {
-  const start_button = document.getElementById("start_button");
-  const start_screen = document.getElementById("start_screen");
-  const game_screen = document.getElementById("game_screen");
-
   start_button.onclick = () => {
-    // game(gameset);
-    if (start_screen && game_screen && !gameset) {
-      start_screen.style.display = "none";
-      game_screen.style.display = "block";
-      const map = new Map();
-      gameset = true;
-    }
+    game(gameset);
+    gameset = true;
+    // if (start_screen && game_screen && !gameset) {
+    //   start_screen.style.display = "none";
+    //   game_screen.style.display = "block";
+    //   const map = new Map();
+    //   gameset = true;
+    // }
   };
 };

@@ -7,6 +7,13 @@ const ul = document.getElementById("ul");
 const start_button = document.getElementById("start_button");
 const start_screen = document.getElementById("start_screen");
 const game_screen = document.getElementById("game_screen");
+const stop_btn = document.getElementById("stop_btn");
+const restart = document.getElementById("restart");
+const canvas = document.getElementById("gameCanvas");
+const reset_btn = document.getElementById("reset_btn");
+const ctx = canvas.getContext("2d");
+const rename = document.getElementById("rename");
+let maps = [];
 const rankingList = [];
 let frame = 0;
 let playtime = 0;
@@ -14,15 +21,32 @@ let score = 0;
 let gameset = false;
 let loop;
 let playerNumber = 1;
+let playerName = NaN;
 
 restart_button.addEventListener("click", () => {
+  // location.reload();
+  reset(maps[0]);
+  gameset = gameset === true ? false : true;
+  result_screen.style.display = "none";
+  playerName = rename.value;
+});
+
+restart.addEventListener("click", () => {
   location.reload();
+});
+
+stop_btn.addEventListener("click", () => {
+  gameset = gameset === true ? false : true;
+});
+
+reset_btn.addEventListener("click", () => {
+  reset(maps[0]);
 });
 
 class Map {
   constructor() {
-    this.canvas = document.getElementById("gameCanvas");
-    this.ctx = this.canvas.getContext("2d");
+    this.canvas = canvas;
+    this.ctx = ctx;
     this.backgroundImage = new Image();
     this.backgroundImage.src = "src/background1.png";
     this.bulletImage = new Image();
@@ -60,10 +84,9 @@ class Map {
     }, 100); // 2초 간격으로 공격
   }
 
-  set mapreset(a) {
-    this.monsters = [];
-    this.bullets = [];
-    this.items = [];
+  mapreset() {
+    this.bullets = this.bullets.filter((b) => b == bullet);
+    this.monsters = this.monsters.filter((m) => m == monster);
   }
 
   setupControls() {
@@ -102,7 +125,6 @@ class Map {
         this.monsters = this.monsters.filter((m) => m !== monster);
       }
     });
-
     this.bullets.forEach((bullet) => {
       this.monsters.forEach((monster) => {
         if (
@@ -129,16 +151,17 @@ class Map {
   }
 
   gameLoop() {
-    this.update();
-    this.render();
-    this.hitcheck();
+    if (gameset == true) {
+      this.update();
+      this.render();
+      this.hitcheck();
 
-    frame += 1;
-    if (frame == 60) {
-      playtime += 1;
-      frame = 0;
+      frame += 1;
+      if (frame == 60) {
+        playtime += 1;
+        frame = 0;
+      }
     }
-
     loop = requestAnimationFrame(() => this.gameLoop());
   }
 
@@ -258,7 +281,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 5;
+    this.speed = 50;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -294,10 +317,13 @@ class Monster {
     if (this.y < 1500) {
       if (this.x >= this.maxXrange) {
         this.move = -1;
-        this.maxXrange += 30;
+        this.maxXrange = Math.min(
+          this.map.canvas.width - this.width,
+          this.maxXrange + 30
+        );
       } else if (this.x <= this.minXrange) {
         this.move = 1;
-        this.minXrange -= 50;
+        this.minXrange = Math.max(0, this.minXrange - 60);
       }
     } else {
       if (this.x <= this.map.player.PosX) {
@@ -376,30 +402,56 @@ class Monster {
 //   console.log(e.offsetX, e.offsetY);
 // };
 
-function reset(a) {
-  map.mapreset(a);
+function reset(map) {
+  map.bullets = [];
+  map.monsters = [];
+  map.player.x = map.canvas.width / 2 - map.player.width / 2;
+  map.player.y = map.canvas.height - map.player.height - 10;
+  map.player.hp = 3;
+  score = 0;
+  playtime = 0;
+  frame = 0;
 }
 
 function game(state) {
+  let name;
   if (state == false) {
     start_screen.style.display = "none";
     game_screen.style.display = "block";
+    result_screen.style.display = "none";
 
     const map = new Map();
+    maps.push(map);
   } else if (state == true) {
     gameset = false;
     result_screen.style.display = "block";
     var newli = document.createElement("li");
+
     newli.innerHTML =
-      "1." + input.value + " " + playtime + "초 생존" + score + "점";
+      playerNumber +
+      ". " +
+      playerName +
+      "\t" +
+      playtime +
+      "초 생존 \t" +
+      score +
+      "점";
     ranking.appendChild(newli);
-    rankingList.push(input.value);
-    cancelAnimationFrame(loop);
+    playerNumber += 1;
+    console.log(rankingList);
+    // cancelAnimationFrame(loop);
   }
 }
 
 window.onload = () => {
   start_button.onclick = () => {
+    if (input.value != "") {
+      playerName = input.vlaue;
+      rankingList.push(playerName);
+    } else {
+      playerName = "None";
+      rankingList.push(playerName);
+    }
     game(gameset);
     gameset = true;
   };

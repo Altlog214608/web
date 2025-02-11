@@ -7,6 +7,8 @@ const ul = document.getElementById("ul");
 const rankingList = [];
 let frame = 0;
 let playtime = 0;
+let score = 0;
+let gameset = false;
 
 restart_button.addEventListener("click", () => {
   location.reload();
@@ -86,12 +88,6 @@ class Map {
         this.player.hp -= 1;
         this.monsters = this.monsters.filter((m) => m !== monster);
       }
-      if (this.player.hp === 0) {
-        // alert("Game Over");
-        console.log(playtime);
-        console.log("Game Over");
-        result_screen.style.display = "block";
-      }
     });
 
     this.bullets.forEach((bullet) => {
@@ -108,20 +104,29 @@ class Map {
         }
       });
     });
+
+    if (this.player.hp === 0) {
+      result_screen.style.display = "block";
+      var newli = document.createElement("li");
+      newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
+      ranking.appendChild(newli);
+      rankingList.push(input.value);
+      // game(gameset);
+    }
   }
 
   gameLoop() {
     this.update();
     this.render();
     this.hitcheck();
-    console.log(rankingList);
+
     frame += 1;
     if (frame == 60) {
       playtime += 1;
       frame = 0;
     }
-    console.log(playtime);
-    requestAnimationFrame(() => this.gameLoop()); //계속 호출
+
+    let loop = requestAnimationFrame(() => this.gameLoop()); //계속 호출
   }
 
   update() {
@@ -150,18 +155,32 @@ class Player {
     this.map = map;
     this.x = map.backgroundImage.width / 2 - 25;
     this.y = map.backgroundImage.height - 300;
-    this.width = 150;
-    this.height = 150;
+    this.width = 120;
+    this.height = 120;
     this.speed = 4;
     this.moveLeft = false;
     this.moveRight = false;
     this.hp = 3;
   }
 
+  get PosX() {
+    return this.x;
+  }
+
+  get PosY() {
+    return this.y;
+  }
+
+  get Position() {
+    return this.x, this, y;
+  }
+
   update() {
     if (this.moveLeft && this.x > 0) this.x -= this.speed;
     if (this.moveRight && this.x < this.map.canvas.width - this.width)
       this.x += this.speed;
+    // console.log(this.getPosX());
+    // console.log(this.getPosY());
   }
 
   attack() {
@@ -225,11 +244,14 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 30;
+    this.speed = 20;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
     this.frame = 0;
+    this.move = 1;
+    this.minXrange = this.x - 10;
+    this.maxXrange = this.x + 10;
 
     setInterval(() => {
       this.frame = this.frame === 0 ? 1 : 0;
@@ -243,12 +265,41 @@ class Monster {
       this.map.monsters = this.map.monsters.filter(
         (monster) => monster !== this
       );
+      score += 20;
     }
   }
 
   update() {
     //몬스터 속도
     this.y += this.speed;
+    this.monstermove();
+  }
+
+  monstermove() {
+    this.x += this.move;
+    if (this.y < 1500) {
+      if (this.x >= this.maxXrange) {
+        this.move = -1;
+        this.maxXrange += 30;
+      } else if (this.x <= this.minXrange) {
+        this.move = 1;
+        this.minXrange -= 50;
+      }
+    } else {
+      if (this.x <= this.map.player.PosX) {
+        this.move = 1;
+      } else if (this.x >= this.map.player.PosX) {
+        this.move = -1;
+      }
+    }
+  }
+
+  getPosX() {
+    return this.x;
+  }
+
+  getPosY() {
+    return this.y;
   }
 
   draw() {
@@ -261,23 +312,7 @@ class Monster {
         this.width,
         this.height
       );
-    } else if (this.y < 100) {
-      this.map.ctx.drawImage(
-        this.imageFrames[this.frame],
-        this.x,
-        this.y,
-        this.width + 5,
-        this.height + 5
-      );
     } else if (this.y < 150) {
-      this.map.ctx.drawImage(
-        this.imageFrames[this.frame],
-        this.x,
-        this.y,
-        this.width + 10,
-        this.height + 10
-      );
-    } else if (this.y < 200) {
       this.map.ctx.drawImage(
         this.imageFrames[this.frame],
         this.x,
@@ -285,13 +320,29 @@ class Monster {
         this.width + 15,
         this.height + 15
       );
+    } else if (this.y < 250) {
+      this.map.ctx.drawImage(
+        this.imageFrames[this.frame],
+        this.x,
+        this.y,
+        this.width + 30,
+        this.height + 30
+      );
+    } else if (this.y < 400) {
+      this.map.ctx.drawImage(
+        this.imageFrames[this.frame],
+        this.x,
+        this.y,
+        this.width + 45,
+        this.height + 45
+      );
     } else {
       this.map.ctx.drawImage(
         this.imageFrames[this.frame],
         this.x,
         this.y,
-        this.width + 20,
-        this.height + 20
+        this.width + 60,
+        this.height + 60
       );
     }
 
@@ -311,21 +362,36 @@ class Monster {
 //   console.log(e.offsetX, e.offsetY);
 // };
 
+function game(gameset) {
+  if (start_screen && game_screen && !gameset) {
+    start_screen.style.display = "none";
+    game_screen.style.display = "block";
+    const map = new Map();
+
+    gameset = true;
+  } else if (gameset == false) {
+    cancelAnimationFrame(loop);
+    console.log(playtime);
+    console.log("Game Over");
+    result_screen.style.display = "block";
+    var newli = document.createElement("li");
+    newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
+    ranking.appendChild(newli);
+    rankingList.push(input.value);
+  }
+}
+
 window.onload = () => {
   const start_button = document.getElementById("start_button");
   const start_screen = document.getElementById("start_screen");
   const game_screen = document.getElementById("game_screen");
-  let gameset = false;
 
   start_button.onclick = () => {
+    // game(gameset);
     if (start_screen && game_screen && !gameset) {
       start_screen.style.display = "none";
       game_screen.style.display = "block";
       const map = new Map();
-      var newli = document.createElement("li");
-      newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
-      ranking.appendChild(newli);
-      rankingList.push(input.value);
       gameset = true;
     }
   };

@@ -13,6 +13,7 @@ let playtime = 0;
 let score = 0;
 let gameset = false;
 let loop;
+let playerNumber = 1;
 
 restart_button.addEventListener("click", () => {
   location.reload();
@@ -56,32 +57,36 @@ class Map {
 
     setInterval(() => {
       this.player.attack();
-    }, 1000); // 2초 간격으로 공격
+    }, 100); // 2초 간격으로 공격
+  }
+
+  set mapreset(a) {
+    this.monsters = [];
+    this.bullets = [];
+    this.items = [];
   }
 
   setupControls() {
-    if (gameset == true) {
-      window.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") this.player.moveLeft = true;
-        if (event.key === "ArrowRight") this.player.moveRight = true;
-      });
-      window.addEventListener("keyup", (event) => {
-        if (event.key === "ArrowLeft") this.player.moveLeft = false;
-        if (event.key === "ArrowRight") this.player.moveRight = false;
-      });
-    }
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") this.player.moveLeft = true;
+      if (event.key === "ArrowRight") this.player.moveRight = true;
+    });
+    window.addEventListener("keyup", (event) => {
+      if (event.key === "ArrowLeft") this.player.moveLeft = false;
+      if (event.key === "ArrowRight") this.player.moveRight = false;
+    });
   }
 
   setMonsters() {
-    if (gameset == true) {
-      setInterval(() => {
+    setInterval(() => {
+      if (gameset == true) {
         const canvasCenterX = this.canvas.width / 2;
         const minX = canvasCenterX - 170;
         const maxX = canvasCenterX + 150;
         let lane = minX + Math.random() * (maxX - minX); // minX부터 maxX 사이의 랜덤 값
         this.monsters.push(new Monster(this, lane));
-      }, 100);
-    }
+      }
+    }, 100);
   }
 
   hitcheck() {
@@ -253,7 +258,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 30;
+    this.speed = 5;
     this.hp = 3;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -371,19 +376,25 @@ class Monster {
 //   console.log(e.offsetX, e.offsetY);
 // };
 
-function game(gameset) {
-  if (gameset == false) {
+function reset(a) {
+  map.mapreset(a);
+}
+
+function game(state) {
+  if (state == false) {
     start_screen.style.display = "none";
     game_screen.style.display = "block";
 
     const map = new Map();
-  } else if (gameset == true) {
-    cancelAnimationFrame(loop);
+  } else if (state == true) {
+    gameset = false;
     result_screen.style.display = "block";
     var newli = document.createElement("li");
-    newli.innerHTML = "1." + input.value + " " + playtime + "초 생존";
+    newli.innerHTML =
+      "1." + input.value + " " + playtime + "초 생존" + score + "점";
     ranking.appendChild(newli);
     rankingList.push(input.value);
+    cancelAnimationFrame(loop);
   }
 }
 
@@ -391,11 +402,5 @@ window.onload = () => {
   start_button.onclick = () => {
     game(gameset);
     gameset = true;
-    // if (start_screen && game_screen && !gameset) {
-    //   start_screen.style.display = "none";
-    //   game_screen.style.display = "block";
-    //   const map = new Map();
-    //   gameset = true;
-    // }
   };
 };

@@ -107,3 +107,38 @@ canvas {
   text-align: center;
   align-items: center;
 }
+
+#control_box {
+  display: block;
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #6e5f5f;
+  z-index: 5;
+}
+
+#stop_btn {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://thumb.silhouette-ac.com/t/fa/fadba6db839c36f9c6876396e55083df_t.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#stop_btn:hover {
+  cursor: pointer;
+}
+
+#restart {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://previews.123rf.com/images/barks/barks1712/barks171200875/91794984-%EC%9E%AC%EC%83%9D-%EB%8F%8C%EC%95%84-%EA%B0%80%EA%B8%B0-%EC%95%84%EC%9D%B4%EC%BD%98.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#restart:hover {
+  cursor: pointer;
+}

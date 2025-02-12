@@ -395,12 +395,41 @@ class Player {
   }
 
   calc(i) {
-    if (i % 3 == 0) {
+    if (i % 5 == 0) {
       return 0;
-    } else if (i % 3 == 1) {
+    } else if (i % 5 == 1) {
       return 20;
-    } else {
+    } else if (i % 5 == 2) {
       return -20;
+    } else if (i % 5 == 3) {
+      return 40;
+    } else if (i % 5 == 4) {
+      return -40;
+    }
+  }
+
+  calc2(charcters) {
+    if (charcters % 5 == 1) {
+      this.charcters_x_size[0] = [this.x - this.width / 2];
+      this.charcters_x_size[1] = [this.x + this.width / 2];
+    } else if (charcters % 5 == 2) {
+      this.charcters_x_size[0] = [this.x - this.width / 2];
+      this.charcters_x_size[1] = [this.x + this.width + this.width / 2];
+    } else if (charcters % 5 == 3) {
+      this.charcters_x_size[0] = [this.x - this.width - this.width / 2];
+      this.charcters_x_size[1] = [this.x + this.width + this.width / 2];
+    } else if (charcters % 5 == 4) {
+      this.charcters_x_size[0] = [this.x - this.width - this.width / 2];
+      this.charcters_x_size[1] = [
+        this.x + this.width + this.width + this.width / 2,
+      ];
+    } else if (charcters % 5 == 0) {
+      this.charcters_x_size[0] = [
+        this.x - this.width - this.width - this.width / 2,
+      ];
+      this.charcters_x_size[1] = [
+        this.x + this.width + this.width + this.width / 2,
+      ];
     }
   }
 

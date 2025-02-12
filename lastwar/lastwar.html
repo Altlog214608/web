@@ -22,11 +22,15 @@
       <!-- <div id="result_text">랭킹</div> -->
       <h3 style="color: black;"> <img src="src/Logo.png" alt="">랭킹</h3>
       <ol id="ranking">
-        <li id="firstli"><p>순위</p><p>이름</p><p>플레이시간</p><p>점수</p></li>
+        <li id="firstli"><p>순위</p><p>이름</p><p>스테이지</p><p>플레이시간</p><p>점수</p></li>
       </ol>
       </table>
-      <input type="text" id="rename" placeholder="이름을 입력하세요">
+      <input type="text" id="rename" placeholder="이름을 입력하세요">
       <button type="button" id="restart_button">다시 시작</button>
+      <div id="re-stage">
+        <button type="button" id="prevstage">이전 스테이지</button>
+        <button type="button" id="nextstage">다음 스테이지</button>
+      </div>
     </div>
     <div id="game_screen" class="game-container" style="display: none">
       <canvas id="gameCanvas"></canvas>
@@ -49,6 +53,7 @@
   결과 화면 점수, 랭킹 표시 다음 스테이지로 이동 (50%)
   결과 화면 출력시 캔버스 Loop 종료 (O)
   몬스터 움직임 좀 더 자연스럽게
-  메인화면 스테이지 설정 버튼 또는 화면 생성
-  난이도 설정 함수수
+  메인화면 스테이지 설정 버튼 또는 화면 생성 (50%)
+  난이도 설정 함수 (O)
+  결과창에서 스테이지 이동시 몬스터인터벌 값 변화 X
 -->

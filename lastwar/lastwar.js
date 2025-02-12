@@ -13,6 +13,10 @@ const canvas = document.getElementById("gameCanvas");
 const reset_btn = document.getElementById("reset_btn");
 const ctx = canvas.getContext("2d");
 const rename = document.getElementById("rename");
+const level_number = document.getElementById("level_number");
+const left_btn = document.getElementById("left_btn");
+const right_btn = document.getElementById("right_btn");
+
 let maps = [];
 const rankingList = [];
 let frame = 0;
@@ -22,6 +26,9 @@ let gameset = false;
 let loop;
 let playerNumber = 1;
 let playerName = NaN;
+let ratio = 1;
+let monsterInterval = 1000;
+let stageNumber = 1;
 
 restart_button.addEventListener("click", () => {
   // location.reload();
@@ -41,6 +48,30 @@ stop_btn.addEventListener("click", () => {
 
 reset_btn.addEventListener("click", () => {
   reset(maps[0]);
+});
+
+left_btn.addEventListener("click", () => {
+  if (stageNumber > 1) {
+    stageNumber -= 1;
+    level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
+  } else {
+    stageNumber = 1;
+    level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
+  }
+});
+
+right_btn.addEventListener("click", () => {
+  if (stageNumber < 5) {
+    stageNumber += 1;
+    level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
+  } else {
+    stageNumber = 5;
+    level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
+  }
 });
 
 class Map {
@@ -81,7 +112,7 @@ class Map {
 
     setInterval(() => {
       this.player.attack();
-    }, 100); // 2초 간격으로 공격
+    }, 1000); // 2초 간격으로 공격
   }
 
   mapreset() {
@@ -109,7 +140,7 @@ class Map {
         let lane = minX + Math.random() * (maxX - minX); // minX부터 maxX 사이의 랜덤 값
         this.monsters.push(new Monster(this, lane));
       }
-    }, 100);
+    }, monsterInterval);
   }
 
   hitcheck() {
@@ -281,8 +312,8 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 50;
-    this.hp = 3;
+    this.speed = 1;
+    this.hp = ratio;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
     this.frame = 0;
@@ -392,7 +423,7 @@ class Monster {
     this.map.ctx.fillRect(
       this.x + 3,
       this.y - 6,
-      ((this.width + 3) * this.hp) / 3,
+      ((this.width + 3) * this.hp) / ratio,
       5
     ); // 체력 3칸
   }
@@ -412,13 +443,24 @@ function reset(map) {
   playtime = 0;
   frame = 0;
 }
+
+function stageLevel(num) {
+  // ratio = ratio * num;
+  ratio = 3 * num;
+  monsterInterval -= num * 100;
+  // if (num == 5) {
+  //   Monster.speed(2);
+  // }
+  // boss.hp = boss.hp * ratio * 2;
+}
+
 function game(state) {
-  let name;
   if (state == false) {
     start_screen.style.display = "none";
     game_screen.style.display = "block";
     result_screen.style.display = "none";
 
+    stageLevel(stageNumber);
     const map = new Map();
     maps.push(map);
   } else if (state == true) {

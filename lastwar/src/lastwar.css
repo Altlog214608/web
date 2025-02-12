@@ -5,7 +5,7 @@
 }
 
 #start_button {
-  position: relative;
+  /* position: relative; */
   display: block;
   width: 200px;
   height: 50px;
@@ -15,7 +15,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  top: 100px;
+  /* top: 100px; */
 }
 
 #start_button:hover {
@@ -169,7 +169,44 @@ h3 img {
   max-width: 200px;
 }
 
+#stage_box {
+  width: 100%;
+  height: 20px;
+  /* background-color: #8d7272; */
+  display: flex;
+  justify-content: space-between;
+}
+
+#left_btn {
+  /* float: left; */
+  width: 20px;
+  height: 100%;
+  background-image: url(left.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#level {
+  width: 100px;
+  height: 100%;
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: rgb(255, 0, 0);
+}
+
+#right_btn {
+  /* float: right; */
+  width: 20px;
+  height: 100%;
+  background-image: url(right.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 #btn-box {
+  position: relative;
+  top: 50px;
   text-align: center;
   align-items: center;
 }

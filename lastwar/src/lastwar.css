@@ -94,8 +94,15 @@ canvas {
 
 #restart_button {
   width: 80%;
-  height: 100px;
-  margin: auto;
+  height: 80px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+#restart_button:hover {
+  font-size: 25px;
+  cursor: pointer;
+  background-color: #7db376;
 }
 
 #text_box {
@@ -156,7 +163,6 @@ canvas {
 }
 
 #rename {
-  position: absolute;
-  height: 50px;
-  bottom: 200px;
+  width: 80%;
+  margin: auto;
 }

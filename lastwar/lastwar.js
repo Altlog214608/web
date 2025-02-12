@@ -18,6 +18,7 @@ const left_btn = document.getElementById("left_btn");
 const right_btn = document.getElementById("right_btn");
 const prevstage = document.getElementById("prevstage");
 const nextstage = document.getElementById("nextstage");
+const viewstage = document.getElementById("viewstage");
 
 let maps = [];
 const rankingList = [];
@@ -60,6 +61,7 @@ right_btn.addEventListener("click", () => {
 prevstage.addEventListener("click", () => {
   decNum();
   stageLevel(stageNumber);
+  viewstage.innerHTML = stageNumber + " stage";
   // reset(maps[0]);
   re_start();
 });
@@ -67,6 +69,7 @@ prevstage.addEventListener("click", () => {
 nextstage.addEventListener("click", () => {
   incNum();
   stageLevel(stageNumber);
+  viewstage.innerHTML = stageNumber + " stage";
   // reset(maps[0]);
   re_start();
 });
@@ -302,7 +305,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 10;
+    this.speed = 30;
     this.hp = 1 * ratio;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -462,6 +465,7 @@ function game(state) {
     result_screen.style.display = "none";
 
     stageLevel(stageNumber);
+    viewstage.innerHTML = stageNumber + " stage";
     const map = new Map();
     maps.push(map);
   } else if (state == true) {

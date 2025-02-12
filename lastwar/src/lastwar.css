@@ -239,7 +239,7 @@ h3 img {
 
 #control_box {
   display: block;
-  position: relative;
+  position: absolute;
   right: 30px;
   top: 10px;
   width: 30px;

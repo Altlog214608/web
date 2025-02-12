@@ -36,6 +36,7 @@ let stageNumber = 1;
 restart_button.addEventListener("click", () => {
   // location.reload();
   re_start();
+  console.log("restart");
 });
 
 restart.addEventListener("click", () => {
@@ -64,6 +65,7 @@ prevstage.addEventListener("click", () => {
   viewstage.innerHTML = stageNumber + " stage";
   // reset(maps[0]);
   re_start();
+  console.log("prev");
 });
 
 nextstage.addEventListener("click", () => {
@@ -72,6 +74,7 @@ nextstage.addEventListener("click", () => {
   viewstage.innerHTML = stageNumber + " stage";
   // reset(maps[0]);
   re_start();
+  console.log("next");
 });
 
 class Map {
@@ -80,6 +83,7 @@ class Map {
     this.ctx = ctx;
     this.backgroundImage = new Image();
     this.backgroundImage.src = "src/background1.png";
+
     this.bulletImage = new Image();
     this.bulletImage.src = "src/redbullet.png";
 
@@ -97,9 +101,21 @@ class Map {
     this.playerImage.src = "src/player.png";
 
     this.player = new Player(this);
+
     this.monsters = [];
     this.bullets = [];
     this.items = [];
+
+    this.attackPowerTimer = null; // 공격력 증가 타이머
+    this.attackSpeedTimer = null; // 공격 속도 증가 타이머
+    this.attackInterval = 400; // 기본 공격 주기
+
+    this.itemImages = [new Image(), new Image(), new Image()];
+    this.itemImages[0].src = "src/item1.png"; //공격력
+    this.itemImages[1].src = "src/item2.png"; //공격속도
+    this.itemImages[2].src = "src/item3.png"; //인구수증가
+
+    this.setitems();
 
     this.mobInterval = monsterInterval;
     this.setupControls();
@@ -111,9 +127,13 @@ class Map {
       this.gameLoop();
     };
 
-    setInterval(() => {
+    // setInterval(() => {
+    //   this.player.attack();
+    // }, 1000); // 2초 간격으로 공격
+
+    this.attackIntervalTimer = setInterval(() => {
       this.player.attack();
-    }, 1000); // 2초 간격으로 공격
+    }, this.attackInterval);
   }
 
   setupControls() {
@@ -142,6 +162,87 @@ class Map {
       }
     }, mobInterval);
   }
+
+  setitems() {
+    setInterval(() => {
+      let lanes = [65, 260]; // 아이템이 등장할 좌표 배열
+      let lane2 = lanes[Math.floor(Math.random() * lanes.length)]; // 120 또는 250 중 랜덤 선택
+      this.items.push(new Item(this, lane2)); //map,좌표
+    }, 5000);
+  }
+
+  itemscheck() {
+    // 3번째 인구증가 아이템
+    this.items.forEach((item) => {
+      if (
+        this.player.x < item.x + item.width &&
+        this.player.x + this.player.width > item.x &&
+        this.player.y < item.y + item.height &&
+        this.player.y + this.player.height > item.y
+      ) {
+        if (item.type === 2) {
+          // 인구수 증가 아이템
+          console.log("인구수 증가 아이템 효과 시작");
+
+          Player.charcters += item.number; // 아이템 숫자만큼 병사 수 변경
+          console.log("현재 병사 수: " + Player.charcters);
+          this.items = this.items.filter((i) => i !== item); // 아이템 제거
+        }
+      }
+    });
+  }
+
+  itemscheck2() {
+    //1,2번째 공격력증가 ,공격속도 증가 아이템
+    this.items.forEach((item) => {
+      if (item.number >= 1 && item.type !== 2) {
+        // 아이템의 숫자가 1 이상일 때, 3번째 아이템이 아닐때 바로적용
+        if (item.type === 0) {
+          // 공격력 증가 아이템
+          console.log("공격력 증가 아이템 효과 시작");
+          // 총알 이미지 변경
+          this.player.changebullet("bullet1.png");
+          this.player.attackPower = 2;
+          if (this.attackPowerTimer) {
+            clearTimeout(this.attackPowerTimer);
+          }
+          this.attackPowerTimer = setTimeout(() => {
+            console.log("공격력 증가 아이템 효과 종료");
+            this.player.attackPower = 1; // 10초 후 원래대로
+            this.player.changebullet("bluebullet.png");
+          }, 10000);
+        } else if (item.type === 1) {
+          // 공격 속도 증가 아이템
+          console.log("공격 속도 증가 아이템 효과 시작");
+
+          if (this.attackSpeedTimer) {
+            //공격타이머가 설정되어있다면 삭제
+            clearInterval(this.attackSpeedTimer);
+          }
+          // 공격 속도 증가
+          this.attackInterval = 100; //0.1초
+          clearInterval(this.attackIntervalTimer);
+          this.attackIntervalTimer = setInterval(() => {
+            this.player.attack(); //총알 객체 생성
+          }, this.attackInterval);
+
+          if (this.attackSpeedTimer) clearTimeout(this.attackSpeedTimer);
+          this.attackSpeedTimer = setTimeout(() => {
+            console.log("공격 속도 증가 아이템 효과 종료");
+            clearInterval(this.attackIntervalTimer);
+            this.attackInterval = 400;
+            this.attackIntervalTimer = setInterval(() => {
+              this.player.attack();
+            }, this.attackInterval);
+          }, 10000);
+        }
+
+        // 아이템 효과가 적용되면 배열에서 해당 아이템 제거
+        this.items = this.items.filter((i) => i !== item);
+      }
+    });
+  }
+
   hitcheck() {
     this.monsters.forEach((monster) => {
       if (
@@ -151,7 +252,9 @@ class Map {
         this.player.y + this.player.height > monster.y
       ) {
         console.log("hit");
-        this.player.hp -= 1;
+        // this.player.hp -= 1;
+        Player.charcters -= 1;
+        console.log("병사 수 감소: " + Player.charcters);
         this.monsters = this.monsters.filter((m) => m !== monster);
       }
     });
@@ -163,13 +266,35 @@ class Map {
           bullet.y < monster.y + monster.height &&
           bullet.y + bullet.height > monster.y
         ) {
-          monster.hit();
+          monster.hit(this.player.attackPower);
           this.bullets = this.bullets.filter((b) => b !== bullet);
         }
       });
     });
+    // 총알과 아이템의 충돌 처리
+    this.bullets.forEach((bullet, index) => {
+      this.items.forEach((item) => {
+        if (
+          bullet.x < item.x + item.width &&
+          bullet.x + bullet.width > item.x &&
+          bullet.y < item.y + item.height &&
+          bullet.y + bullet.height > item.y
+        ) {
+          console.log("bullet item hit");
+          if (item.type === 0) {
+            item.itemcount(); // 아이템 숫자 증가
+          } else if (item.type === 1) {
+            item.itemcount(); // 숫자 증가
+          } else if (item.type === 2) {
+            // 인구수 증가 아이템
+            item.itemcount(); // 숫자 증가
+          }
+          this.bullets.splice(index, 1); // forEach에 맞는 위치 1개 삭제 (아이템 그대로 유지,안쓰면 관통 )
+        }
+      });
+    });
 
-    if (this.player.hp <= 0) {
+    if (Player.charcters <= 0) {
       game(gameset);
     }
   }
@@ -179,6 +304,8 @@ class Map {
       this.update();
       this.render();
       this.hitcheck();
+      this.itemscheck(); //인구수 증가 아이템 체크
+      this.itemscheck2(); //공격력,공격속도 아이템 체크
 
       frame += 1;
       if (frame == 60) {
@@ -193,6 +320,7 @@ class Map {
     this.player.update();
     this.monsters.forEach((monster) => monster.update());
     this.bullets.forEach((bullet) => bullet.update());
+    this.items.forEach((item) => item.update());
   }
 
   render() {
@@ -207,21 +335,27 @@ class Map {
     this.player.draw();
     this.monsters.forEach((monster) => monster.draw());
     this.bullets.forEach((bullet) => bullet.draw());
+    this.items.forEach((item) => item.draw());
   }
 }
 
 class Player {
+  static charcters = 1;
   constructor(map) {
     this.map = map;
     this.x = map.backgroundImage.width / 2 - 25;
     this.y = map.backgroundImage.height - 300;
-    // this.y = map.canvas.height + 2000;
     this.width = 120;
     this.height = 120;
     this.speed = 4;
     this.moveLeft = false;
     this.moveRight = false;
-    this.hp = 3;
+    this.bulletImage = new Image(); // Image 객체 생성
+    this.bulletImage.src = "src/redbullet.png"; // 기본 총알 이미지
+    this.attackPower = 1; //기본 공격력 1
+    this.bulletspeed = 5; //총알 속도
+
+    // this.hp = 3;
   }
 
   get PosX() {
@@ -245,39 +379,72 @@ class Player {
   }
 
   attack() {
-    const bullet = new Bullet(this.map, this.x + this.width / 2, this.y);
+    const bullet = new Bullet(
+      this.map,
+      this.x + this.width / 2,
+      this.y,
+      this.bulletImage,
+      this.bulletspeed
+    );
     this.map.bullets.push(bullet);
+  }
+
+  changebullet(newbullet) {
+    //공격아이템 획득하면 이미지 변경
+    this.bulletImage.src = newbullet;
+  }
+
+  calc(i) {
+    if (i % 3 == 0) {
+      return 0;
+    } else if (i % 3 == 1) {
+      return 20;
+    } else {
+      return -20;
+    }
   }
 
   draw() {
     // 플레이어 생성
-    this.map.ctx.drawImage(
-      this.map.playerImage,
-      this.x,
-      this.y,
-      this.width,
-      this.height
-    );
-    this.map.ctx.fillStyle = "black";
-    this.map.ctx.fillRect(this.x, this.y - 6, this.width - 2, 10); // 체력바(길이, 두께)
-    this.map.ctx.fillStyle = "green";
-    this.map.ctx.fillRect(
-      this.x,
-      this.y - 6,
-      ((this.width - 2) * this.hp) / 3,
-      5
-    ); // 체력
+    // this.map.ctx.drawImage(
+    //   this.map.playerImage,
+    //   this.x,
+    //   this.y,
+    //   this.width,
+    //   this.height
+    // );
+    // this.map.ctx.fillStyle = "black";
+    // this.map.ctx.fillRect(this.x, this.y - 6, this.width - 2, 10); // 체력바(길이, 두께)
+    // this.map.ctx.fillStyle = "green";
+    // this.map.ctx.fillRect(
+    //   this.x,
+    //   this.y - 6,
+    //   ((this.width - 2) * this.hp) / 3,
+    //   5
+    // );
+    for (let i = 0; i < Player.charcters; i++) {
+      let y = Math.floor(i / 3) * 20;
+      this.map.ctx.drawImage(
+        this.map.playerImage,
+        this.x + this.calc(i),
+        this.y + y,
+        this.width,
+        this.height
+      );
+    }
+    // 체력
   }
 }
 
 class Bullet {
-  constructor(map, x, y) {
+  constructor(map, x, y, image) {
     this.map = map;
     this.x = x;
     this.y = y;
     this.width = 50;
     this.height = 80;
     this.speed = 20;
+    this.image = image;
   }
 
   update() {
@@ -319,9 +486,9 @@ class Monster {
     }, 300);
   }
 
-  hit() {
+  hit(damage) {
     //몬스터 hp
-    this.hp -= 1;
+    this.hp -= damage;
     if (this.hp <= 0) {
       this.map.monsters = this.map.monsters.filter(
         (monster) => monster !== this
@@ -422,6 +589,59 @@ class Monster {
   }
 }
 
+class Item {
+  constructor(map, x) {
+    this.map = map;
+    this.x = x;
+    this.y = 0;
+    this.width = 70;
+    this.height = 50;
+    this.speed = 1;
+    this.type = Math.floor(Math.random() * 3); // 랜덤으로 아이템 종류 결정
+    if (this.type === 0 || this.type === 1) {
+      this.number = Math.floor(Math.random() * 4) - 5; // -5부터 -2 사이의 값
+    } else {
+      this.number = Math.floor(Math.random() * 3) - 5; // -5부터 -3 사이의 값
+    }
+  }
+
+  itemcount() {
+    this.number += 1; // 맞추면 숫자 증가
+  }
+
+  update() {
+    this.y += this.speed;
+  }
+
+  draw() {
+    // 아이템 이미지
+    this.map.ctx.drawImage(
+      this.map.itemImages[this.type],
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
+
+    if (this.number <= -1) {
+      //0부터 파랑벽으로
+      this.map.ctx.fillStyle = "rgba(255, 0, 0, 0.1)"; //rgb 반투명 빨강
+      this.map.ctx.fillRect(this.x - 50, this.y, 170, 50); //this는 아이템좌표 ,옆에는 그리기
+      // 숫자 표시
+      this.map.ctx.fillStyle = "white";
+      this.map.ctx.font = "20px gothic";
+      this.map.ctx.fillText(this.number, this.x + 20, this.y + 30);
+    } else {
+      // 아이템 숫자 박스
+      this.map.ctx.fillStyle = "rgba(0, 0, 255, 0.1)"; //rgb 반투명 파랑
+      this.map.ctx.fillRect(this.x - 50, this.y, 170, 50);
+      // 숫자 표시
+      this.map.ctx.fillStyle = "white";
+      this.map.ctx.font = "20px gothic";
+      this.map.ctx.fillText(this.number, this.x + 20, this.y + 30);
+    }
+  }
+}
 // window.onmousemove = (e) => {
 //   console.log(e.offsetX, e.offsetY);
 // };
@@ -429,12 +649,13 @@ class Monster {
 function reset(map) {
   map.bullets = [];
   map.monsters = [];
+  map.items = [];
   map.player.x = map.canvas.width / 2 - map.player.width / 2;
   map.player.y = map.canvas.height - map.player.height - 10;
-  map.player.hp = 3;
   score = 0;
   playtime = 0;
   frame = 0;
+  // cancelAnimationFrame(loop); // 게임 루프 중지
 }
 
 function stageLevel(num) {
@@ -449,8 +670,9 @@ function stageLevel(num) {
 
 function re_start() {
   reset(maps[0]);
-  gameset = gameset === true ? false : true;
   result_screen.style.display = "none";
+  // gameset = gameset === true ? false : true;
+  gameset = true;
   if (rename.value != "") {
     playerName = rename.value;
   } else {
@@ -472,7 +694,6 @@ function game(state) {
     gameset = false;
     result_screen.style.display = "block";
     var newli = document.createElement("li");
-
     newli.innerHTML =
       playerNumber +
       ". " +
@@ -487,6 +708,7 @@ function game(state) {
     ranking.appendChild(newli);
     playerNumber += 1;
     console.log(rankingList);
+    console.log(gameset);
   }
 }
 

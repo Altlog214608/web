@@ -412,7 +412,6 @@ function reset(map) {
   playtime = 0;
   frame = 0;
 }
-
 function game(state) {
   let name;
   if (state == false) {
@@ -433,7 +432,7 @@ function game(state) {
       playerName +
       "\t" +
       playtime +
-      "초 생존 \t" +
+      "초 \t" +
       score +
       "점";
     ranking.appendChild(newli);

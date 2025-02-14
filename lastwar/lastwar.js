@@ -36,7 +36,9 @@ let stageNumber = 1;
 let playercount = 5;
 
 restart_button.addEventListener("click", () => {
+  // location.reload();
   re_start();
+  console.log("restart");
 });
 
 restart.addEventListener("click", () => {
@@ -65,6 +67,7 @@ prevstage.addEventListener("click", () => {
   viewstage.innerHTML = stageNumber + " stage";
   // reset(maps[0]);
   re_start();
+  console.log("prev");
 });
 
 nextstage.addEventListener("click", () => {
@@ -73,6 +76,7 @@ nextstage.addEventListener("click", () => {
   viewstage.innerHTML = stageNumber + " stage";
   // reset(maps[0]);
   re_start();
+  console.log("next");
 });
 
 class Map {
@@ -81,6 +85,10 @@ class Map {
     this.ctx = ctx;
     this.backgroundImage = new Image();
     this.backgroundImage.src = "src/background1.png";
+    // this.playercount = 3;
+
+    // this.bulletImage = new Image();
+    // this.bulletImage.src = "src/redbullet.png";
 
     this.monsterImages = [
       [new Image(), new Image()],
@@ -95,7 +103,10 @@ class Map {
     this.playerImage = new Image();
     this.playerImage.src = "src/player.png";
 
-    this.players = [];
+    // this.setplayers(this.playercount);
+
+    this.players = players;
+    // this.players.push = this.player;
     this.monsters = [];
     this.bullets = [];
     this.items = [];
@@ -110,7 +121,6 @@ class Map {
     this.itemImages[2].src = "src/item3.png"; //인구수증가
 
     this.setitems();
-    this.setplayers(playercount);
 
     this.mobInterval = monsterInterval;
     this.setupControls();
@@ -169,18 +179,6 @@ class Map {
     }, 5000);
   }
 
-  setplayers(playercount) {
-    this.players = [];
-    let startX = canvas.width / 2 + 350;
-    let startY = this.backgroundImage.height - 300;
-    for (let i = 0; i < playercount; i++) {
-      let x = startX + calc(playercount);
-      let y = startY + Math.floor(i / 5) * 40;
-      const player = new Player(this, x, y);
-      this.players.push(player);
-    }
-  }
-
   itemscheck() {
     // 3번째 인구증가 아이템
     this.players.forEach((player) => {
@@ -196,7 +194,6 @@ class Map {
             console.log("인구수 증가 아이템 효과 시작");
 
             playercount += item.number; // 아이템 숫자만큼 병사 수 변경
-            this.setplayers(playercount);
             console.log("현재 병사 수: " + playercount);
             this.items = this.items.filter((i) => i !== item); // 아이템 제거
           }
@@ -246,9 +243,7 @@ class Map {
               clearInterval(Player.attackIntervalTimer);
               Player.attackInterval = 400;
               Player.attackIntervalTimer = setInterval(() => {
-                this.players.forEach((player) => {
-                  player.attack();
-                });
+                player.attack();
               }, Player.attackInterval);
             }, 10000);
           }
@@ -270,7 +265,9 @@ class Map {
           player.y + player.height > monster.y
         ) {
           console.log("hit");
+          // this.player.hp -= 1;
           playercount -= 1;
+          console.log("병사 수 감소: " + playercount);
           this.monsters = this.monsters.filter((m) => m !== monster);
         }
       });
@@ -314,7 +311,10 @@ class Map {
     });
 
     if (playercount <= 0) {
+      console.log(gameset);
       game(gameset);
+      console.log(gameset);
+      console.log("?");
     }
   }
 
@@ -325,15 +325,12 @@ class Map {
       this.hitcheck();
       this.itemscheck(); //인구수 증가 아이템 체크
       this.itemscheck2(); //공격력,공격속도 아이템 체크
-      //this.player.calc2(Player.charcters);
 
       frame += 1;
       if (frame == 60) {
         playtime += 1;
         frame = 0;
       }
-      console.log(this.players);
-      console.log(playercount);
     }
     loop = requestAnimationFrame(() => this.gameLoop());
   }
@@ -362,6 +359,7 @@ class Map {
 }
 
 class Player {
+  static charcters = 1;
   constructor(map, x, y) {
     this.map = map;
     this.x = x;
@@ -374,12 +372,11 @@ class Player {
     this.bulletImage = new Image(); // Image 객체 생성
     this.bulletImage.src = "src/redbullet.png"; // 기본 총알 이미지
     this.attackPower = 1; //기본 공격력 1
-    this.bulletspeed = 20; //총알 속도
+    this.bulletspeed = 5; //총알 속도
     this.charcters_x_size = [];
     this.attackPowerTimer = null; // 공격력 증가 타이머
     this.attackSpeedTimer = null; // 공격 속도 증가 타이머
     this.attackInterval = 400;
-    this.space = 60;
 
     this.attackIntervalTimer = setInterval(() => {
       this.attack();
@@ -400,80 +397,86 @@ class Player {
 
   update() {
     if (this.moveLeft && this.x > 0) this.x -= this.speed;
-    if (this.moveRight && this.x < maps[0].canvas.width - this.width)
+    if (this.moveRight && this.x < this.map.canvas.width - this.width)
       this.x += this.speed;
   }
 
   attack() {
     const bullet = new Bullet(
-      maps[0],
+      this.map,
       this.x + this.width / 2,
       this.y,
       this.bulletImage,
       this.bulletspeed
     );
-    maps[0].bullets.push(bullet);
+    this.map.bullets.push(bullet);
+  }
+
+  newbullet() {
+    const bullet = new Bullet(
+      this.map,
+      this.x + this.width / 2,
+      this.y,
+      this.bulletImage,
+      this.bulletspeed
+    );
   }
 
   changebullet(newbullet) {
+    //공격아이템 획득하면 이미지 변경
     players.forEach((player) => {
       player.bulletImage.src = newbullet;
     });
   }
 
   calc2(charcters) {
-    console.log(this.x);
-    if (charcters >= 7) {
+    if (charcters % 5 == 1) {
+      this.charcters_x_size[0] = [this.x - this.width / 2];
+      this.charcters_x_size[1] = [this.x + this.width / 2];
+    } else if (charcters % 5 == 2) {
+      this.charcters_x_size[0] = [this.x - this.width / 2];
+      this.charcters_x_size[1] = [this.x + this.width + this.width / 2];
+    } else if (charcters % 5 == 3) {
+      this.charcters_x_size[0] = [this.x - this.width - this.width / 2];
+      this.charcters_x_size[1] = [this.x + this.width + this.width / 2];
+    } else if (charcters % 5 == 4) {
+      this.charcters_x_size[0] = [this.x - this.width - this.width / 2];
+      this.charcters_x_size[1] = [
+        this.x + this.width + this.width + this.width / 2,
+      ];
+    } else if (charcters % 5 == 0) {
       this.charcters_x_size[0] = [
-        this.x - this.width / 2 - this.width / 2 - this.width / 2,
+        this.x - this.width - this.width - this.width / 2,
       ];
       this.charcters_x_size[1] = [
-        this.x + this.width / 2 + this.width / 2 + this.width / 2,
+        this.x + this.width + this.width + this.width / 2,
       ];
-    } else if (charcters % 7 == 6) {
-      this.charcters_x_size[0] = [this.x - this.width / 2 - this.width / 2];
-      this.charcters_x_size[1] = [
-        this.x + this.width / 2 + this.width / 2 + this.width / 2,
-      ];
-    } else if (charcters % 7 == 5) {
-      this.charcters_x_size[0] = [this.x - this.width / 2 - this.width / 2];
-      this.charcters_x_size[1] = [this.x + this.width / 2 + this.width / 2];
-    } else if (charcters % 7 == 4) {
-      this.charcters_x_size[0] = [this.x - this.width / 2];
-      this.charcters_x_size[1] = [this.x + this.width / 2 + this.width / 2];
-    } else if (charcters % 7 == 3) {
-      this.charcters_x_size[0] = [this.x - this.width / 2];
-      this.charcters_x_size[1] = [this.x + this.width / 2];
-    } else if (charcters % 7 == 2) {
-      this.charcters_x_size[0] = [this.x - this.width / 2];
-      this.charcters_x_size[1] = [this.x + this.width / 2];
-    } else if (charcters % 7 == 1) {
-      this.charcters_x_size[0] = [this.x - this.width / 2]; //캐릭터 왼쪽
-      this.charcters_x_size[1] = [this.x + this.width / 2]; // 캐릭터 오른족
     }
   }
 
   draw() {
-    maps[0].ctx.drawImage(
-      maps[0].playerImage,
+    // for (let i = 0; i < playercount; i++) {
+    // let y = Math.floor( / 3) * 40;
+    this.map.ctx.drawImage(
+      this.map.playerImage,
       this.x,
       this.y,
       this.width,
       this.height
     );
   }
+  // }
 }
 
 class Bullet {
-  constructor(map, x, y, image, speed) {
+  constructor(map, x, y, image) {
     this.map = map;
     this.x = x;
     this.y = y;
     this.width = 50;
     this.height = 80;
-    // this.speed = 50;
+    this.speed = 20;
     this.image = image;
-    this.speed = speed;
   }
 
   update() {
@@ -484,9 +487,15 @@ class Bullet {
   }
 
   draw() {
-    this.map.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-    // players.forEach((player) => {
-    // });
+    players.forEach((player) => {
+      this.map.ctx.drawImage(
+        player.bulletImage,
+        this.x,
+        this.y,
+        this.width,
+        this.height
+      );
+    });
   }
 }
 
@@ -497,7 +506,7 @@ class Monster {
     this.y = 0;
     this.width = 50;
     this.height = 50;
-    this.speed = 1;
+    this.speed = 30;
     this.hp = 1 * ratio;
     this.type = Math.floor(Math.random() * 2);
     this.imageFrames = this.map.monsterImages[this.type];
@@ -505,6 +514,8 @@ class Monster {
     this.move = 1;
     this.minXrange = this.x - 10;
     this.maxXrange = this.x + 10;
+    this.maxwidth = 200;
+    this.maxheight = 200;
 
     setInterval(() => {
       this.frame = this.frame === 0 ? 1 : 0;
@@ -512,6 +523,7 @@ class Monster {
   }
 
   hit(damage) {
+    //몬스터 hp
     this.hp -= damage;
     if (this.hp <= 0) {
       this.map.monsters = this.map.monsters.filter(
@@ -522,13 +534,13 @@ class Monster {
   }
 
   update() {
+    //몬스터 속도
     this.y += this.speed;
     this.monstermove();
   }
 
   monstermove() {
     const centerX = canvas.width / 2;
-    // const randomSpeed = Math.random() * 0.5 + 0.1;
     if (this.x > centerX - 100 && this.x < centerX + 20) {
       this.x += 0;
     } else if (this.x < centerX - 100) {
@@ -554,6 +566,14 @@ class Monster {
         this.y,
         (this.width += 0.1),
         (this.height += 0.1)
+      );
+    } else {
+      this.map.ctx.drawImage(
+        this.imageFrames[this.frame],
+        this.x,
+        this.y,
+        this.maxwidth,
+        this.maxheight
       );
     }
     this.map.ctx.fillStyle = "black";
@@ -628,14 +648,18 @@ function reset(map) {
   map.items = [];
   players = [];
   playercount = 1;
+  setplayers(playercount);
   score = 0;
   playtime = 0;
   frame = 0;
+  // cancelAnimationFrame(loop);
 }
 
 function stageLevel(num) {
+  // ratio = ratio * num;
   ratio = 3 * num;
   monsterInterval = 700 - num * 100;
+  // boss.hp = boss.hp * ratio * 2;
   maps.forEach((map) => {
     map.setMonsters(monsterInterval);
   });
@@ -645,47 +669,40 @@ function re_start() {
   reset(maps[0]);
   result_screen.style.display = "none";
   gameset = gameset === true ? false : true;
+  // gameset = true;
   if (rename.value != "") {
     playerName = rename.value;
   } else {
     playerName = "None";
   }
-  maps[0].setplayers(playercount);
+  // maps[0].gameLoop();
 }
 
-// function setplayers(playercount) {
-//   players = [];
-//   let startX = canvas.width / 2 + 350;
-//   let startY = maps[0].backgroundImage.height - 300;
-//   for (let i = 0; i < playercount; i++) {
-//     // players = [];
-//     let x = startX + calc(i);
-//     let y = startY + Math.floor(i / 5) * 40;
-//     const player = new Player(maps[0], x, y);
-//     players.push(player);
-//     console.log(players);
-//   }
-//   return players;
-// }
-
-function calc(i) {
-  if (i % 7 == 0) {
-    return 0;
-  } else if (i % 7 == 1) {
-    return this.space;
-  } else if (i % 7 == 2) {
-    return -this.space;
-  } else if (i % 7 == 3) {
-    return this.space * 2;
-  } else if (i % 7 == 4) {
-    return -this.space * 2;
-  } else if (i % 7 == 5) {
-    return this.space * 3;
-  } else if (i % 7 == 6) {
-    return -this.space * 3;
+function setplayers(playercount) {
+  let startX = canvas.width / 2 + 350;
+  let startY = maps[0].backgroundImage.height - 300;
+  for (let i = 0; i < playercount; i++) {
+    let x = startX + calc(i);
+    let y = startY + Math.floor(i / 3) * 40;
+    const player = new Player(maps[0], x, y);
+    players.push(player);
   }
 }
 
+function calc(i) {
+  const space = 60;
+  if (i % 5 == 0) {
+    return 0;
+  } else if (i % 5 == 1) {
+    return space;
+  } else if (i % 5 == 2) {
+    return -space;
+  } else if (i % 5 == 3) {
+    return space * 2;
+  } else if (i % 5 == 4) {
+    return -space;
+  }
+}
 function game(state) {
   if (state == false) {
     start_screen.style.display = "none";
@@ -694,8 +711,10 @@ function game(state) {
 
     stageLevel(stageNumber);
     viewstage.innerHTML = stageNumber + " stage";
+    console.log(players);
     const map = new Map();
     maps.push(map);
+    setplayers(playercount);
   } else if (state == true) {
     gameset = false;
     result_screen.style.display = "block";
@@ -713,25 +732,8 @@ function game(state) {
       "점";
     ranking.appendChild(newli);
     playerNumber += 1;
-  }
-}
-
-function calc(i) {
-  const space = 60;
-  if (i % 7 == 0) {
-    return 0;
-  } else if (i % 7 == 1) {
-    return space;
-  } else if (i % 7 == 2) {
-    return space;
-  } else if (i % 7 == 3) {
-    return space * 2;
-  } else if (i % 7 == 4) {
-    return space * 2;
-  } else if (i % 7 == 5) {
-    return space * 3;
-  } else if (i % 7 == 6) {
-    return space * 3;
+    console.log(rankingList);
+    console.log(gameset);
   }
 }
 
@@ -739,27 +741,35 @@ function decNum() {
   if (stageNumber > 1) {
     stageNumber -= 1;
     level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
   } else {
     stageNumber = 1;
     level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
   }
 }
 function incNum() {
   if (stageNumber < 5) {
     stageNumber += 1;
     level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
   } else {
     stageNumber = 5;
     level_number.innerHTML = stageNumber;
+    console.log(stageNumber);
   }
 }
 window.onload = () => {
   start_button.onclick = () => {
     if (input.value != "") {
-      playerName = input.value;
+      console.log(input.value);
+      playerName = input.vlaue;
+      // console.log(playerName);
+      console.log(players);
       rankingList.push(playerName);
     } else {
       playerName = "None";
+      // console.log(playerName);
       rankingList.push(playerName);
     }
     game(false);

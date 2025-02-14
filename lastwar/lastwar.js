@@ -174,7 +174,7 @@ class Map {
     let startX = canvas.width / 2 + 350;
     let startY = this.backgroundImage.height - 300;
     for (let i = 0; i < playercount; i++) {
-      let x = startX + calc(i);
+      let x = startX + calc(playercount);
       let y = startY + Math.floor(i / 5) * 40;
       const player = new Player(this, x, y);
       this.players.push(player);
@@ -374,7 +374,7 @@ class Player {
     this.bulletImage = new Image(); // Image 객체 생성
     this.bulletImage.src = "src/redbullet.png"; // 기본 총알 이미지
     this.attackPower = 1; //기본 공격력 1
-    this.bulletspeed = 5; //총알 속도
+    this.bulletspeed = 20; //총알 속도
     this.charcters_x_size = [];
     this.attackPowerTimer = null; // 공격력 증가 타이머
     this.attackSpeedTimer = null; // 공격 속도 증가 타이머
@@ -465,14 +465,15 @@ class Player {
 }
 
 class Bullet {
-  constructor(map, x, y, image) {
+  constructor(map, x, y, image, speed) {
     this.map = map;
     this.x = x;
     this.y = y;
     this.width = 50;
     this.height = 80;
-    this.speed = 20;
+    // this.speed = 50;
     this.image = image;
+    this.speed = speed;
   }
 
   update() {
@@ -483,15 +484,9 @@ class Bullet {
   }
 
   draw() {
-    players.forEach((player) => {
-      this.map.ctx.drawImage(
-        player.bulletImage,
-        this.x,
-        this.y,
-        this.width,
-        this.height
-      );
-    });
+    this.map.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    // players.forEach((player) => {
+    // });
   }
 }
 
@@ -721,6 +716,25 @@ function game(state) {
   }
 }
 
+function calc(i) {
+  const space = 60;
+  if (i % 7 == 0) {
+    return 0;
+  } else if (i % 7 == 1) {
+    return space;
+  } else if (i % 7 == 2) {
+    return space;
+  } else if (i % 7 == 3) {
+    return space * 2;
+  } else if (i % 7 == 4) {
+    return space * 2;
+  } else if (i % 7 == 5) {
+    return space * 3;
+  } else if (i % 7 == 6) {
+    return space * 3;
+  }
+}
+
 function decNum() {
   if (stageNumber > 1) {
     stageNumber -= 1;
@@ -742,7 +756,7 @@ function incNum() {
 window.onload = () => {
   start_button.onclick = () => {
     if (input.value != "") {
-      playerName = input.vlaue;
+      playerName = input.value;
       rankingList.push(playerName);
     } else {
       playerName = "None";

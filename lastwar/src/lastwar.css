@@ -29,7 +29,7 @@
   height: 100vh;
   color: #f7f7f7;
   font-size: 2rem;
-  background-image: url("lastwar_title.jpg");
+  background-image: url("https://ifh.cc/g/mgn5tk.jpg");
   background-size: contain; /* 이미지가 왜곡되지 않도록 설정 */
   background-position: center;
   background-repeat: no-repeat; /* 이미지 반복 방지 */
@@ -207,7 +207,7 @@ h3 img {
   /* float: left; */
   width: 20px;
   height: 100%;
-  background-image: url(left.png);
+  background-image: url(https://ifh.cc/g/zCaJWz.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -225,7 +225,7 @@ h3 img {
   /* float: right; */
   width: 20px;
   height: 100%;
-  background-image: url(right.png);
+  background-image: url(https://ifh.cc/g/5pTlRk.png);
   background-size: cover;
   background-repeat: no-repeat;
 }

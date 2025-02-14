@@ -95,7 +95,7 @@ class Map {
     this.playerImage = new Image();
     this.playerImage.src = "src/player.png";
 
-    this.players = players;
+    this.players = [];
     this.monsters = [];
     this.bullets = [];
     this.items = [];
@@ -110,6 +110,7 @@ class Map {
     this.itemImages[2].src = "src/item3.png"; //인구수증가
 
     this.setitems();
+    this.setplayers(playercount);
 
     this.mobInterval = monsterInterval;
     this.setupControls();
@@ -168,6 +169,18 @@ class Map {
     }, 5000);
   }
 
+  setplayers(playercount) {
+    this.players = [];
+    let startX = canvas.width / 2 + 350;
+    let startY = this.backgroundImage.height - 300;
+    for (let i = 0; i < playercount; i++) {
+      let x = startX + calc(i);
+      let y = startY + Math.floor(i / 5) * 40;
+      const player = new Player(this, x, y);
+      this.players.push(player);
+    }
+  }
+
   itemscheck() {
     // 3번째 인구증가 아이템
     this.players.forEach((player) => {
@@ -183,7 +196,7 @@ class Map {
             console.log("인구수 증가 아이템 효과 시작");
 
             playercount += item.number; // 아이템 숫자만큼 병사 수 변경
-            setplayers(playercount);
+            this.setplayers(playercount);
             console.log("현재 병사 수: " + playercount);
             this.items = this.items.filter((i) => i !== item); // 아이템 제거
           }
@@ -233,7 +246,9 @@ class Map {
               clearInterval(Player.attackIntervalTimer);
               Player.attackInterval = 400;
               Player.attackIntervalTimer = setInterval(() => {
-                player.attack();
+                this.players.forEach((player) => {
+                  player.attack();
+                });
               }, Player.attackInterval);
             }, 10000);
           }
@@ -317,6 +332,7 @@ class Map {
         playtime += 1;
         frame = 0;
       }
+      console.log(this.players);
       console.log(playercount);
     }
     loop = requestAnimationFrame(() => this.gameLoop());
@@ -384,19 +400,19 @@ class Player {
 
   update() {
     if (this.moveLeft && this.x > 0) this.x -= this.speed;
-    if (this.moveRight && this.x < this.map.canvas.width - this.width)
+    if (this.moveRight && this.x < maps[0].canvas.width - this.width)
       this.x += this.speed;
   }
 
   attack() {
     const bullet = new Bullet(
-      this.map,
+      maps[0],
       this.x + this.width / 2,
       this.y,
       this.bulletImage,
       this.bulletspeed
     );
-    this.map.bullets.push(bullet);
+    maps[0].bullets.push(bullet);
   }
 
   changebullet(newbullet) {
@@ -438,8 +454,8 @@ class Player {
   }
 
   draw() {
-    this.map.ctx.drawImage(
-      this.map.playerImage,
+    maps[0].ctx.drawImage(
+      maps[0].playerImage,
       this.x,
       this.y,
       this.width,
@@ -517,6 +533,7 @@ class Monster {
 
   monstermove() {
     const centerX = canvas.width / 2;
+    // const randomSpeed = Math.random() * 0.5 + 0.1;
     if (this.x > centerX - 100 && this.x < centerX + 20) {
       this.x += 0;
     } else if (this.x < centerX - 100) {
@@ -638,20 +655,23 @@ function re_start() {
   } else {
     playerName = "None";
   }
+  maps[0].setplayers(playercount);
 }
 
-function setplayers(playercount) {
-  let startX = canvas.width / 2 + 350;
-  let startY = maps[0].backgroundImage.height - 300;
-  for (let i = 0; i < playercount; i++) {
-    // players = [];
-    let x = startX + calc(i);
-    let y = startY + Math.floor(i / 5) * 40;
-    const player = new Player(maps[0], x, y);
-    players.push(player);
-    console.log(players);
-  }
-}
+// function setplayers(playercount) {
+//   players = [];
+//   let startX = canvas.width / 2 + 350;
+//   let startY = maps[0].backgroundImage.height - 300;
+//   for (let i = 0; i < playercount; i++) {
+//     // players = [];
+//     let x = startX + calc(i);
+//     let y = startY + Math.floor(i / 5) * 40;
+//     const player = new Player(maps[0], x, y);
+//     players.push(player);
+//     console.log(players);
+//   }
+//   return players;
+// }
 
 function calc(i) {
   if (i % 7 == 0) {
@@ -681,7 +701,6 @@ function game(state) {
     viewstage.innerHTML = stageNumber + " stage";
     const map = new Map();
     maps.push(map);
-    setplayers(playercount);
   } else if (state == true) {
     gameset = false;
     result_screen.style.display = "block";
